@@ -21,11 +21,7 @@ powerPrice = 75;
 
 workersprice = 100;
 
-workerPay = 0;
-
-workerPrice = 75;
-
-marketing = 1;
+workerPay = 5;
 
 console.clear();
 setInterval(updateItems, 100)
@@ -45,7 +41,7 @@ function buyItem(item) {
 }
 
 function changePrice(chocolateType, increment) {
-  if (chocolateType == "milk" && milkChocolatePrice > 0.1) {
+  if (chocolateType == "milk") {
     if (increment == 1) {
       milkChocolatePrice += 0.1;
     } else {
@@ -59,7 +55,7 @@ function changePrice(chocolateType, increment) {
 
 function clicked(chocolateType) {
   if (chocolateType == "milk") {
-    if (cacao > 0 && sugar > 0 && milk > 0 && milkChocolatePrice > 0) {
+    if (cacao > 0 && sugar > 0 && milk > 0) {
       cacao -= 1;
       sugar -= 1;
       milk -= 1;
@@ -68,10 +64,6 @@ function clicked(chocolateType) {
       //money += Math.round(milkChocolatePrice*10) / 10;
     } else {
       document.getElementById("buyBubble").style.display = "block";
-      if (money > 75 && money < 125) {
-        alert("yep")
-        document.getElementById("sellerBubble").style.display = "block";
-      }
       console.log("yes")
       document.getElementById("milk-chocolate").disabled = true;
     }
@@ -151,18 +143,14 @@ function changeSeller(ingredient, price) {
       }
   });
   window[ingredient+"price"] = price;
-  document.getElementById("sellerBubble").style.display = "none";
 }
 function runEvents() {
   console.log("customerDemand:"+calculateCustomerDemand(milkChocolatePrice))
   sellItems(milkChocolatePrice)
 }
 function hireWorker() {
-  if (money >= workerPrice) {
-    workerPay = 5;
-    money -= workerPrice;
-    workerPrice *= 1.5;
-    document.getElementById("hireWorkerButton").innerHTML = "Hire Worker ("+workerPrice.toFixed(2)+")";
+  if (money >= 1) {
+    money -= 1;
     workers += 1;
     const para = document.createElement("div");
     para.className = "worker";
@@ -186,9 +174,6 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("memory").innerHTML = bytes + "/" + max;
         }
     }, rate)
-    setInterval(function() {
-        money -= workerPay;
-    }, 5000)
 });
 
 function increaseMemory() {
@@ -245,11 +230,10 @@ function changePay(workerType, increment) {
   }
   event.stopPropagation();
 }
-
 /// ********************** CHATGPT *********************** ///
 function calculateCustomerDemand(pricePerBar) {
     const minCustomers = 1; // Minimum number of customers
-    const maxCustomers = Math.round(10 - pricePerBar * 2 * marketing);
+    const maxCustomers = Math.round(10 - pricePerBar * 2);
     console.log("maxCustomers:"+maxCustomers)
     const demandFactor = 2/pricePerBar;
 
