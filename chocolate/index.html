@@ -30,6 +30,7 @@
       </button><div style="display: none">
       <button onclick="clicked()" id="dark-chocolate" class="chocolate"><span class="tooltip">Dark Chocolate</span></button>
       <button onclick="clicked()" id="white-chocolate" class="chocolate"><span class="tooltip">White Chocolate</span></button>
+      <button onclick="clicked()" id="salted-caramel-chocolate" class="chocolate"><span class="tooltip">Salted Caramel Chocolate</span></button>
       <button onclick="clicked()" id="ruby-chocolate" class="chocolate">.</button>
       <button onclick="clicked()" id="mint-chocolate" class="chocolate">.</button>
       <button onclick="clicked()" id="milk-chocolate" class="chocolate">.</button>
@@ -45,24 +46,23 @@
       <div class="bubble" style="top: 210px;left: 340px; display: none;" id="buyBubble">Buy more ingredients here</div>
       <div id="cacao">
         <div class="map">
-          <div class="map-item active" onclick="changeSeller('cacao', 10)">Milo's Cacao Co.<span class="tooltip">$10 | <span style="color: lightgreen">+0.2</span></span></div>
-          <div class="map-item" onclick="changeSeller('cacao', 8)">ChocoTech<span class="tooltip">$8 | <span style="color: red">-0.4</span></span></div>
+          <div class="map-item active" onclick="changeSeller('cacao', 10)">Milo's Cacao Co.</div><span class="tooltip">Dark Chocolate</span>
+          <div class="map-item" onclick="changeSeller('cacao', 8)">ChocoTech</div>
         </div>
         <button class="buy-button" style="margin-left: 5%;" onclick="buyItem('cacao')" id="buy-cacao">Buy Cacao ($10.00)</button>
         <p class="amount-left" style="margin-left: 5%;" id="cacao-left">Beans left: 15</p>
       </div>
       <div id="sugar">
-        <div class="bubble" style="top: 380px;left: 270px; width: 250px; text-align: center; display: none;" id="sellerBubble">Change the product seller to balance price and reputation</div>
         <div class="map">
-          <div class="map-item active" onclick="changeSeller('sugar', 5)">Old Mill Sugar<span class="tooltip">$5 | <span style="color: lightgreen">+0.2</span></span></div>
-          <div class="map-item" onclick="changeSeller('sugar', 3)">SugarSmith's<span class="tooltip">$3 | <span style="color: red">-0.2</span></span></div>
+          <div class="map-item active" onclick="changeSeller('sugar', 5)">Old Mill Sugar</div>
+          <div class="map-item" onclick="changeSeller('sugar', 3)">SugarSmith's</div>
         </div>
         <button class="buy-button" style="margin-left: 5%;" onclick="buyItem('sugar')" id="buy-sugar">Buy Sugar ($5.00)</button>
         <p class="amount-left" style="margin-left: 5%;" id="sugar-left">Sugar left: 15</p>
       </div>
       <div id="milk">
         <div class="map">
-          <div class="map-item active" onclick="changeSeller('milk', 8)">PurePasture Dairy Co.<span class="tooltip">$8 | <span style="color: lightgreen">+0.1</span></span></div>
+          <div class="map-item active" onclick="changeSeller('milk', 8)">PurePasture Dairy Co.</div>
           <div class="map-item" onclick="changeSeller('milk', 6)">FarmFresh</div>
           <div class="map-item" onclick="changeSeller('milk', 12)">Milky Way Farms</div>
         </div>
@@ -83,7 +83,7 @@
     </div>
     <div class="row" style="display: none;" id="devices">
       <div id="workers" style="margin-left: 5%; margin-top: 5%; margin-bottom: 3px;"></div>
-      <button class="buy-button" style="margin-left: 5%;" onclick="hireWorker()" id="hireWorkerButton">Hire Worker ($75.00)</button><br/>
+      <button class="buy-button" style="margin-left: 5%;" onclick="hireWorker()">Hire Worker ($100.00)</button><br/>
       <button style="display: inline-block; margin-left: 5%;" class="changePay" onclick="changePay('worker', 0)"><</button><div class="amount-left" id="workerPay" style="margin-top: 5px; width: 100px; display: inline-block">$5.00/h</div><button style="display: inline-block;" class="changePay" onclick="changePay('worker', 1)">></button>
     </div>
     <div class="row" style="display: none;">
