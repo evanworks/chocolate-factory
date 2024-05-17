@@ -23,6 +23,8 @@ workersprice = 100;
 
 workerPay = 5;
 
+workerPrice = 75;
+
 console.clear();
 setInterval(updateItems, 100)
 
@@ -41,7 +43,7 @@ function buyItem(item) {
 }
 
 function changePrice(chocolateType, increment) {
-  if (chocolateType == "milk") {
+  if (chocolateType == "milk" && milkChocolatePrice > 0.1) {
     if (increment == 1) {
       milkChocolatePrice += 0.1;
     } else {
@@ -55,7 +57,7 @@ function changePrice(chocolateType, increment) {
 
 function clicked(chocolateType) {
   if (chocolateType == "milk") {
-    if (cacao > 0 && sugar > 0 && milk > 0) {
+    if (cacao > 0 && sugar > 0 && milk > 0 && milkChocolatePrice > 0) {
       cacao -= 1;
       sugar -= 1;
       milk -= 1;
@@ -149,8 +151,10 @@ function runEvents() {
   sellItems(milkChocolatePrice)
 }
 function hireWorker() {
-  if (money >= 1) {
-    money -= 1;
+  if (money >= workerPrice) {
+    money -= workerPrice;
+    workerPrice *= 1.5;
+    document.getElementById("hireWorkerButton").innerHTML = "Hire Worker ("+workerPrice.toFixed(2)+")";
     workers += 1;
     const para = document.createElement("div");
     para.className = "worker";
@@ -230,6 +234,7 @@ function changePay(workerType, increment) {
   }
   event.stopPropagation();
 }
+
 /// ********************** CHATGPT *********************** ///
 function calculateCustomerDemand(pricePerBar) {
     const minCustomers = 1; // Minimum number of customers
