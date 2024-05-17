@@ -135,7 +135,6 @@ body {
   font-size: 12px;
   cursor: pointer;
   color: white;
-  position: relative;
 }
 .map-item:hover {
   background: #946b65;
@@ -265,23 +264,4 @@ h1 {
 }
 .changePay:active {
   background: darkgrey;
-}
-.map-item:hover .tooltip {
-  top: -2px;
-  left: 125%;
-  border-radius: 0px;
-  border: 1px solid black;
-  background: #6b3e2a;
-  height: 25px;
-  visibility: visible;
-  text-align: left;
-  padding: 5px;
-  font-size: 17px;
-}
-svg {
-  width:15px;
-  height:15px;
-  stroke-width:20;
-  stroke: white;
-  fill:transparent;
 }
