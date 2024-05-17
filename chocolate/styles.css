@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Kameron:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sono:wght@200..800&display=swap');
+body {
+  height: 100vh;
+  background-image: radial-gradient(circle, #edd4b2, #f5e0c4);
+  background-repeat: no-repeat;
+  background-size: cover;
+  user-select: none;
+}
+#milk-chocolate {
+  width: 75px;
+  height: 75px;
+  background: #6b3e2a;
+  color: #6b3e2a;
+  border-top: 3px solid #a96c57;
+  border-left: 3px solid #a96c57;
+  border-bottom: 5px solid #502b27;
+  border-right: 5px solid #502b27;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+#dark-chocolate {
+  width: 75px;
+  height: 75px;
+  background: #4d3739;
+  color: #4d3739;
+  border-top: 3px solid #946b65;
+  border-left: 3px solid #946b65;
+  border-bottom: 5px solid #361c17;
+  border-right: 5px solid #361c17;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+#white-chocolate {
+  width: 75px;
+  height: 75px;
+  background: #f6dfbd;
+  color: #f6dfbd;
+  border-top: 3px solid #fff4e4;
+  border-left: 3px solid #fff4e4;
+  border-bottom: 5px solid #f0d4a6;
+  border-right: 5px solid #f0d4a6;
+  margin-left: 10px;
+  margin-top: 10px;
+  border-radius: 100%;
+}
+#salted-caramel-chocolate {
+  width: 75px;
+  height: 75px;
+  background: red;
+  color: #f6dfbd;
+  border-top: 3px solid #fff4e4;
+  border-left: 3px solid #fff4e4;
+  border-bottom: 5px solid #f0d4a6;
+  border-right: 5px solid #f0d4a6;
+  margin-left: 10px;
+  margin-top: 10px;
+  border-radius: 100%;
+}
+.chocolate {
+  display: inline-block;
+  width: 75px;
+  height: 75px;
+}
+.chocolate:hover {
+  filter: grayscale(7%);
+}
+.chocolate:hover .tooltip {
+  visibility: visible;
+}
+.chocolate:active {
+  transform: scale(0.95);
+}
+.chocolate:active .tooltip {
+  transform: scale(1.05);
+  margin-top: 3px;
+}
+#bars, #money {
+  font-family: Kameron;
+  font-size: 40px;
+  max-width: 300px;
+  text-align: center;
+  margin-right: 5px;
+}
+#bars-wrapper {
+  display: inline-flex;
+  border: 3px solid #502b27;
+  padding: 10px;
+  background: #6b3e2a;
+  color: white;
+  margin-top: 5px;
+}
+.row {
+  float: left;
+  border: 1px solid red;
+  height: 80%;
+  width: 18%;
+  margin: 0.9vw;
+  margin-top: 30px;
+  background: #a19b9a;
+  border: 4px solid grey;
+}
+.tooltip {
+  visibility: hidden;
+  width: 120px;
+  background-color: rgba(75, 45, 40, 0.7);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 3;
+  top: 107%;
+  left: 50%;
+  margin-left: -60px;
+  cursor: default;
+}
+#chocolate-types {}
+#production {
+  font-family: Sono;
+  height: 1000px;
+}
+.map {
+  width: 90%;
+  border: 1px solid black;
+  margin-left: 5%;
+  height: 100px;
+  background: #a96c57;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+.map-item {
+  background: #6b3e2a;
+  padding: 3px;
+  font-size: 12px;
+  cursor: pointer;
+  color: white;
+  position: relative;
+}
+.map-item:hover {
+  background: #946b65;
+}
+.buy-button {
+  padding: 5px;
+  background: #6b3e2a;
+  border-top: 3px solid #a96c57;
+  border-left: 3px solid #a96c57;
+  border-bottom: 5px solid #502b27;
+  border-right: 5px solid #502b27;
+  color: white;
+  margin-top: 5px;
+}
+.buy-button:hover {
+  transform: scale(1.01);
+}
+.buy-button:active {
+  background: #4d3739;
+  transform: scale(0.95);
+}
+button {
+  cursor: pointer;
+}
+.amount-left {
+  font-size: 15px;
+  border: 1px solid grey;
+  width: 200px;
+  color: white;
+  background: grey;
+  border: 1px solid dimgrey;
+  padding: 2px;
+  font-family: Sono;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  color: lightgrey;
+}
+a:active {
+  color: dimgrey;
+}
+.active {
+  background: black;
+}
+.chip {
+  width: 20px;
+  height: 20px;
+  background: #2bb530;
+  border: 2px solid black;
+  margin: 2px;
+  display: inline-block;
+}
+.project-button {
+  padding: 4px;
+  background: grey;
+  border-top: 2px solid darkgrey;
+  border-left: 2px solid darkgrey;
+  border-bottom: 4px solid dimgrey;
+  border-right: 4px solid dimgrey;
+  color: white;
+  margin-top: 3px;
+}
+.project-button:hover {
+  transform: scale(1.01);
+}
+.project-button:active {
+  background: dimgrey;
+  transform: scale(0.95);
+}
+.project {
+  background: lightgrey;
+  border: 3px solid dimgrey;
+  width: 200px;
+  height: 100px;
+  margin-top: 7px;
+  cursor: pointer;
+  text-align: center;
+  margin-left: 5%;
+  font-family: Kameron;
+}
+.project:hover {
+  color: white;
+  background: grey;
+  transform: scale(1.05, 1.05);
+}
+.project:active {
+  color: white;
+  background: dimgrey;
+  transform: scale(0.95, 0.95);
+}
+h1 {
+  display: inline-block;
+  font-size: 18px;
+  line-height: 3px;
+}
+.project-text {
+  margin-top: 1px;
+  width: 190px;
+}
+.bubble {
+  font-family: Kameron;
+  position: absolute;
+  padding: 5px;
+  background: rgba(250, 250, 250, 0.8);
+  border-radius: 7px;
+}
+.worker {
+  width: 20px;
+  height: 20px;
+  background: black;
+  border-radius: 40px;
+  border: 3px solid black;
+  display: inline-block;
+  margin-right: 5px;
+}
+.changePay {
+  height: 25px;
+  border: 1px solid black;
+  background: grey;
+  color: white;
+}
+.changePay:hover {
+  background: dimgrey;
+}
+.changePay:active {
+  background: darkgrey;
+}
+.map-item:hover .tooltip {
+  top: -2px;
+  left: 125%;
+  border-radius: 0px;
+  border: 1px solid black;
+  background: #6b3e2a;
+  height: 25px;
+  visibility: visible;
+  text-align: left;
+  padding: 5px;
+  font-size: 17px;
+}
+svg {
+  width:15px;
+  height:15px;
+  stroke-width:20;
+  stroke: white;
+  fill:transparent;
+}
