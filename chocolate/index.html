@@ -53,6 +53,7 @@
         <p class="amount-left" style="margin-left: 5%;" id="cacao-left">Beans left: 15</p>
       </div>
       <div id="sugar">
+        <div class="bubble" style="top: 310px;left: 390px; display: none;" id="buyBubble">Change the seller of stuff</div>
         <div class="map">
           <div class="map-item active" onclick="changeSeller('sugar', 5)">Old Mill Sugar</div>
           <div class="map-item" onclick="changeSeller('sugar', 3)">SugarSmith's</div>
@@ -83,7 +84,7 @@
     </div>
     <div class="row" style="display: none;" id="devices">
       <div id="workers" style="margin-left: 5%; margin-top: 5%; margin-bottom: 3px;"></div>
-      <button class="buy-button" style="margin-left: 5%;" onclick="hireWorker()">Hire Worker ($100.00)</button><br/>
+      <button class="buy-button" style="margin-left: 5%;" onclick="hireWorker()" id="hireWorkerButton">Hire Worker ($100.00)</button><br/>
       <button style="display: inline-block; margin-left: 5%;" class="changePay" onclick="changePay('worker', 0)"><</button><div class="amount-left" id="workerPay" style="margin-top: 5px; width: 100px; display: inline-block">$5.00/h</div><button style="display: inline-block;" class="changePay" onclick="changePay('worker', 1)">></button>
     </div>
     <div class="row" style="display: none;">
