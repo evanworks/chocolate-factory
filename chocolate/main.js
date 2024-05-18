@@ -19,11 +19,17 @@ rate = 1000;
 memoryPrice = 100;
 powerPrice = 75;
 
-workersprice = 100;
+workersprice = 50;
 
-workerPay = 5;
+workerPay = 0;
 
 workerPrice = 75;
+
+marketing = 1;
+
+cacaoMarketing = 1;
+sugarMarketing = 1;
+milkMarketing = 1;
 
 console.clear();
 setInterval(updateItems, 100)
@@ -66,6 +72,9 @@ function clicked(chocolateType) {
       //money += Math.round(milkChocolatePrice*10) / 10;
     } else {
       document.getElementById("buyBubble").style.display = "block";
+      if (money > 75 && money < 125) {
+        document.getElementById("sellerBubble").style.display = "block";
+      }
       console.log("yes")
       document.getElementById("milk-chocolate").disabled = true;
     }
@@ -90,26 +99,26 @@ function updateItems() {
   }
   if (money >= 100) {
     document.getElementById("project").style.display = "block";
+    document.getElementById("bytesBubble").style.display = "block";
+    document.getElementById("memoryBubble").style.display = "block";
+    document.getElementById("powerBubble").style.display = "block";
   }
   document.getElementById("cacao-left").innerHTML = "Beans left: " + cacao;
   document.getElementById("sugar-left").innerHTML = "Sugar left: " + sugar;
   document.getElementById("milk-left").innerHTML = "Milk left: " + milk;
 
-  document.querySelector(".tooltipcacao").innerHTML = "Cacao (" + cacao + ")";
   if (cacao == 0) {
     document.querySelector(".tooltipcacao").style.color = "red";
   } else {
     document.querySelector(".tooltipcacao").style.color = "lightgreen";
   }
 
-  document.querySelector(".tooltipsugar").innerHTML = "Sugar (" + sugar + ")";
   if (sugar == 0) {
     document.querySelector(".tooltipsugar").style.color = "red";
   } else {
     document.querySelector(".tooltipsugar").style.color = "lightgreen";
   }
 
-  document.querySelector(".tooltipmilk").innerHTML = "Milk (" + milk + ")";
   if (milk == 0) {
     document.querySelector(".tooltipmilk").style.color = "red";
   } else {
@@ -134,9 +143,16 @@ function updateItems() {
     //money += parseInt(moneyAdd.toFixed(2))
     //bars -= Math.round(milkChocolatePrice)
   //}
+  marketing = cacaoMarketing + sugarMarketing + milkMarketing;
+  marketing /= 3;
+  marketing = marketing.toFixed(2)
+  console.log(marketing)
 
 }
-function changeSeller(ingredient, price) {
+function changeSeller(ingredient, price, markChange) {
+  if (event.target.classList.contains("active")) {
+    markChange = 0;
+  }
   event.target.classList.add('active');
   const siblings = Array.from(event.target.parentNode.children);
     siblings.forEach(sibling => {
@@ -145,6 +161,8 @@ function changeSeller(ingredient, price) {
       }
   });
   window[ingredient+"price"] = price;
+  window[ingredient+"Marketing"] = 1 + markChange;
+  document.getElementById("sellerBubble").style.display = "none";
 }
 function runEvents() {
   console.log("customerDemand:"+calculateCustomerDemand(milkChocolatePrice))
@@ -152,9 +170,10 @@ function runEvents() {
 }
 function hireWorker() {
   if (money >= workerPrice) {
+    workerPay = 5;
     money -= workerPrice;
     workerPrice *= 1.5;
-    document.getElementById("hireWorkerButton").innerHTML = "Hire Worker ("+workerPrice.toFixed(2)+")";
+    document.getElementById("hireWorkerButton").innerHTML = "Hire Worker ($"+workerPrice.toFixed(2)+")";
     workers += 1;
     const para = document.createElement("div");
     para.className = "worker";
@@ -178,6 +197,9 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("memory").innerHTML = bytes + "/" + max;
         }
     }, rate)
+    setInterval(function() {
+        money -= workerPay;
+    }, 5000)
 });
 
 function increaseMemory() {
@@ -191,6 +213,10 @@ function increaseMemory() {
         memoryPrice *= 1.5;
         document.getElementById("memoryButton").innerHTML = "Increase Memory ($"+memoryPrice.toFixed(2)+")";
         document.getElementById("memory").innerHTML = bytes + "/" + max;
+        document.getElementById("bytesBubble").style.display = "none";
+        document.getElementById("memoryBubble").style.display = "none";
+        document.getElementById("powerBubble").style.display = "none";
+        
     } else {
         alert("Not enough money!!!!!!!!!!!!!!!!!!!!!11")
     }
@@ -240,7 +266,7 @@ function calculateCustomerDemand(pricePerBar) {
     const minCustomers = 1; // Minimum number of customers
     const maxCustomers = Math.round(10 - pricePerBar * 2);
     console.log("maxCustomers:"+maxCustomers)
-    const demandFactor = 2/pricePerBar;
+    const demandFactor = 2/pricePerBar * marketing;
 
     const adjustedMinCustomers = Math.round(minCustomers * demandFactor/2);
     const adjustedMaxCustomers = Math.round(maxCustomers * demandFactor/2);
