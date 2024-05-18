@@ -15,6 +15,5 @@ A relaxing clicker game about making chocolate
 * Fixed fatal error where setting chocolate price to -$0.00 resulted in the game breaking
 * Changed the price of workers to $75
 
-
 >### ALPHA v0.3.0
 >Notes: The first published version
