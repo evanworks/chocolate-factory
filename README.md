@@ -7,3 +7,4 @@ A relaxing clicker game about making chocolate
 ## Versions
 
 ### ALPHA v0.3.0
+Notes: The first published version
