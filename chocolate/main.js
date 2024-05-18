@@ -21,11 +21,9 @@ powerPrice = 75;
 
 workersprice = 100;
 
-workerPay = 0;
+workerPay = 5;
 
 workerPrice = 75;
-
-marketing = 1;
 
 console.clear();
 setInterval(updateItems, 100)
@@ -68,10 +66,6 @@ function clicked(chocolateType) {
       //money += Math.round(milkChocolatePrice*10) / 10;
     } else {
       document.getElementById("buyBubble").style.display = "block";
-      if (money > 75 && money < 125) {
-        alert("yep")
-        document.getElementById("sellerBubble").style.display = "block";
-      }
       console.log("yes")
       document.getElementById("milk-chocolate").disabled = true;
     }
@@ -151,7 +145,6 @@ function changeSeller(ingredient, price) {
       }
   });
   window[ingredient+"price"] = price;
-  document.getElementById("sellerBubble").style.display = "none";
 }
 function runEvents() {
   console.log("customerDemand:"+calculateCustomerDemand(milkChocolatePrice))
@@ -159,7 +152,6 @@ function runEvents() {
 }
 function hireWorker() {
   if (money >= workerPrice) {
-    workerPay = 5;
     money -= workerPrice;
     workerPrice *= 1.5;
     document.getElementById("hireWorkerButton").innerHTML = "Hire Worker ("+workerPrice.toFixed(2)+")";
@@ -186,9 +178,6 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("memory").innerHTML = bytes + "/" + max;
         }
     }, rate)
-    setInterval(function() {
-        money -= workerPay;
-    }, 5000)
 });
 
 function increaseMemory() {
@@ -249,7 +238,7 @@ function changePay(workerType, increment) {
 /// ********************** CHATGPT *********************** ///
 function calculateCustomerDemand(pricePerBar) {
     const minCustomers = 1; // Minimum number of customers
-    const maxCustomers = Math.round(10 - pricePerBar * 2 * marketing);
+    const maxCustomers = Math.round(10 - pricePerBar * 2);
     console.log("maxCustomers:"+maxCustomers)
     const demandFactor = 2/pricePerBar;
 
