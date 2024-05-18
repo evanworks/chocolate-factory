@@ -9,6 +9,7 @@ A relaxing clicker game about making chocolate
 ### ALPHA patch v0.3.1
 **FEATURES:**
 * Made worker price increase over time
+  beans
 **BUGS:**
 * Fixed fatal error where setting chocolate price to -$0.00 resulted in the game breaking
 * Changed the price of workers to $75
