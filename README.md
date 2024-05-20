@@ -6,18 +6,32 @@ A relaxing clicker game about making chocolate
 
 ## Versions
 
-### ALPHA v0.4.0
+### ALPHA v0.5.0
 **FEATURES:**
-* Added functionality to the seller change feature
-* Added bubbles detailing the byte mining process
-* Created MARKETING, an important variable that changes how many customers you can get
-* Adjusted prices
-
+* Added worker pay
+* Created a more comprehensive tutorial
+* Added three new companies
+* Columns now show a locked screen, "Unlocked at $69" or whatever
+* Added the version number as a display
 
 **BUGS:**
-* Fixed display issue with chocolate tooltip
-* Added a $ sign to worker price updates
-* Removed the boxes project, which does nothing
+* Fixed issue where the money only update on each click of the chocolate
+* Switched the places of milk and cacao so people would stop thinking "Milo's Cacao Co." is the name of your shop
+* Adjusted time the bytes menu appears to stop players going bankrupt
+* Worker project box now displays the correct value
+
+### ALPHA v0.4.0
+>**FEATURES:**
+>* Added functionality to the seller change feature
+>* Added bubbles detailing the byte mining process
+>* Created MARKETING, an important variable that changes how many customers you can get
+>* Adjusted prices
+>
+>
+>**BUGS:**
+>* Fixed display issue with chocolate tooltip
+>* Added a $ sign to worker price updates
+>* Removed the boxes project, which does nothing
 
 >### ALPHA patch v0.3.1
 >**FEATURES:**
