@@ -19,17 +19,20 @@ rate = 1000;
 memoryPrice = 100;
 powerPrice = 75;
 
-workersprice = 50;
+workersprice = 75;
 
 workerPay = 0;
 
 workerPrice = 75;
 
 marketing = 1;
+workerSpeed = 500;
 
 cacaoMarketing = 1;
 sugarMarketing = 1;
 milkMarketing = 1;
+
+cycles = 0;
 
 console.clear();
 setInterval(updateItems, 100)
@@ -40,11 +43,13 @@ function buyItem(item) {
     money -= window[item+"price"];
     updateItems();
     document.getElementById("buyBubble").style.display = "none";
+    document.getElementById("buyBubble").style.visibility = "hidden";
   } else {
     alert("not enough money!")
   }
   if (cacao >= 1 && sugar >= 1 && milk >= 1) {
     document.getElementById("milk-chocolate").disabled = false;
+    
   }
 }
 
@@ -87,6 +92,7 @@ function clicked(chocolateType) {
 }
 
 function updateItems() {
+  cycles += 1;
   if (String(bars).includes('e') || String(bars).includes('E')) {
     document.getElementById("bars").innerHTML = bars.toExponential().replace("e+", "x10^");
   } else {
@@ -97,11 +103,16 @@ function updateItems() {
   } else {
     document.getElementById("money").innerHTML = money.toFixed(0);
   }
-  if (money >= 100) {
+  if (money >= 120) {
     document.getElementById("project").style.display = "block";
     document.getElementById("bytesBubble").style.display = "block";
     document.getElementById("memoryBubble").style.display = "block";
     document.getElementById("powerBubble").style.display = "block";
+    document.getElementById("project-locked").style.display = "none";
+  }
+  if (money >= 20) {
+    document.getElementById("production").style.display = "block";
+    document.getElementById("production-locked").style.display = "none";
   }
   document.getElementById("cacao-left").innerHTML = "Beans left: " + cacao;
   document.getElementById("sugar-left").innerHTML = "Sugar left: " + sugar;
@@ -147,7 +158,10 @@ function updateItems() {
   marketing /= 3;
   marketing = marketing.toFixed(2)
   console.log(marketing)
-
+  nonexistent = 30/marketing
+  if (bars > 0 && cycles % Math.round(nonexistent) == 0) {
+    sellItems(milkChocolatePrice);
+  }
 }
 function changeSeller(ingredient, price, markChange) {
   if (event.target.classList.contains("active")) {
@@ -190,7 +204,7 @@ document.addEventListener("DOMContentLoaded", function() {
         for (let i = 0; i < workers; i++) {
           clicked("milk")
         }
-    }, 1000);
+    }, workerSpeed);
     setInterval(function() {
         if (max != 0 && bytes < max) {
             bytes += 1;
@@ -198,7 +212,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }, rate)
     setInterval(function() {
-        money -= workerPay;
+        money -= workerPay * workers;
     }, 5000)
 });
 
@@ -216,6 +230,9 @@ function increaseMemory() {
         document.getElementById("bytesBubble").style.display = "none";
         document.getElementById("memoryBubble").style.display = "none";
         document.getElementById("powerBubble").style.display = "none";
+        document.getElementById("bytesBubble").style.visibility = "hidden";
+        document.getElementById("memoryBubble").style.visibility = "hidden";
+        document.getElementById("powerBubble").style.visibility = "hidden";
         
     } else {
         alert("Not enough money!!!!!!!!!!!!!!!!!!!!!11")
@@ -244,21 +261,27 @@ function buyProject(type) {
     bytes -= window[type+"price"];
     if (type == "workers") {
         document.getElementById("devices").style.display = "block";
+        document.getElementById("devices-locked").style.display = "none";
     }
   } else {
     alert("Not enough money!!!!!!!")
   }
 }
 function changePay(workerType, increment) {
-  if (workerType == "worker") {
-    if (increment == 1) {
-      workerPay += 0.1;
-    } else {
-      workerPay -= 0.1;
+  if (workerPay > 0.1) {
+    if (workerType == "worker") {
+        if (increment == 1) {
+            workerPay += 0.1;
+        } else {
+            workerPay -= 0.1;
+        }
+        document.getElementById("workerPay").innerHTML = "$"+workerPay.toFixed(2)+"/h";
+        workerSpeed = 1000 - (workerPay * 100)
+        workerSpeed = workerSpeed.toFixed(1);
     }
-    document.getElementById("workerPay").innerHTML = "$"+workerPay.toFixed(2)+"/h";
+    event.stopPropagation();  
   }
-  event.stopPropagation();
+
 }
 
 /// ********************** CHATGPT *********************** ///
