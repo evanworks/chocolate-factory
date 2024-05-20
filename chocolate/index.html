@@ -7,6 +7,7 @@
     <script src="main.js"></script>
   </head>
   <body>
+    <div id="version"><a href="https://github.com/evan-w-lee/chocolate-factory/blob/main/README.md">ALPHA v0.5.0</a></div>
     <div class="bubble" style="top: 95px;left: 70px;" id="clickBubble">Click on the chocolate!</div>
 
     <center>
@@ -17,7 +18,7 @@
       <span id="bars">0</span> bars
     </div>
     </center>
-    <div class="row" id="chocolate-types" style="width: 185px; height: 607px;">
+    <div class="row" id="chocolate-types">
       <button onclick="clicked('milk')" id="milk-chocolate" class="chocolate">
         <span class="tooltip" onclick="event.stopPropagation();">Milk Chocolate<br/>
         <a href="#" onclick="changePrice('milk', 0)"><</a> $<span id="milkChocolatePrice">4.00</span> <a href="#" onclick="changePrice('milk', 1)">></a>
@@ -42,20 +43,22 @@
       <button onclick="clicked()" id="milk-chocolate" class="chocolate">.</button>
       <button onclick="clicked()" id="milk-chocolate" class="chocolate">.</button></div>
     </div>
-    <div class="row" id="production">
+    <div class="row" id="production" style="display: none;">
       <div class="bubble" style="top: 210px;left: 340px; display: none;" id="buyBubble">Buy more ingredients here</div>
       <div id="cacao">
         <div class="map">
-          <div class="map-item active" onclick="changeSeller('cacao', 10, 0.2)">Milo's Cacao Co.<span class="tooltip">$10 | <span style="color: lightgreen">+0.2</span></span></div>
+          <div class="map-item active" onclick="changeSeller('cacao', 10, 0)">Kacao Kulture<span class="tooltip">$10 | <span style="color: darkgrey">-0.0</span></span></div>
+          <div class="map-item" onclick="changeSeller('cacao', 11, 0.2)">Milo's Cacao Co.<span class="tooltip">$11 | <span style="color: lightgreen">+0.2</span></span></div>
           <div class="map-item" onclick="changeSeller('cacao', 8, -0.4)">ChocoTech<span class="tooltip">$8 | <span style="color: red">-0.4</span></span></div>
         </div>
         <button class="buy-button" style="margin-left: 5%;" onclick="buyItem('cacao')" id="buy-cacao">Buy Cacao ($10.00)</button>
         <p class="amount-left" style="margin-left: 5%;" id="cacao-left">Beans left: 15</p>
       </div>
       <div id="sugar">
-        <div class="bubble" style="top: 380px;left: 270px; width: 250px; text-align: center; display: none;" id="sellerBubble">Change the product seller to balance price and reputation</div>
+        <div class="bubble" style="top: 400px;left: 270px; width: 250px; text-align: center; display: none;" id="sellerBubble">Change the product seller to balance price and reputation</div>
         <div class="map">
-          <div class="map-item active" onclick="changeSeller('sugar', 5, 0.2)">Old Mill Sugar<span class="tooltip">$5 | <span style="color: lightgreen">+0.2</span></span></div>
+          <div class="map-item active" onclick="changeSeller('sugar', 5, 0.0)">K&F Sugar Solutions<span class="tooltip">$5 | <span style="color: darkgrey">-0.0</span></span></div>
+          <div class="map-item" onclick="changeSeller('sugar', 6, 0.2)">Old Mill Sugar<span class="tooltip">$6 | <span style="color: lightgreen">+0.2</span></span></div>
           <div class="map-item" onclick="changeSeller('sugar', 3, -0.2)">SugarSmith's<span class="tooltip">$3 | <span style="color: red">-0.2</span></span></div>
         </div>
         <button class="buy-button" style="margin-left: 5%;" onclick="buyItem('sugar')" id="buy-sugar">Buy Sugar ($5.00)</button>
@@ -63,7 +66,8 @@
       </div>
       <div id="milk">
         <div class="map">
-          <div class="map-item active" onclick="changeSeller('milk', 8, 0.1)">PurePasture Dairy Co.<span class="tooltip">$8 | <span style="color: lightgreen">+0.1</span></span></div>
+          <div class="map-item active" onclick="changeSeller('milk', 8, 0.0)">Milky Meadows<span class="tooltip">$8 | <span style="color: darkgrey">-0.0</span></span></div>
+          <div class="map-item" onclick="changeSeller('milk', 9, 0.1)">PurePasture Dairy Co.<span class="tooltip">$9 | <span style="color: lightgreen">+0.1</span></span></div>
           <div class="map-item" onclick="changeSeller('milk', 6, -0.2)">FarmFresh<span class="tooltip">$6 | <span style="color: red">-0.2</span></span></div>
           <div class="map-item" onclick="changeSeller('milk', 12, 0.6)">Milky Way Farms<span class="tooltip">$12 | <span style="color: lightgreen">+0.6</span></span></div>
         </div>
@@ -82,7 +86,7 @@
         <button class="project-button" onclick="increaseMemory()" id="memoryButton">Increase Memory ($100.00)</button>
         <button class="project-button" onclick="increasePower()" id="powerButton">Increase Power ($75.00)</button>
     </div>
-    <div class="project" id="project-workers" style="display: none; color: red;" onclick="buyProject('workers')"><h1>Workers</h1><div class="project-text">Gather workers to expand your business</div><div style="margin-top: 5px;">(100 bytes)</div></div>
+    <div class="project" id="project-workers" style="display: none; color: red;" onclick="buyProject('workers')"><h1>Workers</h1><div class="project-text">Gather workers to expand your business</div><div style="margin-top: 5px;">(75 bytes)</div></div>
 <div style="display: none;"><div class="project" id="project-boxes" style="display: none; color: red;" onclick="buyProject('boxes')"><center><h1>Boxes</h1><div class="project-text">Wrap your chocolates for a better reputation</div><div style="margin-top: 5px;">(1000 bytes)</div></center></div></div>
     </div>
     <div class="row" style="display: none;" id="devices">
@@ -92,6 +96,23 @@
     </div>
     <div class="row" style="display: none;">
     place row
+    </div>
+    <div class="row inactive" id="production-locked">
+      <div class="locked" style="margin-top: 100%; font-size: 20px;">Unlocked at:</div>
+      <div class="locked" style="font-size: 40px;">$20</div>
+    </div>
+    <div class="row inactive" id="project-locked">
+      <div class="locked" style="margin-top: 100%; font-size: 20px;">Unlocked at:</div>
+      <div class="locked" style="font-size: 40px;">$120</div>
+    </div>
+    <div class="row inactive" id="devices-locked">
+      <div class="locked" style="margin-top: 100%; font-size: 20px;">Unlocked at:</div>
+      <div class="locked" style="font-size: 40px;">75<span style="font-size: 20px;"> bytes</span></div>
+    </div>
+    <div class="row inactive" id="location-locked">
+      <div class="locked" style="margin-top: 100%; font-size: 20px;">Under</div>
+      <div class="locked" style="font-size: 25px;">Construction</div>
+      <div class="locked" style="font-size: 10px;">(It's alpha, remember?)</div>
     </div>
   </body>
   <script>
