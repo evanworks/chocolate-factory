@@ -8,7 +8,7 @@ A relaxing clicker game about making chocolate
 
 ### ALPHA edit v0.5.5
 **NOTES:**
-I recieved some excellent feedback from my team of testers (really, they're just friends.) Next is creating a more comprehensive tutorial.
+I recieved some excellent feedback from my team of testers (aka friends) Next is creating a more comprehensive tutorial.
 
 **FEATURES:**
 * Added AutoBuyers, a new project that automatically buys ingredients when you run out
