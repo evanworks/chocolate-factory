@@ -1,38 +1,47 @@
-bars = 0;
-money = 0;
-bytes = 0;
+// main variables
+let bars = 0;
+let money = 0;
+let bytes = 0;
+let marketing = 1;
 
-milkChocolatePrice = 4;
+// initial chocolate prices
+let milkChocolatePrice = 4;
 
+// ingredient amounts
 cacao = 15;
 sugar = 15;
 milk = 15;
 
+// ingredient prices
 cacaoprice = 10;
 sugarprice = 5;
 milkprice = 8;
-workers = 0;
 
+// worker variables
+workers = 0;
+workerPay = 0;
+workerPrice = 75;
+workerSpeed = 500;
+
+// byte mining variables
 max = 0;
 rate = 1000;
 
-memoryPrice = 100;
-powerPrice = 75;
+// byte mining upgrade prices
+let memoryPrice = 100;
+let powerPrice = 75;
 
+// project prices
 workersprice = 75;
+autobuyersprice = 100;
 
-workerPay = 0;
+// marketing variables
+let cacaoMarketing = 1;
+let sugarMarketing = 1;
+let milkMarketing = 1;
 
-workerPrice = 75;
-
-marketing = 1;
-workerSpeed = 500;
-
-cacaoMarketing = 1;
-sugarMarketing = 1;
-milkMarketing = 1;
-
-cycles = 0;
+// update function things
+let cycles = 0;
 
 console.clear();
 setInterval(updateItems, 100)
@@ -90,7 +99,6 @@ function clicked(chocolateType) {
     window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
   }
 }
-
 function updateItems() {
   cycles += 1;
   if (String(bars).includes('e') || String(bars).includes('E')) {
@@ -105,10 +113,13 @@ function updateItems() {
   }
   if (money >= 120) {
     document.getElementById("project").style.display = "block";
-    document.getElementById("bytesBubble").style.display = "block";
-    document.getElementById("memoryBubble").style.display = "block";
-    document.getElementById("powerBubble").style.display = "block";
     document.getElementById("project-locked").style.display = "none";
+    document.getElementById("devices-locked").innerHTML = '<div class="locked" style="margin-top: 100%; font-size: 20px;">Unlocked at:</div><div class="locked" style="font-size: 40px;">75<span style="font-size: 20px;"> bytes</span></div>'
+    if (bytes == 0) {
+      document.getElementById("bytesBubble").style.display = "block";
+      document.getElementById("memoryBubble").style.display = "block";
+      document.getElementById("powerBubble").style.display = "block";
+    }
   }
   if (money >= 20) {
     document.getElementById("production").style.display = "block";
@@ -136,14 +147,20 @@ function updateItems() {
     document.querySelector(".tooltipmilk").style.color = "lightgreen";
   }
 
-  document.getElementById("buy-cacao").innerHTML = "Buy Cacao ($"+cacaoprice.toFixed(2)+")"
-  document.getElementById("buy-sugar").innerHTML = "Buy Sugar ($"+sugarprice.toFixed(2)+")"
-  document.getElementById("buy-milk").innerHTML = "Buy Milk ($"+milkprice.toFixed(2)+")"
+  document.getElementById("buy-cacao").innerHTML = "Buy Cacao ($"+cacaoprice.toFixed(2)+")";
+  document.getElementById("buy-sugar").innerHTML = "Buy Sugar ($"+sugarprice.toFixed(2)+")";
+  document.getElementById("buy-milk").innerHTML = "Buy Milk ($"+milkprice.toFixed(2)+")";
+
   workersStyle = document.getElementById("project-workers");
+  autobuyersStyle = document.getElementById("project-autobuyers");
   boxesStyle = document.getElementById("project-boxes");
   if (bytes >= 10 && workersStyle.style.color == "red") {
     workersStyle.style.display = "block";
     workersStyle.style.color = "black";
+  }
+  if (bytes >= 30 && autobuyersStyle.style.color == "red") {
+    autobuyersStyle.style.display = "block";
+    autobuyersStyle.style.color = "black";
   }
   if (bytes >= 30 && boxesStyle.style.color == "red") {
     boxesStyle.style.display = "block";
@@ -255,16 +272,28 @@ function increasePower() {
     }
 }
 function buyProject(type) {
-  if (bytes > window[type+"price"]) {
+  if (bytes >= window[type+"price"]) {
     event.currentTarget.style.display = "none";
     event.currentTarget.style.color = "black";
     bytes -= window[type+"price"];
+    console.log("s")
     if (type == "workers") {
         document.getElementById("devices").style.display = "block";
         document.getElementById("devices-locked").style.display = "none";
     }
+    if (type == "autobuyers") {
+      document.getElementById("cacaoAutoBuyers").style.display = "inline-block";
+      document.getElementById("sugarAutoBuyers").style.display = "inline-block";
+      document.getElementById("milkAutoBuyers").style.display = "inline-block";
+      console.log(document.getElementById("cacaoAutoBuyers").childNodes[1].checked)
+      setInterval(function() {
+        if (cacao == 0 && document.getElementById("cacaoAutoBuyers").childNodes[1].checked) { buyItem("cacao") }
+        if (sugar == 0 && document.getElementById("sugarAutoBuyers").childNodes[1].checked) { buyItem("sugar") }
+        if (milk == 0 && document.getElementById("milkAutoBuyers").childNodes[1].checked) { buyItem("milk") }
+      }, 200)
+    }
   } else {
-    alert("Not enough money!!!!!!!")
+    console.log("u dont have enough money :))))");
   }
 }
 function changePay(workerType, increment) {
