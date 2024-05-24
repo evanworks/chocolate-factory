@@ -1,11 +1,11 @@
 // main variables
-let bars = 0;
-let money = 0;
-let bytes = 0;
-let marketing = 1;
+bars = 0;
+money = 0;
+bytes = 0;
+marketing = 1;
 
 // initial chocolate prices
-let milkChocolatePrice = 4;
+milkChocolatePrice = 4;
 
 // ingredient amounts
 cacao = 15;
@@ -28,17 +28,17 @@ max = 0;
 rate = 1000;
 
 // byte mining upgrade prices
-let memoryPrice = 100;
-let powerPrice = 75;
+memoryPrice = 100;
+powerPrice = 75;
 
 // project prices
 workersprice = 75;
 autobuyersprice = 100;
 
 // marketing variables
-let cacaoMarketing = 1;
-let sugarMarketing = 1;
-let milkMarketing = 1;
+cacaoMarketing = 1;
+sugarMarketing = 1;
+milkMarketing = 1;
 
 // update function things
 let cycles = 0;
@@ -312,7 +312,28 @@ function changePay(workerType, increment) {
   }
 
 }
-
+document.addEventListener("keypress", function(event) {
+  if (event.code == "KeyD" || event.code == "KeyU") {
+    document.getElementById("debug").style.width = "100%";
+    document.getElementById("bars-debug").innerHTML = "bars: " + bars;
+    document.getElementById("money-debug").innerHTML = "money: " + money;
+    document.getElementById("bytes-debug").innerHTML = "bytes: " + bytes;
+    document.getElementById("marketing-debug").innerHTML = "marketing: " + marketing;
+    document.getElementById("cacao-debug").innerHTML = "cacao: " + cacao;
+    document.getElementById("sugar-debug").innerHTML = "sugar: " + sugar;
+    document.getElementById("milk-debug").innerHTML = "milk: " + milk;
+    document.getElementById("max-debug").innerHTML = "max: " + max;
+    document.getElementById("rate-debug").innerHTML = "rate: " + rate;
+    document.getElementById("workers-debug").innerHTML = "workers: " + workers;
+    document.getElementById("workerPay-debug").innerHTML = "workerPay: " + workerPay;
+    document.getElementById("workerPrice-debug").innerHTML = "workerPrice: " + workerPrice;
+    document.getElementById("workerSpeed-debug").innerHTML = "workerSpeed: " + workerSpeed;
+  }
+});
+function DEBUGchangeVar(variable) {
+  window[variable] = prompt("are?")
+  document.getElementById(variable+"-debug").innerHTML = variable + ": " + window[variable];
+}
 /// ********************** CHATGPT *********************** ///
 function calculateCustomerDemand(pricePerBar) {
     const minCustomers = 1; // Minimum number of customers
