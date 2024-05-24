@@ -7,7 +7,7 @@
     <script src="main.js"></script>
   </head>
   <body>
-    <div id="version"><a href="https://github.com/evan-w-lee/chocolate-factory/blob/main/README.md">ALPHA edit v0.5.5</a></div>
+    <div id="version"><a href="https://github.com/evan-w-lee/chocolate-factory/blob/main/README.md">ALPHA patch v0.5.6</a></div>
     <div class="bubble" style="top: 95px;left: 70px;" id="clickBubble">Click on the chocolate!</div>
 
     <center>
@@ -131,6 +131,30 @@
       <div class="locked" style="margin-top: 100%; font-size: 20px;">Under</div>
       <div class="locked" style="font-size: 25px;">Construction</div>
       <div class="locked" style="font-size: 10px;">(It's alpha, remember?)</div>
+    </div>
+
+    <div id="debug" class="overlay">
+      <a href="javascript:void(0)" class="closebtn" onclick="document.getElementById('debug').style.width = '0%';">&times;</a>
+      <div class="overlay-content">
+        <h1 style="font-size: 25px;">DEBUG MENU</h1><br/><div style="font-size: 12px;">(press U to update variables)</div><br/>
+        <button class="debug-button" onclick="DEBUGchangeVar('bars')">set amount</button><div style="display: inline-block" id="bars-debug">bars: 0</div><br/>
+        <button class="debug-button" onclick="DEBUGchangeVar('money')">set amount</button><div style="display: inline-block" id="money-debug">money: 0</div><br/>
+        <button class="debug-button" onclick="DEBUGchangeVar('bytes')">set amount</button><div style="display: inline-block" id="bytes-debug">bytes: 0</div><br/>
+        <button class="debug-button" onclick="DEBUGchangeVar('marketing')">set amount</button><div style="display: inline-block" id="marketing-debug">marketing: 0</div><br/>
+        <br/>
+        <button class="debug-button" onclick="DEBUGchangeVar('cacao')">set amount</button><div style="display: inline-block" id="cacao-debug">cacao: 0</div><br/>
+        <button class="debug-button" onclick="DEBUGchangeVar('sugar')">set amount</button><div style="display: inline-block" id="sugar-debug">sugar: 0</div><br/>
+        <button class="debug-button" onclick="DEBUGchangeVar('milk')">set amount</button><div style="display: inline-block" id="milk-debug">milk: 0</div><br/>
+        <br/>
+        <button class="debug-button" onclick="DEBUGchangeVar('max')">set amount</button><div style="display: inline-block" id="max-debug">max: 0</div><br/>
+        <button class="debug-button" onclick="DEBUGchangeVar('rate')">set amount</button><div style="display: inline-block" id="rate-debug">rate: 0</div><br/>
+        <br/>
+        <button class="debug-button" onclick="DEBUGchangeVar('workers')">set amount</button><div style="display: inline-block" id="workers-debug">workers: 0</div><br/>
+        <button class="debug-button" onclick="DEBUGchangeVar('workerPay')">set amount</button><div style="display: inline-block" id="workerPay-debug">workerPay: 0</div><br/>
+        <button class="debug-button" onclick="DEBUGchangeVar('workerPrice')">set amount</button><div style="display: inline-block" id="workerPrice-debug">workerPrice: 0</div><br/>
+        <button class="debug-button" onclick="DEBUGchangeVar('workerSpeed')">set amount</button><div style="display: inline-block" id="workerSpeed-debug">workerSpeed: 0</div><br/>
+        
+      </div>
     </div>
   </body>
   <script>
