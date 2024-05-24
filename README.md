@@ -6,6 +6,14 @@ A relaxing clicker game about making chocolate
 
 ## Versions
 
+### ALPHA patch v0.5.6
+**FEATURES:**
+* Added a debug menu (press D)
+
+
+**BUGS:**
+* Version name says the right thing now
+
 ### ALPHA edit v0.5.5
 **NOTES:**
 I recieved some excellent feedback from my team of testers (aka friends) Next is creating a more comprehensive tutorial.
