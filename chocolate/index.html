@@ -7,10 +7,10 @@
     <script src="main.js"></script>
   </head>
   <body>
-    <div id="version"><a href="https://github.com/evan-w-lee/chocolate-factory/blob/main/README.md">ALPHA patch v0.5.6</a></div>
+    <div id="version"><a href="https://github.com/evan-w-lee/chocolate-factory/blob/main/README.md">ALPHA v0.6.0</a></div>
     <div class="bubble" style="top: 95px;left: 70px;" id="clickBubble">Click on the chocolate!</div>
-
-    <center>
+    <div id="snackbar">Game Saved</div>
+    <center> 
     <div id="bars-wrapper" style="margin-right: 30px;">
       <span id="money">0</span> $
     </div>
@@ -22,9 +22,9 @@
       <button onclick="clicked('milk')" id="milk-chocolate" class="chocolate">
         <span class="tooltip" onclick="event.stopPropagation();">Milk Chocolate<br/>
         <a href="#" onclick="changePrice('milk', 0)"><</a> $<span id="milkChocolatePrice">4.00</span> <a href="#" onclick="changePrice('milk', 1)">></a>
-        <hr style="width: 90px; color: white;"/><span style="color: lightgreen;" class="tooltipcacao">Cacao (1)</span>
-        <br/><span style="color: lightgreen;" class="tooltipsugar">Sugar (1)</span>
-        <br/><span style="color: red;" class="tooltipmilk">Milk (1)</span>
+        <hr style="width: 90px; color: white;"/><span style="color: lightgreen;" class="tooltipcacao">1 Cacao (-)</span>
+        <br/><span style="color: lightgreen;" class="tooltipsugar">1 Sugar (-)</span>
+        <br/><span style="color: red;" class="tooltipmilk">1 Milk (-)</span>
 
         <div class="bubble" style="top: 30px;left: 100px;color:black; width: 250px; font-size: 14px;" id="changePriceBubble">Change the price of the chocolate to balance money and customer demand</div>
         </span>
@@ -47,7 +47,7 @@
       <div class="bubble" style="top: 210px;left: 340px; display: none;" id="buyBubble">Buy more ingredients here</div>
       <div id="cacao">
         <div class="map">
-          <div class="map-item active" onclick="changeSeller('cacao', 10, 0)">Kacao Kulture<span class="tooltip">$10 | <span style="color: darkgrey">-0.0</span></span></div>
+          <div class="map-item active" onclick="changeSeller('cacao', 10, 0)">Cacao Culture<span class="tooltip">$10 | <span style="color: darkgrey">-0.0</span></span></div>
           <div class="map-item" onclick="changeSeller('cacao', 11, 0.2)">Milo's Cacao Co.<span class="tooltip">$11 | <span style="color: lightgreen">+0.2</span></span></div>
           <div class="map-item" onclick="changeSeller('cacao', 8, -0.4)">ChocoTech<span class="tooltip">$8 | <span style="color: red">-0.4</span></span></div>
         </div>
@@ -105,6 +105,7 @@
     </div>
     <div class="project" id="project-workers" style="display: none; color: red;" onclick="buyProject('workers')"><h1>Workers</h1><div class="project-text">Gather workers to expand your business</div><div style="margin-top: 5px;">(75 bytes)</div></div>
     <div class="project" id="project-autobuyers" style="display: none; color: red;" onclick="buyProject('autobuyers')"><h1>AutoBuyers</h1><div class="project-text">Create machines to buy ingredients for you</div><div style="margin-top: 5px;">(100 bytes)</div></div>
+    <div class="project" id="project-donuts" style="display: none; color: red;" onclick="buyProject('donuts')"><h1>Donuts</h1><div class="project-text">Feed your workers to make them work harder</div><div style="margin-top: 5px;">(300 bytes)</div></div>
 <div style="display: none;"><div class="project" id="project-boxes" style="display: none; color: red;" onclick="buyProject('boxes')"><center><h1>Boxes</h1><div class="project-text">Wrap your chocolates for a better reputation</div><div style="margin-top: 5px;">(1000 bytes)</div></center></div></div>
     </div>
     <div class="row" style="display: none;" id="devices">
@@ -153,11 +154,7 @@
         <button class="debug-button" onclick="DEBUGchangeVar('workerPay')">set amount</button><div style="display: inline-block" id="workerPay-debug">workerPay: 0</div><br/>
         <button class="debug-button" onclick="DEBUGchangeVar('workerPrice')">set amount</button><div style="display: inline-block" id="workerPrice-debug">workerPrice: 0</div><br/>
         <button class="debug-button" onclick="DEBUGchangeVar('workerSpeed')">set amount</button><div style="display: inline-block" id="workerSpeed-debug">workerSpeed: 0</div><br/>
-        
       </div>
     </div>
-  </body>
-  <script>
-
-  </script>
+  </body>  
 </html>
