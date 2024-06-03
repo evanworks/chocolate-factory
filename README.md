@@ -17,6 +17,7 @@ Also, I was dumb and updated my computer with the update log not saved, so I was
 * Added the Donuts project
 * Made the workers slower
 * Reworked the worker pay system (the workers are done, I promise)
+* Replaced the worker tooltip with visuals that show both data points
 
 **BUGS:**
 * Fixed bug where workers still work when their pay is $0.00
