@@ -6,27 +6,29 @@ A relaxing clicker game about making chocolate
 
 ## Versions
 
-### ALPHA patch v0.5.6
-**FEATURES:**
-* Added a debug menu (press D)
+***New Release Soon!***
 
+>### ALPHA patch v0.5.6
+>**FEATURES:**
+>* Added a debug menu (press D)
+>
+>
+>**BUGS:**
+>* Version name says the right thing now
 
-**BUGS:**
-* Version name says the right thing now
-
-### ALPHA edit v0.5.5
-**NOTES:**
-I recieved some excellent feedback from my team of testers (aka friends) Next is creating a more comprehensive tutorial.
-
-**FEATURES:**
-* Added AutoBuyers, a new project that automatically buys ingredients when you run out
-* Finalized the workers
-* Changed "Cacao Culture" to "Kacao Kulture" because why not
-
-
-**BUGS:**
-* Switched the place of milk and cacao again because now it looks weird
-* Fixed issue where you can't buy extra power
+>### ALPHA edit v0.5.5
+>**NOTES:**
+>I recieved some excellent feedback from my team of testers (aka friends) Next is creating a more comprehensive tutorial.
+>
+>**FEATURES:**
+>* Added AutoBuyers, a new project that automatically buys ingredients when you run out
+>* Finalized the workers
+>* Changed "Cacao Culture" to "Kacao Kulture" because why not
+>
+>
+>**BUGS:**
+>* Switched the place of milk and cacao again because now it looks weird
+>* Fixed issue where you can't buy extra power
 
 >### ALPHA v0.5.0
 >**FEATURES:**
