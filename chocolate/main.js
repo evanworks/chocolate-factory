@@ -10,7 +10,7 @@ milkChocolatePrice = 4;
 // ingredient amounts
 cacao = 15;
 sugar = 15;
-milk = 15;
+milk = 15; 
 
 // ingredient prices
 cacaoprice = 10;
@@ -19,9 +19,9 @@ milkprice = 8;
 
 // worker variables
 workers = 0;
-workerPay = 0;
+workerPay = 5;
 workerPrice = 75;
-workerSpeed = 500;
+workerSpeed = 1000;
 
 // byte mining variables
 max = 0;
@@ -34,6 +34,7 @@ powerPrice = 75;
 // project prices
 workersprice = 75;
 autobuyersprice = 100;
+donutsprice = 300;
 
 // marketing variables
 cacaoMarketing = 1;
@@ -89,7 +90,6 @@ function clicked(chocolateType) {
       if (money > 75 && money < 125) {
         document.getElementById("sellerBubble").style.display = "block";
       }
-      console.log("yes")
       document.getElementById("milk-chocolate").disabled = true;
     }
   }
@@ -101,6 +101,7 @@ function clicked(chocolateType) {
 }
 function updateItems() {
   cycles += 1;
+  console.log("cycles:")
   if (String(bars).includes('e') || String(bars).includes('E')) {
     document.getElementById("bars").innerHTML = bars.toExponential().replace("e+", "x10^");
   } else {
@@ -129,18 +130,21 @@ function updateItems() {
   document.getElementById("sugar-left").innerHTML = "Sugar left: " + sugar;
   document.getElementById("milk-left").innerHTML = "Milk left: " + milk;
 
+  document.querySelector(".tooltipcacao").innerHTML = "1 Cacao (" + cacao + ")";
   if (cacao == 0) {
     document.querySelector(".tooltipcacao").style.color = "red";
   } else {
     document.querySelector(".tooltipcacao").style.color = "lightgreen";
   }
 
+  document.querySelector(".tooltipsugar").innerHTML = "1 Sugar (" + sugar + ")";
   if (sugar == 0) {
     document.querySelector(".tooltipsugar").style.color = "red";
   } else {
     document.querySelector(".tooltipsugar").style.color = "lightgreen";
   }
 
+  document.querySelector(".tooltipmilk").innerHTML = "1 Milk (" + milk + ")";
   if (milk == 0) {
     document.querySelector(".tooltipmilk").style.color = "red";
   } else {
@@ -153,6 +157,7 @@ function updateItems() {
 
   workersStyle = document.getElementById("project-workers");
   autobuyersStyle = document.getElementById("project-autobuyers");
+  donutsStyle = document.getElementById("project-donuts");
   boxesStyle = document.getElementById("project-boxes");
   if (bytes >= 10 && workersStyle.style.color == "red") {
     workersStyle.style.display = "block";
@@ -162,10 +167,15 @@ function updateItems() {
     autobuyersStyle.style.display = "block";
     autobuyersStyle.style.color = "black";
   }
+  if (bytes >= 100 && donutsStyle.style.color == "red") {
+    donutsStyle.style.display = "block";
+    donutsStyle.style.color = "black";    
+  }
   if (bytes >= 30 && boxesStyle.style.color == "red") {
     boxesStyle.style.display = "block";
     boxesStyle.style.color = "black";
   }
+  
   //if (bars > milkChocolatePrice) {
     //moneyAdd = Math.round(milkChocolatePrice*10)/10 * milkChocolatePrice
     //money += parseInt(moneyAdd.toFixed(2))
@@ -174,8 +184,7 @@ function updateItems() {
   marketing = cacaoMarketing + sugarMarketing + milkMarketing;
   marketing /= 3;
   marketing = marketing.toFixed(2)
-  console.log(marketing)
-  nonexistent = 30/marketing
+  nonexistent = 20/marketing
   if (bars > 0 && cycles % Math.round(nonexistent) == 0) {
     sellItems(milkChocolatePrice);
   }
@@ -196,7 +205,6 @@ function changeSeller(ingredient, price, markChange) {
   document.getElementById("sellerBubble").style.display = "none";
 }
 function runEvents() {
-  console.log("customerDemand:"+calculateCustomerDemand(milkChocolatePrice))
   sellItems(milkChocolatePrice)
 }
 function hireWorker() {
@@ -212,7 +220,7 @@ function hireWorker() {
     const element = document.getElementById("workers");
     document.getElementById("workers").appendChild(para);
   } else {
-    console.log("hehe")
+    alert("u dont have enough money boohoo")
   }
 
 }
@@ -229,8 +237,10 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }, rate)
     setInterval(function() {
-        money -= workerPay * workers;
-    }, 5000)
+        if (cacao > 0 && sugar > 0 && milk > 0) {
+          money -= workerPay * workers;
+        }
+    }, 60000)
 });
 
 function increaseMemory() {
@@ -276,7 +286,6 @@ function buyProject(type) {
     event.currentTarget.style.display = "none";
     event.currentTarget.style.color = "black";
     bytes -= window[type+"price"];
-    console.log("s")
     if (type == "workers") {
         document.getElementById("devices").style.display = "block";
         document.getElementById("devices-locked").style.display = "none";
@@ -285,32 +294,35 @@ function buyProject(type) {
       document.getElementById("cacaoAutoBuyers").style.display = "inline-block";
       document.getElementById("sugarAutoBuyers").style.display = "inline-block";
       document.getElementById("milkAutoBuyers").style.display = "inline-block";
-      console.log(document.getElementById("cacaoAutoBuyers").childNodes[1].checked)
       setInterval(function() {
         if (cacao == 0 && document.getElementById("cacaoAutoBuyers").childNodes[1].checked) { buyItem("cacao") }
         if (sugar == 0 && document.getElementById("sugarAutoBuyers").childNodes[1].checked) { buyItem("sugar") }
         if (milk == 0 && document.getElementById("milkAutoBuyers").childNodes[1].checked) { buyItem("milk") }
       }, 200)
     }
+    if (type == "donuts") {
+      workerSpeed -= 200;
+    }
   } else {
-    console.log("u dont have enough money :))))");
+    alert("u dont have enough money :))))");
   }
 }
 function changePay(workerType, increment) {
-  if (workerPay > 0.1) {
-    if (workerType == "worker") {
-        if (increment == 1) {
-            workerPay += 0.1;
-        } else {
-            workerPay -= 0.1;
-        }
-        document.getElementById("workerPay").innerHTML = "$"+workerPay.toFixed(2)+"/h";
-        workerSpeed = 1000 - (workerPay * 100)
-        workerSpeed = workerSpeed.toFixed(1);
+  if (workerType == "worker" && workerPay != 0) {
+    if (increment == 1) {
+      workerPay -= -0.1;
+    } else if (increment == 0 && workerPay > 0.1) {
+      workerPay -= 0.1;
     }
-    event.stopPropagation();  
+    if (workerPay > 0.1) {
+      workerPay = workerPay.toFixed(2);
+    }
+    document.getElementById("workerPay").innerHTML = "$"+workerPay+"/h";
+    workerSpeed = 750 - (workerPay * 50)
+    workerSpeed = workerSpeed.toFixed(1);
+    console.log(workerSpeed)
   }
-
+  event.stopPropagation();  
 }
 document.addEventListener("keypress", function(event) {
   if (event.code == "KeyD" || event.code == "KeyU") {
@@ -331,14 +343,18 @@ document.addEventListener("keypress", function(event) {
   }
 });
 function DEBUGchangeVar(variable) {
-  window[variable] = prompt("are?")
+  window[variable] = parseInt(prompt("are?"));
   document.getElementById(variable+"-debug").innerHTML = variable + ": " + window[variable];
+}
+function showSnackbar(snackbar) {
+  var x = document.getElementById(snackbar);
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
 /// ********************** CHATGPT *********************** ///
 function calculateCustomerDemand(pricePerBar) {
     const minCustomers = 1; // Minimum number of customers
     const maxCustomers = Math.round(10 - pricePerBar * 2);
-    console.log("maxCustomers:"+maxCustomers)
     const demandFactor = 2/pricePerBar * marketing;
 
     const adjustedMinCustomers = Math.round(minCustomers * demandFactor/2);
