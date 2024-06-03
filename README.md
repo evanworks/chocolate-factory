@@ -6,7 +6,22 @@ A relaxing clicker game about making chocolate
 
 ## Versions
 
-***New Release Soon!***
+### ALPHA v0.6.0
+**NOTES:**
+Worker pay was really, really messed up. I'm sorry, it was a nightmare to debug. You know what I had to do to make the workers pay increase correctly? Instead of doing the simple thing (worker pay + 0.1), I had to this: (worker pay - -0.1). Yep, subtracting by a negative number.
+
+Also, I was dumb and updated my computer with the update log not saved, so I was in the middle of making this update and I had no idea what I changed cause I lost all the info. I had to compare v0.5.6 to the code saved on my hard drive. If only I was smarter. :/
+
+**FEATURES:**
+* Changed Kacao Kulture back to Cacao Culture because it looked weird
+* Added the Donuts project
+* Made the workers slower
+* Reworked the worker pay system (the workers are done, I promise)
+
+**BUGS:**
+* Fixed bug where workers still work when their pay is $0.00
+* Fixed floating-point rounding errors in the worker pay (0.5 == 0.498758937)
+* Fixed that annoying issue where you could scroll down just a little
 
 >### ALPHA patch v0.5.6
 >**FEATURES:**
