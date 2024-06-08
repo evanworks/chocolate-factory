@@ -6,6 +6,9 @@ marketing = 1;
 
 // initial chocolate prices
 milkChocolatePrice = 4;
+darkChocolatePrice = 5;
+// XTRACHOCOLATE more space for more chocolates
+
 
 // ingredient amounts
 cacao = 15;
@@ -23,6 +26,9 @@ workerPay = 5;
 workerPrice = 75;
 workerSpeed = 1000;
 
+// boxes variable(s)?
+isBoxes = false;
+
 // byte mining variables
 max = 0;
 rate = 1000;
@@ -35,11 +41,13 @@ powerPrice = 75;
 workersprice = 75;
 autobuyersprice = 100;
 donutsprice = 300;
+boxesprice = 500;
 
 // marketing variables
 cacaoMarketing = 1;
 sugarMarketing = 1;
 milkMarketing = 1;
+boxesMarketing = 0;
 
 // update function things
 let cycles = 0;
@@ -59,7 +67,9 @@ function buyItem(item) {
   }
   if (cacao >= 1 && sugar >= 1 && milk >= 1) {
     document.getElementById("milk-chocolate").disabled = false;
-    
+  }
+  if (cacao >= 2 && sugar >= 1) {
+    document.getElementById("dark-chocolate").disabled = false;
   }
 }
 
@@ -72,7 +82,14 @@ function changePrice(chocolateType, increment) {
     }
     document.getElementById("milkChocolatePrice").innerHTML = milkChocolatePrice.toFixed(2);
     document.getElementById("changePriceBubble").style.display = "none";
-  }
+  } else if (chocolateType == "dark" && darkChocolatePrice > 0.1) {
+    alert("yes")
+    if (increment == 1) {
+      darkChocolatePrice += 0.1;
+    } else {
+      darkChocolatePrice -= 0.1;
+    }
+  } // XTRACHOCOLATE add more chocolates here with an else if
   event.stopPropagation();
 }
 
@@ -92,7 +109,20 @@ function clicked(chocolateType) {
       }
       document.getElementById("milk-chocolate").disabled = true;
     }
-  }
+  } else if (chocolateType == "dark") {
+    
+    if (cacao > 1 && sugar > 1 && darkChocolatePrice > 0) {
+      cacao -= 2;
+      sugar -= 1;
+      bars += 1;
+    } else {
+      document.getElementById("buyBubble").style.display = "block";
+      if (money > 75 && money < 125) {
+        document.getElementById("sellerBubble").style.display = "block";
+      }
+      document.getElementById("dark-chocolate").disabled = true;
+    }
+  } // XTRACHOCOLATE add more chocolates here with an else if
   updateItems();
   runEvents();
   if (money < 0) {
@@ -171,7 +201,7 @@ function updateItems() {
     donutsStyle.style.display = "block";
     donutsStyle.style.color = "black";    
   }
-  if (bytes >= 30 && boxesStyle.style.color == "red") {
+  if (bytes >= 200 && boxesStyle.style.color == "red") {
     boxesStyle.style.display = "block";
     boxesStyle.style.color = "black";
   }
@@ -209,7 +239,6 @@ function runEvents() {
 }
 function hireWorker() {
   if (money >= workerPrice) {
-    workerPay = 5;
     money -= workerPrice;
     workerPrice *= 1.5;
     document.getElementById("hireWorkerButton").innerHTML = "Hire Worker ($"+workerPrice.toFixed(2)+")";
@@ -228,6 +257,9 @@ document.addEventListener("DOMContentLoaded", function() {
     setInterval(function() {
         for (let i = 0; i < workers; i++) {
           clicked("milk")
+          if (isBoxes == true) {
+            money -= 2;
+          }
         }
     }, workerSpeed);
     setInterval(function() {
@@ -239,6 +271,8 @@ document.addEventListener("DOMContentLoaded", function() {
     setInterval(function() {
         if (cacao > 0 && sugar > 0 && milk > 0) {
           money -= workerPay * workers;
+        } else {
+          console.log(":")
         }
     }, 60000)
 });
@@ -303,6 +337,25 @@ function buyProject(type) {
     if (type == "donuts") {
       workerSpeed -= 200;
     }
+    if (type == "boxes") {
+      console.log("yay boxes")
+      setInterval(function() {
+        if (document.getElementById("boxesToggle").childNodes[1].checked) {
+          document.getElementById("boxesInfo").innerHTML = "-$2 | <span style='color: lightgreen'>+0.8</span>";
+          boxesMarketing = 0.8;
+          marketing -= -boxesMarketing;
+          isBoxes = true;
+        } else {
+          document.getElementById("boxesInfo").innerHTML = "<span style='color: darkgrey'>-$0 | +0.0</span>";
+          if (boxesMarketing == 0.8) {
+            marketing -= boxesMarketing;
+            isBoxes = false;
+            boxesMarketing = 1;
+          }
+        }
+        console.log(marketing)
+      }, 200)
+    }
   } else {
     alert("u dont have enough money :))))");
   }
@@ -325,7 +378,7 @@ function changePay(workerType, increment) {
   event.stopPropagation();  
 }
 document.addEventListener("keypress", function(event) {
-  if (event.code == "KeyD" || event.code == "KeyU") {
+  if (event.code == "KeyI" || event.code == "KeyU") {
     document.getElementById("debug").style.width = "100%";
     document.getElementById("bars-debug").innerHTML = "bars: " + bars;
     document.getElementById("money-debug").innerHTML = "money: " + money;
