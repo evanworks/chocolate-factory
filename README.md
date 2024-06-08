@@ -4,7 +4,8 @@ A relaxing clicker game about making chocolate
 **Latest website release:** 
 <a href="https://evan-w-lee.github.io/chocolate-factory/chocolate">evan-w-lee.github.com/chocolate-factory/chocolate</a>
 
-_new updates every week!_
+
+_New updates every week!_
 
 ## Versions
 
