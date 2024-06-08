@@ -9,6 +9,18 @@ _New updates every week!_
 
 ## Versions
 
+### ALPHA patch v0.7.1
+**NOTES:**
+oops.
+
+**FEATURES:**
+N/A
+
+**BUGS:**
+* Fixed fatal error where the boxes display was always visible
+* Fixed more font issues
+
+
 ### ALPHA v0.7.0
 **NOTES:**
 Believe it or not, this was one of the most boring coding sessions of my life. Also, I know I said that next was making a better tutorial, but next is probably not that because I'm too lazy. I did add support for different types of chocolate. It took forever because of all the things that I didn't think of when I first made all of the game's systems. I probably should've used OOP.
