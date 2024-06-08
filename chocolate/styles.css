@@ -11,6 +11,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   user-select: none;
+  font-family: Kameron;
 } 
 #milk-chocolate {
   width: 75px;
@@ -290,7 +291,6 @@ h1 {
   background: lightgrey;
   border: 4px solid darkgrey;
   opacity: 50%;
-  z-index: -99999999999999999999;
 }
 .locked {
   text-align: center; 
@@ -456,4 +456,16 @@ input:checked + .slider:before {
 @keyframes fadeout {
   from {bottom: 30px; opacity: 1;}
   to {bottom: 0; opacity: 0;}
+}
+#boxesInfo {
+  margin-left: 80px; 
+  margin-top: 5px; 
+  border: 1px solid black; 
+  background: #6b3e2a;
+  padding: 10px;
+  width: 105px;
+  height: 15px;
+  padding-top: 7px;
+  color: white;
+  font-family: Sono;
 }
