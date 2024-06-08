@@ -338,7 +338,8 @@ function buyProject(type) {
       workerSpeed -= 200;
     }
     if (type == "boxes") {
-      console.log("yay boxes")
+      document.getElementById("boxesInfo").style.display = "block";
+      document.getElementById("boxesToggle").style.display = "block";
       setInterval(function() {
         if (document.getElementById("boxesToggle").childNodes[1].checked) {
           document.getElementById("boxesInfo").innerHTML = "-$2 | <span style='color: lightgreen'>+0.8</span>";
