@@ -6,23 +6,40 @@ A relaxing clicker game about making chocolate
 
 ## Versions
 
-### ALPHA v0.6.0
+### ALPHA v0.7.0
 **NOTES:**
-Worker pay was really, really messed up. I'm sorry, it was a nightmare to debug. You know what I had to do to make the workers pay increase correctly? Instead of doing the simple thing (worker pay + 0.1), I had to this: (worker pay - -0.1). Yep, subtracting by a negative number.
-
-Also, I was dumb and updated my computer with the update log not saved, so I was in the middle of making this update and I had no idea what I changed cause I lost all the info. I had to compare v0.5.6 to the code saved on my hard drive. If only I was smarter. :/
+Believe it or not, this was one of the most boring coding sessions of my life. Also, I know I said that next was making a better tutorial, but next is probably not that because I'm too lazy. I did add support for different types of chocolate. It took forever because of all the things that I didn't think of when I first made all of the game's systems. I probably should've used OOP.
 
 **FEATURES:**
-* Changed Kacao Kulture back to Cacao Culture because it looked weird
-* Added the Donuts project
-* Made the workers slower
-* Reworked the worker pay system (the workers are done, I promise)
-* Replaced the worker tooltip with visuals that show both data points
+* Added the Boxes project, which makes a better reputation for more money spent
+* Added a visual for reputation
+* Changed debug key to {I} so *some hackers* will be confused
+* Added support for other chocolates (XTRACHOCOLATE in the code)
 
 **BUGS:**
-* Fixed bug where workers still work when their pay is $0.00
-* Fixed floating-point rounding errors in the worker pay (0.5 == 0.498758937)
-* Fixed that annoying issue where you could scroll down just a little
+* Fixed font issues
+* Made it so info bubbles don't appear when you've already looked at them
+* Fixed fatal issue with the seller changing feature
+
+
+>### ALPHA v0.6.0
+>**NOTES:**
+>Worker pay was really, really messed up. I'm sorry, it was a nightmare to debug. You know what I had to do to make the workers pay increase correctly? Instead of doing the
+>simple thing (worker pay + 0.1), I had to this: (worker pay - -0.1). Yep, subtracting by a negative number.
+>
+>Also, I was dumb and updated my computer with the update log not saved, so I was in the middle of making this update and I had no idea what I changed cause I lost all the >info. I had to compare v0.5.6 to the code saved on my hard drive. If only I was smarter. :/
+>
+>**FEATURES:**
+>* Changed Kacao Kulture back to Cacao Culture because it looked weird
+>* Added the Donuts project
+>* Made the workers slower
+>* Reworked the worker pay system (the workers are done, I promise)
+>* Replaced the worker tooltip with visuals that show both data points
+>
+>**BUGS:**
+>* Fixed bug where workers still work when their pay is $0.00
+>* Fixed floating-point rounding errors in the worker pay (0.5 == 0.498758937)
+>* Fixed that annoying issue where you could scroll down just a little
 
 >### ALPHA patch v0.5.6
 >**FEATURES:**
