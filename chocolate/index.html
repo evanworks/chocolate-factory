@@ -119,13 +119,13 @@
       <div id="workers" style="margin-left: 5%; margin-top: 5%; margin-bottom: 3px;"></div>
       <button class="buy-button" style="margin-left: 5%;" onclick="hireWorker()" id="hireWorkerButton">Hire Worker ($75.00)</button><br/>
       <button style="display: inline-block; margin-left: 5%;" class="changePay" onclick="changePay('worker', 0)"><</button><div class="amount-left" id="workerPay" style="margin-top: 5px; width: 100px; display: inline-block">$5.00/h</div><button style="display: inline-block;" class="changePay" onclick="changePay('worker', 1)">></button>
-      
-      <label class="switch" style="display: block;" id="boxesToggle">
+
+      <label class="switch" style="display: none;" id="boxesToggle">
         <input type="checkbox">
         <span class="slider"></span>
         <span class="tooltip" style="font-size: 11px;">Toggle Boxes</span> 
       </label>
-      <div id="boxesInfo">$2 | <span style="color: lightgreen">+0.8</span></div>
+      <div id="boxesInfo" style="display:none;">loading...</div>
       
     </div>
     <div class="row" style="display: none;">
