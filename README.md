@@ -9,12 +9,17 @@ _New updates every week!_
 
 ## Versions
 
+### ALPHA patch v0.7.2
+**NOTES:**
+oops. Again.
+
+**BUGS:**
+* Made the version name say the right thing
+* Refactored some code to make the game 0.5 milliseconds faster
+
 ### ALPHA patch v0.7.1
 **NOTES:**
 oops.
-
-**FEATURES:**
-N/A
 
 **BUGS:**
 * Fixed fatal error where the boxes display was always visible
