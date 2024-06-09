@@ -9,14 +9,6 @@ _New updates every week!_
 
 ## Versions
 
-### ALPHA patch v0.7.2
-**NOTES:**
-oops. Again.
-
-**BUGS:**
-* Made the version name say the right thing
-* Refactored some code to make the game 0.5 milliseconds faster
-* Fixed some extra chocolate code
 
 ### ALPHA patch v0.7.1
 **NOTES:**
