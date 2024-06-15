@@ -2,47 +2,66 @@
 A relaxing clicker game about making chocolate
 
 **Latest website release:** 
-<a href="https://evan-w-lee.github.io/chocolate-factory/chocolate">evan-w-lee.github.com/chocolate-factory/chocolate</a>
+<a href="https://evan-w-lee.github.io/chocolate-factory/chocolate">evan-w-lee.github.io/chocolate-factory/chocolate</a>
 
 
 _New updates every week!_
 
 ## Versions
 
-
-### ALPHA patch v0.7.2
+### ALPHA v0.8.0 (6/-/24)
 **NOTES:**
-oops. Again.
-
-**BUGS:**
-* Made the version name say the right thing
-* Refactored some code to make the game 0.5 milliseconds faster
-* Fixed some extra chocolate code
-
-
-### ALPHA patch v0.7.1
-**NOTES:**
-oops.
-
-**BUGS:**
-* Fixed fatal error where the boxes display was always visible
-* Fixed more font issues
-
-
-### ALPHA v0.7.0
-**NOTES:**
-Believe it or not, this was one of the most boring coding sessions of my life. Also, I know I said that next was making a better tutorial, but next is probably not that because I'm too lazy. I did add support for different types of chocolate. It took forever because of all the things that I didn't think of when I first made all of the game's systems. I probably should've used OOP.
+I think I've removed most of the bugs. From now on I'm just going to work on more project-related things. Any suggestions on projects or the rightmost column? Email me at evanwarnerlee@gmail.com. 
 
 **FEATURES:**
-* Added the Boxes project, which makes a better reputation for more money spent
-* Added a visual for reputation
-* Changed debug key to {I} so *some hackers* will be confused
-* Added support for other chocolates (XTRACHOCOLATE in the code)
+* Added the ability to name your shop
+* Added a game over screen (it's a placeholder for now)
 
-**BUGS:**
-* Fixed font issues
-* Made it so info bubbles don't appear when you've already looked at them
-* Fixed fatal issue with the seller changing feature
+**CHANGES:**
+* Changed debug keys to [ and \] so they wouldn't interfere with naming the shop
+* Added a visual indicator for when you increase the byte mining power
+* The change seller feature is not unlocked right away anymore
+
+**BUG FIXES:**
+* Renamed ROWS to COLUMNS in the code (You know those columns that make up the game? I had a small-brain moment and labelled them "rows".)
+* Made it so you have to have bought a worker to buy the boxes project
+* Added a display for adaptive pricing of the byte mining power upgrade (the circuits look more powerful!)
+* Fixed issue where the bubble text displayed under the locked columns
+
+
+>### ALPHA patch v0.7.2
+>**NOTES:**
+>oops. Again.
+>
+>**BUGS:**
+>* Made the version name say the right thing
+>* Refactored some code to make the game 0.5 milliseconds faster
+>* Fixed some extra chocolate code
+
+
+>### ALPHA patch v0.7.1
+>**NOTES:**
+>oops.
+>
+>**BUGS:**
+>* Fixed fatal error where the boxes display was always visible
+>* Fixed more font issues
+
+
+>### ALPHA v0.7.0
+>**NOTES:**
+>Believe it or not, this was one of the most boring coding sessions of my life. Also, I know I said that next was making a better tutorial, but next is probably not that >because I'm too lazy. I did add support for different types of chocolate. It took forever because of all the things that I didn't think of when I first made all of the >game's systems. I probably should've used OOP.
+>
+>**FEATURES:**
+>* Added the Boxes project, which makes a better reputation for more money spent
+>* Added a visual for reputation
+>* Changed debug key to {I} so *some hackers* will be confused
+>* Added support for other chocolates (XTRACHOCOLATE in the code)
+>
+>**BUGS:**
+>* Fixed font issues
+>* Made it so info bubbles don't appear when you've already looked at them
+>* Fixed fatal issue with the seller changing feature
 
 
 >### ALPHA v0.6.0
