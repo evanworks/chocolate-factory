@@ -96,7 +96,7 @@ body {
   color: white;
   margin-top: 5px;
 }
-.row {
+.column {
   float: left;
   height: 640px;
   width: 18%;
@@ -209,6 +209,14 @@ a:active {
   color: white;
   margin-top: 3px;
 }
+.project-button:disabled {
+  opacity: 50%;
+  cursor: auto;
+}
+.project-button:disabled:hover, .project-button:disabled:active {
+  transform: scale(1);
+  background: grey;
+}
 .project-button:hover {
   transform: scale(1.01);
 }
@@ -288,14 +296,13 @@ h1 {
   font-size: 17px;
 }
 .inactive {
-  background: lightgrey;
-  border: 4px solid darkgrey;
-  opacity: 50%;
+  background: #e1d5c6;
+  border: 4px solid #cbc0b0;
 }
 .locked {
   text-align: center; 
   font-family: Sono;
-  color: grey;
+  color: #b7ab9b;
 }
 #version {
   position: absolute;
@@ -468,4 +475,82 @@ input:checked + .slider:before {
   padding-top: 7px;
   color: white;
   font-family: Sono;
+}
+#name {
+  position: absolute;
+  top: 14px;
+  right: 50px;
+  font-family: Kameron;
+  color: white;
+  border: 2px solid #502b27;
+  padding: 4px;
+  background: #6b3e2a;
+}
+#name-input {
+  font-family: Kameron;
+  width: 35px;
+  background: transparent;
+  border: none;
+  color: rgb(255, 255, 255);
+  opacity: 200%;
+  font-size: 14px;
+  margin-right: -8px; /* -4px; */
+  z-index: -1;
+  /*text-align: right;*/
+}
+#name-input:focus {
+  color: lightgrey;
+  border: none;
+  outline: none;
+  box-sizing: content-box;
+  width: 100px;
+  text-align: left;
+}
+.input-mirror {
+  position: absolute;
+  visibility: hidden;
+  white-space: pre;
+}
+.input-wrapper {
+  display: inline-block;
+  position: relative;
+}        
+#gameOver {
+  width: 101%;
+  z-index: 500;
+  position: absolute;
+  color: red;
+  background: black;
+  height: 101%;
+  left: -10px;
+  top: -10px;
+  text-align: center;
+}
+#gameOvertxt {
+  position: absolute;
+  top: 35%;
+  left: 45%;
+  font-size: 40px;
+  text-align: center;
+}
+#gameOverbtn {
+  background: black;
+  color: white;
+  border: 1px solid white;
+  padding: 5px;
+  font-size: 10px;
+  margin: 5px;
+}
+#gameOverbtn:hover {
+  color: black;
+  background: white;
+}
+#gameOverbtn:active {
+  background: red;
+}
+.locked-map {
+  text-align: center; 
+  background: #a5a2a1;  
+  border: 1px solid #797574;
+  color: #797574;
 }
