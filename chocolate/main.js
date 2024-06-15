@@ -3,6 +3,7 @@ bars = 0;
 money = 0;
 bytes = 0;
 marketing = 1;
+factoryName = "";
 
 // initial chocolate prices
 milkChocolatePrice = 4;
@@ -24,7 +25,7 @@ milkprice = 8;
 workers = 0;
 workerPay = 5;
 workerPrice = 75;
-workerSpeed = 1000;
+workerSpeed = 500;
 
 // boxes variable(s)?
 isBoxes = false;
@@ -32,6 +33,7 @@ isBoxes = false;
 // byte mining variables
 max = 0;
 rate = 1000;
+powerLevel = 0;
 
 // byte mining upgrade prices
 memoryPrice = 100;
@@ -51,6 +53,7 @@ boxesMarketing = 0;
 
 // update function things
 let cycles = 0;
+boughtSomething = false;
 
 console.clear();
 setInterval(updateItems, 100)
@@ -60,6 +63,7 @@ function buyItem(item) {
     window[item] += 15;
     money -= window[item+"price"];
     updateItems();
+    boughtSomething = true;
     document.getElementById("buyBubble").style.display = "none";
     document.getElementById("buyBubble").style.visibility = "hidden";
   } else {
@@ -70,6 +74,18 @@ function buyItem(item) {
   }
   if (cacao >= 2 && sugar >= 1) {
     document.getElementById("dark-chocolate").disabled = false;
+  }
+}
+z = 0;
+function fadeIn() {
+  z += 0.01;
+  console.log(z);
+
+  document.getElementById("gameOver").style.opacity = z;
+  if (z < 1.01) {
+    setTimeout(fadeIn, 10);
+  } else {
+    document.body.style.background = "black";
   }
 }
 
@@ -104,22 +120,15 @@ function clicked(chocolateType) {
       //money += Math.round(milkChocolatePrice*10) / 10;
     } else {
       document.getElementById("buyBubble").style.display = "block";
-      if (money > 75 && money < 125) {
-        document.getElementById("sellerBubble").style.display = "block";
-      }
       document.getElementById("milk-chocolate").disabled = true;
     }
   } else if (chocolateType == "dark") {
-    
     if (cacao > 1 && sugar > 1 && darkChocolatePrice > 0) {
       cacao -= 2;
       sugar -= 1;
       bars += 1;
     } else {
       document.getElementById("buyBubble").style.display = "block";
-      if (money > 75 && money < 125) {
-        document.getElementById("sellerBubble").style.display = "block";
-      }
       document.getElementById("dark-chocolate").disabled = true;
     }
   } // XTRACHOCOLATE add more chocolates here with an else if
@@ -180,7 +189,25 @@ function updateItems() {
   } else {
     document.querySelector(".tooltipmilk").style.color = "lightgreen";
   }
+  
+  if (money >= powerPrice && memoryPrice > 100) {
+    document.getElementById("powerButton").disabled = false;
+  } else {
+    document.getElementById("powerButton").disabled = true;
+  }
 
+  if (money >= 80) {
+    document.getElementById("cacaoMap").style.display = "block";
+    document.getElementById("cacaoLocked").style.display = "none";
+    
+    document.getElementById("sugarMap").style.display = "block";
+    document.getElementById("sugarLocked").style.display = "none";
+
+    document.getElementById("milkMap").style.display = "block";
+    document.getElementById("milkLocked").style.display = "none";
+
+    document.getElementById("sellerBubble").style.display = "block";
+  }
   document.getElementById("buy-cacao").innerHTML = "Buy Cacao ($"+cacaoprice.toFixed(2)+")";
   document.getElementById("buy-sugar").innerHTML = "Buy Sugar ($"+sugarprice.toFixed(2)+")";
   document.getElementById("buy-milk").innerHTML = "Buy Milk ($"+milkprice.toFixed(2)+")";
@@ -218,6 +245,15 @@ function updateItems() {
   if (bars > 0 && cycles % Math.round(nonexistent) == 0) {
     sellItems(milkChocolatePrice);
   }
+  ingredientprice = 0;
+  if (cacao == 0) { ingredientprice += cacaoprice; }
+  if (sugar == 0) { ingredientprice += sugarprice; }
+  if (milk == 0) { ingredientprice += milkprice; }
+  console.log(ingredientprice)
+  if (money < ingredientprice && boughtSomething == true) {
+    document.getElementById("gameOver").style.display = "block";
+    fadeIn();
+  }
 }
 function changeSeller(ingredient, price, markChange) {
   if (event.target.classList.contains("active")) {
@@ -232,7 +268,7 @@ function changeSeller(ingredient, price, markChange) {
   });
   window[ingredient+"price"] = price;
   window[ingredient+"Marketing"] = 1 + markChange;
-  document.getElementById("sellerBubble").style.display = "none";
+  document.getElementById("sellerBubble").style.display = none;
 }
 function runEvents() {
   sellItems(milkChocolatePrice)
@@ -274,7 +310,7 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
           console.log(":")
         }
-    }, 60000)
+    }, 600000)
 });
 
 function increaseMemory() {
@@ -286,6 +322,7 @@ function increaseMemory() {
         document.getElementById("chips").appendChild(para);
         money -= memoryPrice;
         memoryPrice *= 1.5;
+        document.getElementById("powerButton").disabled = false;
         document.getElementById("memoryButton").innerHTML = "Increase Memory ($"+memoryPrice.toFixed(2)+")";
         document.getElementById("memory").innerHTML = bytes + "/" + max;
         document.getElementById("bytesBubble").style.display = "none";
@@ -294,7 +331,6 @@ function increaseMemory() {
         document.getElementById("bytesBubble").style.visibility = "hidden";
         document.getElementById("memoryBubble").style.visibility = "hidden";
         document.getElementById("powerBubble").style.visibility = "hidden";
-        
     } else {
         alert("Not enough money!!!!!!!!!!!!!!!!!!!!!11")
     }
@@ -304,7 +340,71 @@ function increasePower() {
         rate -= 100;
         money -= powerPrice;
         powerPrice *= 1.5;
-
+        powerLevel += 1;
+        document.getElementById("powerButton").innerHTML = "Increase Power ($"+powerPrice.toFixed(2)+")";
+        var chips = document.querySelectorAll(".chip");
+        if (powerLevel == 1) {
+          chips.forEach(chip => {
+            chip.style.background = "#228526";
+            chip.style.height = "19px";
+            chip.style.width = "19px";
+          });
+        } else if (powerLevel == 2) {
+          chips.forEach(chip => {
+            chip.style.background = "#2fed36";
+            chip.style.height = "18px";
+            chip.style.width = "18px";
+          });    
+        } else if (powerLevel == 3) {
+          chips.forEach(chip => {
+            chip.style.background = "#25b5e6";
+            chip.style.height = "17px";
+            chip.style.width = "17px";
+          });    
+        } else if (powerLevel == 4) {
+          chips.forEach(chip => {
+            chip.style.background = "#233ab0";
+            chip.style.height = "17px";
+            chip.style.width = "17px";
+          });  
+        } else if (powerLevel == 5) {
+          chips.forEach(chip => {
+            chip.style.background = "#41ab9d";
+            chip.style.height = "21px";
+            chip.style.width = "21px";
+          });  
+        } else if (powerLevel == 6) {
+          chips.forEach(chip => {
+            chip.style.background = "#eb8d13";
+            chip.style.height = "22px";
+            chip.style.width = "22px";
+          });  
+        } else if (powerLevel == 7) {
+          chips.forEach(chip => {
+            chip.style.background = "#f97ce4";
+            chip.style.height = "23px";
+            chip.style.width = "23px";
+          });  
+        } else if (powerLevel == 8) {
+          chips.forEach(chip => {
+            chip.style.background = "#a2375b";
+            chip.style.height = "23px";
+            chip.style.width = "23px";
+          });  
+        } else if (powerLevel == 9) {
+          chips.forEach(chip => {
+            chip.style.background = "#ccc5a1";
+            chip.style.height = "20px";
+            chip.style.width = "20px";
+          });  
+        } else if (powerLevel == 10) {
+          chips.forEach(chip => {
+            chip.style.background = "radial-gradient(#67b26f, #4ca2cd)";
+            chip.style.height = "25px";
+            chip.style.width = "25px";
+            document.getElementById("powerButton").style.display = "none";
+          });  
+        }
         setInterval(function() {
             if (max != 0 && bytes <= max) {
                 bytes += 1;
@@ -336,8 +436,9 @@ function buyProject(type) {
     }
     if (type == "donuts") {
       workerSpeed -= 200;
+      console.log("yay donuts")
     }
-    if (type == "boxes") {
+    if (type == "boxes" && document.getElementById("devices").style.display == "block") {
       document.getElementById("boxesInfo").style.display = "block";
       document.getElementById("boxesToggle").style.display = "block";
       setInterval(function() {
@@ -379,7 +480,7 @@ function changePay(workerType, increment) {
   event.stopPropagation();  
 }
 document.addEventListener("keypress", function(event) {
-  if (event.code == "KeyI" || event.code == "KeyU") {
+  if (event.code == "BracketLeft" || event.code == "BracketRight") {
     document.getElementById("debug").style.width = "100%";
     document.getElementById("bars-debug").innerHTML = "bars: " + bars;
     document.getElementById("money-debug").innerHTML = "money: " + money;
@@ -404,6 +505,13 @@ function showSnackbar(snackbar) {
   var x = document.getElementById(snackbar);
   x.className = "show";
   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+function adjustWidth() {
+  const input = document.getElementById('name-input');
+  const mirror = document.getElementById('inputMirror');
+  
+  mirror.textContent = input.value || input.placeholder;
+  input.style.width = mirror.offsetWidth + 'px';
 }
 /// ********************** CHATGPT *********************** ///
 function calculateCustomerDemand(pricePerBar) {
