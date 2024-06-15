@@ -9,7 +9,7 @@ _New updates every week!_
 
 ## Versions
 
-### ALPHA v0.8.0 (6/-/24)
+### ALPHA v0.8.0 (6/15/24)
 **NOTES:**
 I think I've removed most of the bugs. From now on I'm just going to work on more project-related things. Any suggestions on projects or the rightmost column? Email me at evanwarnerlee@gmail.com. 
 
