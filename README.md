@@ -11,7 +11,7 @@ _New updates every week!_
 
 ## Versions
 
-### ALPHA v0.9.0 (6/-/24)
+### ALPHA v0.9.0 (6/23/24)
 **NOTES:**
 Adding new chocolates required a full rework of the money and bar system. If everything's broken, sorry about that.
 
