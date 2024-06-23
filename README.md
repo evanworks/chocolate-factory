@@ -7,26 +7,43 @@ A relaxing clicker game about making chocolate
 
 _New updates every week!_
 
+<img width="1341" alt="Chocolate Factory" src="https://github.com/evan-w-lee/chocolate-factory/assets/170060467/55c8595d-0928-43fe-a76e-b4e72905bf91">
+
 ## Versions
 
-### ALPHA v0.8.0 (6/15/24)
+### ALPHA v0.9.0 (6/-/24)
 **NOTES:**
-I think I've removed most of the bugs. From now on I'm just going to work on more project-related things. Any suggestions on projects or the rightmost column? Email me at evanwarnerlee@gmail.com. 
+Adding new chocolates required a full rework of the money and bar system. If everything's broken, sorry about that.
 
 **FEATURES:**
-* Added the ability to name your shop
-* Added a game over screen (it's a placeholder for now)
+* Added a new type of chocolate (finally)
 
 **CHANGES:**
-* Changed debug keys to [ and \] so they wouldn't interfere with naming the shop
-* Added a visual indicator for when you increase the byte mining power
-* The change seller feature is not unlocked right away anymore
+* Reworked the customer pay systems
+* Reworked the WHOLE FRICKING GAME
 
 **BUG FIXES:**
-* Renamed ROWS to COLUMNS in the code (You know those columns that make up the game? I had a small-brain moment and labelled them "rows".)
-* Made it so you have to have bought a worker to buy the boxes project
-* Added a display for adaptive pricing of the byte mining power upgrade (the circuits look more powerful!)
-* Fixed issue where the bubble text displayed under the locked columns
+* Made the name changing feature less buggy
+
+
+>### ALPHA v0.8.0 (6/15/24)
+>**NOTES:**
+>I think I've removed most of the bugs. From now on I'm just going to work on more project-related things. Any suggestions on projects or the rightmost column? Email me at >evanwarnerlee@gmail.com. 
+>
+>**FEATURES:**
+>* Added the ability to name your shop
+>* Added a game over screen (it's a placeholder for now)
+>
+>**CHANGES:**
+>* Changed debug keys to [ and \] so they wouldn't interfere with naming the shop
+>* Added a visual indicator for when you increase the byte mining power
+>* The change seller feature is not unlocked right away anymore
+>
+>**BUG FIXES:**
+>* Renamed ROWS to COLUMNS in the code (You know those columns that make up the game? I had a small-brain moment and labelled them "rows".)
+>* Made it so you have to have bought a worker to buy the boxes project
+>* Added a display for adaptive pricing of the byte mining power upgrade (the circuits look more powerful!)
+>* Fixed issue where the bubble text displayed under the locked columns
 
 
 >### ALPHA patch v0.7.2
