@@ -1,9 +1,13 @@
 // main variables
-bars = 0;
-money = 0;
+bars = 0; 
+money = 0; 
 bytes = 0;
 marketing = 1;
 factoryName = "";
+
+// chocolate bar amount variables
+milkBars = 0;
+darkBars = 0;
 
 // initial chocolate prices
 milkChocolatePrice = 4;
@@ -27,8 +31,9 @@ workerPay = 5;
 workerPrice = 75;
 workerSpeed = 500;
 
-// boxes variable(s)?
+// is - Something
 isBoxes = false;
+isDark = false;
 
 // byte mining variables
 max = 0;
@@ -44,6 +49,7 @@ workersprice = 75;
 autobuyersprice = 100;
 donutsprice = 300;
 boxesprice = 500;
+darkchocolateprice = 1000;
 
 // marketing variables
 cacaoMarketing = 1;
@@ -75,6 +81,7 @@ function buyItem(item) {
   if (cacao >= 2 && sugar >= 1) {
     document.getElementById("dark-chocolate").disabled = false;
   }
+  // XTRACHOCOLATE add another if
 }
 z = 0;
 function fadeIn() {
@@ -98,13 +105,14 @@ function changePrice(chocolateType, increment) {
     }
     document.getElementById("milkChocolatePrice").innerHTML = milkChocolatePrice.toFixed(2);
     document.getElementById("changePriceBubble").style.display = "none";
+
   } else if (chocolateType == "dark" && darkChocolatePrice > 0.1) {
-    alert("yes")
     if (increment == 1) {
       darkChocolatePrice += 0.1;
     } else {
       darkChocolatePrice -= 0.1;
     }
+    document.getElementById("darkChocolatePrice").innerHTML = darkChocolatePrice.toFixed(2);
   } // XTRACHOCOLATE add more chocolates here with an else if
   event.stopPropagation();
 }
@@ -115,9 +123,9 @@ function clicked(chocolateType) {
       cacao -= 1;
       sugar -= 1;
       milk -= 1;
-      bars += 1;
+      milkBars += 1;
       document.getElementById("clickBubble").style.display = "none";
-      //money += Math.round(milkChocolatePrice*10) / 10;
+      sellItems(milkChocolatePrice, "milk")
     } else {
       document.getElementById("buyBubble").style.display = "block";
       document.getElementById("milk-chocolate").disabled = true;
@@ -126,21 +134,26 @@ function clicked(chocolateType) {
     if (cacao > 1 && sugar > 1 && darkChocolatePrice > 0) {
       cacao -= 2;
       sugar -= 1;
-      bars += 1;
+      darkBars += 1;
+      sellItems(darkChocolatePrice, "dark")
+      isDark = true;
     } else {
       document.getElementById("buyBubble").style.display = "block";
       document.getElementById("dark-chocolate").disabled = true;
     }
   } // XTRACHOCOLATE add more chocolates here with an else if
   updateItems();
-  runEvents();
+  
   if (money < 0) {
     window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
   }
+  // showSnackbar("snackbar");
 }
 function updateItems() {
+  console.log("JACKSON!!!! FUU")
   cycles += 1;
-  console.log("cycles:")
+  bars = milkBars + darkBars;
+
   if (String(bars).includes('e') || String(bars).includes('E')) {
     document.getElementById("bars").innerHTML = bars.toExponential().replace("e+", "x10^");
   } else {
@@ -169,25 +182,43 @@ function updateItems() {
   document.getElementById("sugar-left").innerHTML = "Sugar left: " + sugar;
   document.getElementById("milk-left").innerHTML = "Milk left: " + milk;
 
-  document.querySelector(".tooltipcacao").innerHTML = "1 Cacao (" + cacao + ")";
+  document.querySelector(".tooltipcacaoMilk").innerHTML = "1 Cacao (" + cacao + ")";
+
   if (cacao == 0) {
-    document.querySelector(".tooltipcacao").style.color = "red";
+    document.querySelector(".tooltipcacaoMilk").style.color = "red";
   } else {
-    document.querySelector(".tooltipcacao").style.color = "lightgreen";
+    document.querySelector(".tooltipcacaoMilk").style.color = "lightgreen";
   }
 
-  document.querySelector(".tooltipsugar").innerHTML = "1 Sugar (" + sugar + ")";
+  document.querySelector(".tooltipsugarMilk").innerHTML = "1 Sugar (" + sugar + ")";
   if (sugar == 0) {
-    document.querySelector(".tooltipsugar").style.color = "red";
+    document.querySelector(".tooltipsugarMilk").style.color = "red";
   } else {
-    document.querySelector(".tooltipsugar").style.color = "lightgreen";
+    document.querySelector(".tooltipsugarMilk").style.color = "lightgreen";
   }
 
-  document.querySelector(".tooltipmilk").innerHTML = "1 Milk (" + milk + ")";
+  document.querySelector(".tooltipmilkMilk").innerHTML = "1 Milk (" + milk + ")";
   if (milk == 0) {
-    document.querySelector(".tooltipmilk").style.color = "red";
+    document.querySelector(".tooltipmilkMilk").style.color = "red";
   } else {
-    document.querySelector(".tooltipmilk").style.color = "lightgreen";
+    document.querySelector(".tooltipmilkMilk").style.color = "lightgreen";
+  }
+  
+
+  
+  document.querySelector(".tooltipcacaoDark").innerHTML = "2 Cacao (" + cacao + ")";
+
+  if (cacao == 1 || cacao == 0) {
+    document.querySelector(".tooltipcacaoDark").style.color = "red";
+  } else {
+    document.querySelector(".tooltipcacaoDark").style.color = "lightgreen";
+  }
+
+  document.querySelector(".tooltipsugarDark").innerHTML = "1 Sugar (" + sugar + ")";
+  if (sugar == 0) {
+    document.querySelector(".tooltipsugarDark").style.color = "red";
+  } else {
+    document.querySelector(".tooltipsugarDark").style.color = "lightgreen";
   }
   
   if (money >= powerPrice && memoryPrice > 100) {
@@ -199,7 +230,7 @@ function updateItems() {
   if (money >= 80) {
     document.getElementById("cacaoMap").style.display = "block";
     document.getElementById("cacaoLocked").style.display = "none";
-    
+
     document.getElementById("sugarMap").style.display = "block";
     document.getElementById("sugarLocked").style.display = "none";
 
@@ -216,6 +247,7 @@ function updateItems() {
   autobuyersStyle = document.getElementById("project-autobuyers");
   donutsStyle = document.getElementById("project-donuts");
   boxesStyle = document.getElementById("project-boxes");
+  darkchocolateStyle = document.getElementById("project-darkchocolate")
   if (bytes >= 10 && workersStyle.style.color == "red") {
     workersStyle.style.display = "block";
     workersStyle.style.color = "black";
@@ -232,6 +264,10 @@ function updateItems() {
     boxesStyle.style.display = "block";
     boxesStyle.style.color = "black";
   }
+  if (bytes >= 150 && darkchocolateStyle.style.color == "red") {
+    darkchocolateStyle.style.display = "block";
+    darkchocolateStyle.style.color = "black";
+  }
   
   //if (bars > milkChocolatePrice) {
     //moneyAdd = Math.round(milkChocolatePrice*10)/10 * milkChocolatePrice
@@ -243,13 +279,12 @@ function updateItems() {
   marketing = marketing.toFixed(2)
   nonexistent = 20/marketing
   if (bars > 0 && cycles % Math.round(nonexistent) == 0) {
-    sellItems(milkChocolatePrice);
+    sellItems(milkChocolatePrice, "milk");
   }
   ingredientprice = 0;
   if (cacao == 0) { ingredientprice += cacaoprice; }
   if (sugar == 0) { ingredientprice += sugarprice; }
   if (milk == 0) { ingredientprice += milkprice; }
-  console.log(ingredientprice)
   if (money < ingredientprice && boughtSomething == true) {
     document.getElementById("gameOver").style.display = "block";
     fadeIn();
@@ -271,7 +306,7 @@ function changeSeller(ingredient, price, markChange) {
   document.getElementById("sellerBubble").style.display = none;
 }
 function runEvents() {
-  sellItems(milkChocolatePrice)
+  
 }
 function hireWorker() {
   if (money >= workerPrice) {
@@ -293,6 +328,10 @@ document.addEventListener("DOMContentLoaded", function() {
     setInterval(function() {
         for (let i = 0; i < workers; i++) {
           clicked("milk")
+          console.log(isDark)
+          if (isDark == true) {
+            clicked("dark")
+          }
           if (isBoxes == true) {
             money -= 2;
           }
@@ -458,8 +497,11 @@ function buyProject(type) {
         console.log(marketing)
       }, 200)
     }
+  } if (type == "darkchocolate") {
+    document.getElementById("dark-chocolate").style.display = "inline-block";
+    isDark = true;
   } else {
-    alert("u dont have enough money :))))");
+    alert("u dont have enough bytes :((((");
   }
 }
 function changePay(workerType, increment) {
@@ -480,7 +522,7 @@ function changePay(workerType, increment) {
   event.stopPropagation();  
 }
 document.addEventListener("keypress", function(event) {
-  if (event.code == "BracketLeft" || event.code == "BracketRight") {
+  if (event.code == "BracketRight") {
     document.getElementById("debug").style.width = "100%";
     document.getElementById("bars-debug").innerHTML = "bars: " + bars;
     document.getElementById("money-debug").innerHTML = "money: " + money;
@@ -513,7 +555,8 @@ function adjustWidth() {
   mirror.textContent = input.value || input.placeholder;
   input.style.width = mirror.offsetWidth + 'px';
 }
-/// ********************** CHATGPT *********************** ///
+
+
 function calculateCustomerDemand(pricePerBar) {
     const minCustomers = 1; // Minimum number of customers
     const maxCustomers = Math.round(10 - pricePerBar * 2);
@@ -525,15 +568,30 @@ function calculateCustomerDemand(pricePerBar) {
     return Math.floor(Math.random() * (adjustedMaxCustomers - adjustedMinCustomers + 1)) + adjustedMinCustomers;
 }
 
-function sellItems(pricePerBar) {
-    const numCustomers = calculateCustomerDemand(pricePerBar);
+function sellItems(pricePerBar, chocolateType) {
+
+    
+    if (chocolateType == "milk") {
+      console.log(chocolateType)
+      numCustomers = calculateCustomerDemand(pricePerBar);
+    } else if (chocolateType == "dark") {
+      numCustomers = calculateCustomerDemand(pricePerBar/1.5);
+    } else {
+      console.error("yep")
+    }
+    console.log("numCustomers: " + numCustomers)
     let barsSold = Math.min(bars, numCustomers); // Sell only as many bars as available
+    console.log("barsSold: " + barsSold)
     if (barsSold === 0 || numCustomers === 0) {
         return;
     }
     const revenue = barsSold * pricePerBar;
     money += parseInt(revenue.toFixed())
-    bars -= barsSold
+    
+    
+    window[chocolateType+"Bars"] -= barsSold
+    console.log("chocolateType+'Bars' = " + window[chocolateType+"Bars"])
+    console.log()
 }
 
 function getRandomColor() {
