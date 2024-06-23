@@ -1,3 +1,5 @@
+// PLEASE UPDATE CHOCOLATE FACTORYHSDNFKILAFNsdkLFD
+
 // main variables
 bars = 0; 
 money = 0; 
