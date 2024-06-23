@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
+  <head> 
+    <meta charset="utf-8"> 
     <title>Chocolate Factory</title>
     <link rel="stylesheet" href="styles.css">
     <script src="main.js"></script>
   </head>
   <body>
     <div id="gameOver" style="display: none;"><spa id="gameOvertxt">Game Over...</span><br/><button id="gameOverbtn" onclick="location.reload()">CONTINUE</button></div>
-    <div id="version"><a href="https://github.com/evan-w-lee/chocolate-factory/blob/main/README.md">ALPHA v0.8.0</a></div>
+    <div id="version"><a href="https://github.com/evan-w-lee/chocolate-factory/blob/main/README.md">ALPHA v0.9.0</a></div>
     <div id="name">
       <div class="input-wrapper">
         <span class="input-mirror" id="inputMirror"></span>
@@ -30,19 +30,21 @@
     <div class="column" id="chocolate-types">
       <button onclick="clicked('milk')" id="milk-chocolate" class="chocolate">
         <span class="tooltip" onclick="event.stopPropagation();">Milk Chocolate<br/>
-        <a href="#" onclick="changePrice('milk', 0)"><</a> $<span id="milkChocolatePrice">4.00</span> <a href="#" onclick="changePrice('milk', 1)">></a>
-        <hr style="width: 90px; color: white;"/><span style="color: lightgreen;" class="tooltipcacao">1 Cacao (-)</span>
-        <br/><span style="color: lightgreen;" class="tooltipsugar">1 Sugar (-)</span>
-        <br/><span style="color: red;" class="tooltipmilk">1 Milk (-)</span>
-
-        <div class="bubble" style="top: 30px;left: 100px;color:black; width: 250px; font-size: 14px;" id="changePriceBubble">Change the price of the chocolate to balance money and customer demand</div>
-        </span>
+          <a href="#" onclick="changePrice('milk', 0)"><</a> $<span id="milkChocolatePrice">4.00</span> <a href="#" onclick="changePrice('milk', 1)">></a>
+          <hr style="width: 90px; color: white;"/>
+          <span style="color: lightgrey;" class="tooltipcacaoMilk" id="beanses">1 Cacao (-)</span>
+          <br/><span style="color: lightgrey;" class="tooltipsugarMilk">1 Sugar (-)</span>
+          <br/><span style="color: lightgrey;" class="tooltipmilkMilk">1 Milk (-)</span>
+  
+          <div class="bubble" style="top: 30px;left: 100px; color:black; width: 250px; font-size: 14px;" id="changePriceBubble">Change the price of the chocolate to balance money and customer demand</div>
+          </span>
       </button>
-      <button onclick="clicked('dark')" style="display: none;" id="dark-chocolate" class="chocolate">
+      <button onclick="clicked('dark')" id="dark-chocolate" class="chocolate" style="display: none">
         <span class="tooltip">Dark Chocolate<br/>
-        <a href="#" onclick="changePrice('dark', 0)"><</a> $<span id="darkChocolatePrice">4.00</span> <a href="#" onclick="changePrice('dark', 1)">></a>
-        <hr style="width: 90px; color: white;"/><span style="color: lightgreen;" class="tooltipcacao">2 Cacao (15)</span>
-        <br/><span style="color: red;" class="tooltipmilk">1 Milk (0)</span>
+          <a href="#" onclick="changePrice('dark', 0)"><</a> $<span id="darkChocolatePrice">5.00</span> <a href="#" onclick="changePrice('dark', 1)">></a>
+          <hr style="width: 90px; color: white;"/>
+          <span style="color: lightgrey;" class="tooltipcacaoDark">2 Cacao (-)</span>
+          <br/><span style="color: lightgrey;" class="tooltipsugarDark">1 Sugar (-)</span>
         </span>
       </button>
       <div style="display: none">
@@ -132,6 +134,7 @@
     <div class="project" id="project-autobuyers" style="display: none; color: red;" onclick="buyProject('autobuyers')"><h1>AutoBuyers</h1><div class="project-text">Create machines to buy ingredients for you</div><div style="margin-top: 5px;">(100 bytes)</div></div>
     <div class="project" id="project-donuts" style="display: none; color: red;" onclick="buyProject('donuts')"><h1>Donuts</h1><div class="project-text">Feed your workers to make them work harder</div><div style="margin-top: 5px;">(300 bytes)</div></div>
     <div class="project" id="project-boxes" style="display: none; color: red;" onclick="buyProject('boxes')"><center><h1>Boxes</h1><div class="project-text">Wrap your chocolates for a better reputation</div><div style="margin-top: 5px;">(500 bytes)</div></center></div>
+    <div class="project" id="project-darkchocolate" style="display: none; color: red;" onclick="buyProject('darkchocolate')"><center><h1>Dark Chocolate</h1><div class="project-text">Produce a new type of chocolate to grow the business</div><div style="margin-top: 5px;">(1000 bytes)</div></center></div>
     </div>
     <div class="column" style="display: none;" id="devices">
       <div id="workers" style="margin-left: 5%; margin-top: 5%; margin-bottom: 3px;"></div>
