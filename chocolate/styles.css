@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Kameron:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sono:wght@200..800&display=swap');
-html {
-  height: 100%;
+html { 
+  height: 100%; 
   overflow-y: hidden;
 }
 body {
@@ -98,7 +98,7 @@ body {
 }
 .column {
   float: left;
-  height: 640px;
+  height: 620px;
   width: 18%;
   margin: 0.9vw;
   margin-top: 30px;
@@ -122,7 +122,6 @@ body {
   cursor: default;
 }
 #chocolate-types {
-  height: 640px;
   width: 185px;
 }
 #production {
@@ -428,6 +427,7 @@ input:checked + .slider:before {
   min-width: 250px;
   margin-left: -125px;
   background-color: #502b27;
+  opacity: 0.8;
   color: #fff;
   text-align: center;
   border-radius: 2px;
@@ -447,21 +447,21 @@ input:checked + .slider:before {
 
 @-webkit-keyframes fadein {
   from {bottom: 0; opacity: 0;} 
-  to {bottom: 30px; opacity: 1;}
+  to {bottom: 30px; opacity: 0.8;}
 }
 
 @keyframes fadein {
   from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
+  to {bottom: 30px; opacity: 0.8;}
 }
 
 @-webkit-keyframes fadeout {
-  from {bottom: 30px; opacity: 1;} 
+  from {bottom: 30px; opacity: 0.8;} 
   to {bottom: 0; opacity: 0;}
 }
 
 @keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
+  from {bottom: 30px; opacity: 0.8;}
   to {bottom: 0; opacity: 0;}
 }
 #boxesInfo {
@@ -494,9 +494,9 @@ input:checked + .slider:before {
   color: rgb(255, 255, 255);
   opacity: 200%;
   font-size: 14px;
-  margin-right: -8px; /* -4px; */
+  margin-right: -4px;
   z-index: -1;
-  /*text-align: right;*/
+  text-align: right;
 }
 #name-input:focus {
   color: lightgrey;
