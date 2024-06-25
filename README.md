@@ -11,7 +11,7 @@ _New update every week!_
 
 ## Versions
 
-### ALPHA v0.9.1 (6/-/24)
+### ALPHA v0.9.1 (6/24/24)
 **NOTES:**
 Apparently the new update did mess things up. Also apparently if you click on stuff in the change product seller tooltips their background turns black??? I feel like I should've made this an update instead of a patch. It escalated quickly :)
 
