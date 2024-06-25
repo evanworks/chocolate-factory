@@ -5,26 +5,41 @@ A relaxing clicker game about making chocolate
 <a href="https://evan-w-lee.github.io/chocolate-factory/chocolate">evan-w-lee.github.io/chocolate-factory/chocolate</a>
 
 
-_New updates every week!_
+_New update every week!_
 
 <img width="1341" alt="Chocolate Factory" src="https://github.com/evan-w-lee/chocolate-factory/assets/170060467/55c8595d-0928-43fe-a76e-b4e72905bf91">
 
 ## Versions
 
-### ALPHA v0.9.0 (6/23/24)
+### ALPHA v0.9.1 (6/-/24)
 **NOTES:**
-Adding new chocolates required a full rework of the money and bar system. If everything's broken, sorry about that.
-
-**FEATURES:**
-* Added a new type of chocolate (finally)
+Apparently the new update did mess things up. Also apparently if you click on stuff in the change product seller tooltips their background turns black??? I feel like I should've made this an update instead of a patch. It escalated quickly :)
 
 **CHANGES:**
-* Reworked the customer pay systems
-* Reworked the WHOLE FRICKING GAME
+* Changed the way the project displays look
+* The project displays are now unclickable if you don't have enough bytes
 
 **BUG FIXES:**
-* Made the name changing feature less buggy
+* Fixed bug where the dark chocolate project text went slightly below the project box
+* Fixed issue where you could buy the dark chocolate project even if you don't have enough bytes
+* Fixed strange bug where it always says you don't have enough bytes when you buy a project but the project activates anyway
+* Fixed issue where the bubble telling you to 'change the product seller...' doesn't go away ever
+* Fixed weird problem where the byte count can go up to one more than the maximum
 
+
+>### ALPHA v0.9.0 (6/23/24)
+>**NOTES:**
+>Adding new chocolates required a full rework of the money and bar system. Everything's probably borken :/
+>
+>**FEATURES:**
+>* Added a new type of chocolate (finally)
+>
+>**CHANGES:**
+>* Reworked the customer pay systems
+>* Reworked the WHOLE FRICKING GAME
+>
+>**BUG FIXES:**
+>* Made the name changing feature less buggy
 
 >### ALPHA v0.8.0 (6/15/24)
 >**NOTES:**

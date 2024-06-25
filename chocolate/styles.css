@@ -97,7 +97,7 @@ body {
   margin-top: 5px;
 }
 .column {
-  float: left;
+  float: left; 
   height: 620px;
   width: 18%;
   margin: 0.9vw;
@@ -225,24 +225,24 @@ a:active {
 }
 .project {
   background: lightgrey;
-  border: 3px solid dimgrey;
+  border: 1px solid dimgrey;
   width: 200px;
-  height: 100px;
+  height: auto;
   margin-top: 7px;
+  padding: 5px;
+  padding-bottom: 10px;
   cursor: pointer;
   text-align: center;
   margin-left: 5%;
   font-family: Kameron;
 }
 .project:hover {
-  color: white;
-  background: grey;
-  transform: scale(1.05, 1.05);
+  background: white;
+  transform: scale(1.02, 1.02);
 }
 .project:active {
-  color: white;
-  background: dimgrey;
-  transform: scale(0.95, 0.95);
+  background: grey;
+  transform: scale(0.97, 0.97);
 }
 h1 {
   display: inline-block;

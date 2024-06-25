@@ -1,5 +1,3 @@
-// PLEASE UPDATE CHOCOLATE FACTORYHSDNFKILAFNsdkLFD
-
 // main variables
 bars = 0; 
 money = 0; 
@@ -88,7 +86,6 @@ function buyItem(item) {
 z = 0;
 function fadeIn() {
   z += 0.01;
-  console.log(z);
 
   document.getElementById("gameOver").style.opacity = z;
   if (z < 1.01) {
@@ -270,7 +267,71 @@ function updateItems() {
     darkchocolateStyle.style.display = "block";
     darkchocolateStyle.style.color = "black";
   }
-  
+  if (bytes < workersprice) {
+    workersStyle.style.filter = 'brightness(0.7)';
+    workersStyle.style.opacity = 0.6;
+    workersStyle.style.background = "white";
+    workersStyle.style.transform = "unset";
+    workersStyle.style.cursor = "auto";
+  } else {
+    workersStyle.style.filter = 'brightness(1.0)';
+    workersStyle.style.opacity = 1.0;
+    workersStyle.style.background = null;
+    workersStyle.style.transform = null;
+    workersStyle.style.cursor = "pointer";
+  }
+  if (bytes < autobuyersprice) {
+    autobuyersStyle.style.filter = 'brightness(0.7)';
+    autobuyersStyle.style.opacity = 0.6;
+    autobuyersStyle.style.background = "white";
+    autobuyersStyle.style.transform = "unset";
+    autobuyersStyle.style.cursor = "auto";
+  } else {
+    autobuyersStyle.style.filter = 'brightness(1.0)';
+    autobuyersStyle.style.opacity = 1.0;
+    autobuyersStyle.style.background = null;
+    autobuyersStyle.style.transform = null;
+    autobuyersStyle.style.cursor = "pointer";
+  }
+  if (bytes < donutsprice) {
+    donutsStyle.style.filter = 'brightness(0.7)';
+    donutsStyle.style.opacity = 0.6;
+    donutsStyle.style.background = "white";
+    donutsStyle.style.transform = "unset";
+    donutsStyle.style.cursor = "auto";
+  } else {
+    donutsStyle.style.filter = 'brightness(1.0)';
+    donutsStyle.style.opacity = 1.0;
+    donutsStyle.style.background = null;
+    donutsStyle.style.transform = null;
+    donutsStyle.style.cursor = "pointer";
+  }
+  if (bytes < boxesprice) {
+    boxesStyle.style.filter = 'brightness(0.7)';
+    boxesStyle.style.opacity = 0.6;
+    boxesStyle.style.background = "white";
+    boxesStyle.style.transform = "unset";
+    boxesStyle.style.cursor = "auto";
+  } else {
+    boxesStyle.style.filter = 'brightness(1.0)';
+    boxesStyle.style.opacity = 1.0;
+    boxesStyle.style.background = null;
+    boxesStyle.style.transform = null;
+    boxesStyle.style.cursor = "pointer";
+  }
+  if (bytes < darkchocolateprice) {
+    darkchocolateStyle.style.filter = 'brightness(0.7)';
+    darkchocolateStyle.style.opacity = 0.6;
+    darkchocolateStyle.style.background = "white";
+    darkchocolateStyle.style.transform = "unset";
+    darkchocolateStyle.style.cursor = "auto";
+  } else {
+    darkchocolateStyle.style.filter = 'brightness(1.0)';
+    darkchocolateStyle.style.opacity = 1.0;
+    darkchocolateStyle.style.background = null;
+    darkchocolateStyle.style.transform = null;
+    darkchocolateStyle.style.cursor = "pointer";
+  }
   //if (bars > milkChocolatePrice) {
     //moneyAdd = Math.round(milkChocolatePrice*10)/10 * milkChocolatePrice
     //money += parseInt(moneyAdd.toFixed(2))
@@ -288,7 +349,7 @@ function updateItems() {
   if (sugar == 0) { ingredientprice += sugarprice; }
   if (milk == 0) { ingredientprice += milkprice; }
   if (money < ingredientprice && boughtSomething == true) {
-    document.getElementById("gameOver").style.display = "block";
+    document.getElementById("gameOver").style.visibility = "hidden";
     fadeIn();
   }
 }
@@ -305,11 +366,12 @@ function changeSeller(ingredient, price, markChange) {
   });
   window[ingredient+"price"] = price;
   window[ingredient+"Marketing"] = 1 + markChange;
-  document.getElementById("sellerBubble").style.display = none;
+  document.getElementById("sellerBubble").style.visibility = 'hidden';
+
+
 }
-function runEvents() {
-  
-}
+function runEvents() {}
+
 function hireWorker() {
   if (money >= workerPrice) {
     money -= workerPrice;
@@ -330,7 +392,6 @@ document.addEventListener("DOMContentLoaded", function() {
     setInterval(function() {
         for (let i = 0; i < workers; i++) {
           clicked("milk")
-          console.log(isDark)
           if (isDark == true) {
             clicked("dark")
           }
@@ -340,9 +401,11 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }, workerSpeed);
     setInterval(function() {
-        if (max != 0 && bytes < max) {
+        if (max != 0) {
+          if (bytes < max) {
             bytes += 1;
             document.getElementById("memory").innerHTML = bytes + "/" + max;
+          } 
         }
     }, rate)
     setInterval(function() {
@@ -447,7 +510,7 @@ function increasePower() {
           });  
         }
         setInterval(function() {
-            if (max != 0 && bytes <= max) {
+            if (max != 0 && bytes < max) {
                 bytes += 1;
                 document.getElementById("memory").innerHTML = bytes + "/" + max;
             }
@@ -477,7 +540,6 @@ function buyProject(type) {
     }
     if (type == "donuts") {
       workerSpeed -= 200;
-      console.log("yay donuts")
     }
     if (type == "boxes" && document.getElementById("devices").style.display == "block") {
       document.getElementById("boxesInfo").style.display = "block";
@@ -496,12 +558,12 @@ function buyProject(type) {
             boxesMarketing = 1;
           }
         }
-        console.log(marketing)
       }, 200)
     }
-  } if (type == "darkchocolate") {
-    document.getElementById("dark-chocolate").style.display = "inline-block";
-    isDark = true;
+    if (type == "darkchocolate") {
+      document.getElementById("dark-chocolate").style.display = "inline-block";
+      isDark = true;
+    }
   } else {
     alert("u dont have enough bytes :((((");
   }
@@ -519,7 +581,6 @@ function changePay(workerType, increment) {
     document.getElementById("workerPay").innerHTML = "$"+workerPay+"/h";
     workerSpeed = 750 - (workerPay * 50)
     workerSpeed = workerSpeed.toFixed(1);
-    console.log(workerSpeed)
   }
   event.stopPropagation();  
 }
@@ -593,7 +654,6 @@ function sellItems(pricePerBar, chocolateType) {
     
     window[chocolateType+"Bars"] -= barsSold
     console.log("chocolateType+'Bars' = " + window[chocolateType+"Bars"])
-    console.log()
 }
 
 function getRandomColor() {
