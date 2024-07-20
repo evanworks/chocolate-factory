@@ -11,21 +11,42 @@ _New update every week!_
 
 ## Versions
 
-### ALPHA v0.9.1 (6/24/24)
+### ALPHA v0.10.0 (-/-/24)
+
 **NOTES:**
-Apparently the new update did mess things up. Also apparently if you click on stuff in the change product seller tooltips their background turns black??? I feel like I should've made this an update instead of a patch. It escalated quickly :)
+Oops. Looks like I forgot about Chocolate Factory for a month or so. The next update: A second information upgrade and a fix to the weird byte mining power thing
+
+**FEATURES:**
+* Added a new project that tells you if you're making money
+* Added a project that shows marketing
+* Added a favicon
 
 **CHANGES:**
-* Changed the way the project displays look
-* The project displays are now unclickable if you don't have enough bytes
+* Removed debug menu. I'm sorry.
+* Adjusted project prices
+* Adjusted memory upgrade price
+* Reworked project system (increasing memory only increases by 100)
 
 **BUG FIXES:**
-* Fixed bug where the dark chocolate project text went slightly below the project box
-* Fixed issue where you could buy the dark chocolate project even if you don't have enough bytes
-* Fixed strange bug where it always says you don't have enough bytes when you buy a project but the project activates anyway
-* Fixed issue where the bubble telling you to 'change the product seller...' doesn't go away ever
-* Fixed weird problem where the byte count can go up to one more than the maximum
+* Fixed weird bug where the chocolate buttons click strangely on a soft-touch trackpad
+* Made each column able to scroll indepentently to stop things from going off-screen
 
+
+>### ALPHA v0.9.1 (6/24/24)
+>
+>**NOTES:**
+>Apparently the new update did mess things up. Also apparently if you click on stuff in the change product seller tooltips their background turns black??? I feel like I should've made this an update instead of a patch. It escalated quickly :)
+>
+>**CHANGES:**
+>* Changed the way the project displays look
+>* The project displays are now unclickable if you don't have enough bytes
+>
+>**BUG FIXES:**
+>* Fixed bug where the dark chocolate project text went slightly below the project box
+>* Fixed issue where you could buy the dark chocolate project even if you don't have enough bytes
+>* Fixed strange bug where it always says you don't have enough bytes when you buy a project but the project activates anyway
+>* Fixed issue where the bubble telling you to 'change the product seller...' doesn't go away ever
+>* Fixed weird problem where the byte count can go up to one more than the maximum
 
 >### ALPHA v0.9.0 (6/23/24)
 >**NOTES:**

@@ -4,9 +4,11 @@
     <meta charset="utf-8">
     <title>Chocolate Factory</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">
     <script src="main.js"></script>
   </head>
   <body>
+    
     <div id="gameOver" style="display: none;"><spa id="gameOvertxt">Game Over...</span><br/><button id="gameOverbtn" onclick="location.reload()">CONTINUE</button></div>
     <div id="version"><a href="https://github.com/evan-w-lee/chocolate-factory/blob/main/README.md">ALPHA v0.9.1</a></div>
     <div id="name">
@@ -19,15 +21,36 @@
     </div>
     <div class="bubble" style="top: 95px;left: 70px;" id="clickBubble">Click on the button to make a chocolate.</div>
     <div id="snackbar">Game Saved</div>
-    <center> 
-    <div id="bars-wrapper" style="margin-right: 30px;">
+    <div id="modal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+          
+        </div>
+      </div>
+    
+    </div>
+
+    <center>
+    <div id="information">
+      + Information
+    </div>
+    <div class="bars-wrapper" id="marketing-wrapper" style="margin-right: 30px; display: none;">
+      <span id="marketing">+0.00</span> m
+    </div>
+    <div class="bars-wrapper" style="margin-right: 30px;">
       <span id="money">0</span> $
     </div>
-    <div id="bars-wrapper">
+    <div class="bars-wrapper">
       <span id="bars">0</span> bars
     </div>
     </center>
     <div class="column" id="chocolate-types">
+      
       <button onclick="clicked('milk')" id="milk-chocolate" class="chocolate">
         <span class="tooltip" onclick="event.stopPropagation();">Milk Chocolate<br/>
           <a href="#" onclick="changePrice('milk', 0)"><</a> $<span id="milkChocolatePrice">4.00</span> <a href="#" onclick="changePrice('milk', 1)">></a>
@@ -35,6 +58,8 @@
           <span style="color: lightgrey;" class="tooltipcacaoMilk" id="beanses">1 Cacao (-)</span>
           <br/><span style="color: lightgrey;" class="tooltipsugarMilk">1 Sugar (-)</span>
           <br/><span style="color: lightgrey;" class="tooltipmilkMilk">1 Milk (-)</span>
+          <hr id="informationBar" style="width: 90px; color: white; display: none;"/>
+          <div id="currentMoneyState" style="margin: 4px; display: none;">loading...</div>
   
           <div class="bubble" style="top: 30px;left: 100px; color:black; width: 250px; font-size: 14px;" id="changePriceBubble">Change the price of the chocolate to balance money and customer demand</div>
           </span>
@@ -71,7 +96,7 @@
         </div>
         <div class="map locked-map" id="cacaoLocked">
           <div style="margin-top: 30px;">Unlocked at $80</div>
-        </div>
+        </div> 
         <button class="buy-button" style="margin-left: 5%;" onclick="buyItem('cacao')" id="buy-cacao">Buy Cacao ($10.00)</button>
         <label class="switch" id="cacaoAutoBuyers">
           <input type="checkbox">
@@ -132,9 +157,11 @@
     </div>
     <div class="project" id="project-workers" style="display: none; color: red;" onclick="buyProject('workers')"><h1>Workers</h1><div class="project-text">Gather workers to expand your business</div><div style="margin-top: 5px;">(75 bytes)</div></div>
     <div class="project" id="project-autobuyers" style="display: none; color: red;" onclick="buyProject('autobuyers')"><h1>AutoBuyers</h1><div class="project-text">Create machines to buy ingredients for you</div><div style="margin-top: 5px;">(100 bytes)</div></div>
-    <div class="project" id="project-donuts" style="display: none; color: red;" onclick="buyProject('donuts')"><h1>Donuts</h1><div class="project-text">Feed your workers to make them work harder</div><div style="margin-top: 5px;">(300 bytes)</div></div>
-    <div class="project" id="project-boxes" style="display: none; color: red;" onclick="buyProject('boxes')"><center><h1>Boxes</h1><div class="project-text">Wrap your chocolates for a better reputation</div><div style="margin-top: 5px;">(500 bytes)</div></center></div>
-    <div class="project" id="project-darkchocolate" style="display: none; color: red;" onclick="buyProject('darkchocolate')"><center><h1>Dark Chocolate</h1><div class="project-text">Produce a new type of chocolate to grow the business</div><div style="margin-top: 5px;">(1000 bytes)</div></center></div>
+    <div class="project" id="project-marketing" style="display: none; color: red;" onclick="buyProject('marketing')"><h1>Marketing</h1><div class="project-text">View the popularity of your business as a single number!</div><div style="margin-top: 5px;">(150 bytes)</div></div>
+    <div class="project" id="project-donuts" style="display: none; color: red;" onclick="buyProject('donuts')"><h1>Donuts</h1><div class="project-text">Feed your workers to make them work harder</div><div style="margin-top: 5px;">(200 bytes)</div></div>
+    <div class="project" id="project-information" style="display: none; color: red;" onclick="buyProject('information')"><center><h1>Information</h1><div class="project-text">Adds a visual that tells you if you're making money</div><div style="margin-top: 5px;">(300 bytes)</div></center></div>
+    <div class="project" id="project-boxes" style="display: none; color: red;" onclick="buyProject('boxes')"><center><h1>Boxes</h1><div class="project-text">Wrap your chocolates for a better reputation</div><div style="margin-top: 5px;">(400 bytes)</div></center></div>
+    <div class="project" id="project-darkchocolate" style="display: none; color: red;" onclick="buyProject('darkchocolate')"><center><h1>Dark Chocolate</h1><div class="project-text">Produce a new type of chocolate to grow the business</div><div style="margin-top: 5px;">(600 bytes)</div></center></div>
     </div>
     <div class="column" style="display: none;" id="devices">
       <div id="workers" style="margin-left: 5%; margin-top: 5%; margin-bottom: 3px;"></div>

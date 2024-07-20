@@ -41,15 +41,17 @@ rate = 1000;
 powerLevel = 0;
 
 // byte mining upgrade prices
-memoryPrice = 100;
+memoryPrice = 50;
 powerPrice = 75;
 
 // project prices
 workersprice = 75;
 autobuyersprice = 100;
-donutsprice = 300;
-boxesprice = 500;
-darkchocolateprice = 1000;
+marketingprice = 150;
+donutsprice = 200;
+informationprice = 300;
+boxesprice = 400;
+darkchocolateprice = 600;
 
 // marketing variables
 cacaoMarketing = 1;
@@ -60,6 +62,7 @@ boxesMarketing = 0;
 // update function things
 let cycles = 0;
 boughtSomething = false;
+lastSample = 0;
 
 console.clear();
 setInterval(updateItems, 100)
@@ -149,7 +152,7 @@ function clicked(chocolateType) {
   // showSnackbar("snackbar");
 }
 function updateItems() {
-  console.log("JACKSON!!!! FUU")
+  // console.log("JACKSON!!!! FUU")
   cycles += 1;
   bars = milkBars + darkBars;
 
@@ -241,12 +244,14 @@ function updateItems() {
   document.getElementById("buy-cacao").innerHTML = "Buy Cacao ($"+cacaoprice.toFixed(2)+")";
   document.getElementById("buy-sugar").innerHTML = "Buy Sugar ($"+sugarprice.toFixed(2)+")";
   document.getElementById("buy-milk").innerHTML = "Buy Milk ($"+milkprice.toFixed(2)+")";
-
+  
   workersStyle = document.getElementById("project-workers");
   autobuyersStyle = document.getElementById("project-autobuyers");
+  marketingStyle = document.getElementById("project-marketing");
   donutsStyle = document.getElementById("project-donuts");
+  informationStyle = document.getElementById("project-information");
   boxesStyle = document.getElementById("project-boxes");
-  darkchocolateStyle = document.getElementById("project-darkchocolate")
+  darkchocolateStyle = document.getElementById("project-darkchocolate");
   if (bytes >= 10 && workersStyle.style.color == "red") {
     workersStyle.style.display = "block";
     workersStyle.style.color = "black";
@@ -255,15 +260,23 @@ function updateItems() {
     autobuyersStyle.style.display = "block";
     autobuyersStyle.style.color = "black";
   }
-  if (bytes >= 100 && donutsStyle.style.color == "red") {
+  if (bytes >= 100 && marketingStyle.style.color == "red") {
+    marketingStyle.style.display = "block";
+    marketingStyle.style.color = "black";    
+  }
+  if (bytes >= 130 && donutsStyle.style.color == "red") {
     donutsStyle.style.display = "block";
     donutsStyle.style.color = "black";    
+  }
+  if (bytes >= 150 && document.getElementById("marketing-wrapper").style.display == "inline-flex" && informationStyle.style.color == "red") {
+    informationStyle.style.display = "block";
+    informationStyle.style.color = "black";
   }
   if (bytes >= 200 && boxesStyle.style.color == "red") {
     boxesStyle.style.display = "block";
     boxesStyle.style.color = "black";
   }
-  if (bytes >= 150 && darkchocolateStyle.style.color == "red") {
+  if (bytes >= 350 && darkchocolateStyle.style.color == "red") {
     darkchocolateStyle.style.display = "block";
     darkchocolateStyle.style.color = "black";
   }
@@ -293,6 +306,19 @@ function updateItems() {
     autobuyersStyle.style.transform = null;
     autobuyersStyle.style.cursor = "pointer";
   }
+  if (bytes < marketingprice) {
+    marketingStyle.style.filter = 'brightness(0.7)';
+    marketingStyle.style.opacity = 0.6;
+    marketingStyle.style.background = "white";
+    marketingStyle.style.transform = "unset";
+    marketingStyle.style.cursor = "auto";
+  } else {
+    marketingStyle.style.filter = 'brightness(1.0)';
+    marketingStyle.style.opacity = 1.0;
+    marketingStyle.style.background = null;
+    marketingStyle.style.transform = null;
+    marketingStyle.style.cursor = "pointer";
+  }
   if (bytes < donutsprice) {
     donutsStyle.style.filter = 'brightness(0.7)';
     donutsStyle.style.opacity = 0.6;
@@ -305,6 +331,19 @@ function updateItems() {
     donutsStyle.style.background = null;
     donutsStyle.style.transform = null;
     donutsStyle.style.cursor = "pointer";
+  }
+  if (bytes < informationprice) {
+    informationStyle.style.filter = 'brightness(0.7)';
+    informationStyle.style.opacity = 0.6;
+    informationStyle.style.background = "white";
+    informationStyle.style.transform = "unset";
+    informationStyle.style.cursor = "auto";
+  } else {
+    informationStyle.style.filter = 'brightness(1.0)';
+    informationStyle.style.opacity = 1.0;
+    informationStyle.style.background = null;
+    informationStyle.style.transform = null;
+    informationStyle.style.cursor = "pointer";
   }
   if (bytes < boxesprice) {
     boxesStyle.style.filter = 'brightness(0.7)';
@@ -352,7 +391,29 @@ function updateItems() {
     document.getElementById("gameOver").style.visibility = "hidden";
     fadeIn();
   }
+  if (cycles % 10 == 0 || cycles == 1) {
+    currentSample = money
+    console.log(lastSample+"lastSample")
+    console.log(currentSample+"currentSample")
+    if (currentSample > lastSample) {
+      document.getElementById("currentMoneyState").innerHTML = "You are making money from this chocolate";
+      document.getElementById("currentMoneyState").style.color = "lightgreen";
+    } else if (currentSample < lastSample) {
+      document.getElementById("currentMoneyState").innerHTML = "You are losing money from this chocolate";
+      document.getElementById("currentMoneyState").style.color = "red";
+    } else {
+      document.getElementById("currentMoneyState").innerHTML = "You are making no money from this chocolate";
+      document.getElementById("currentMoneyState").style.color = "lightgrey";
+    }
+    lastSample = currentSample;
+
+    console.log("______")
+  }
 }
+
+
+
+
 function changeSeller(ingredient, price, markChange) {
   if (event.target.classList.contains("active")) {
     markChange = 0;
@@ -367,10 +428,7 @@ function changeSeller(ingredient, price, markChange) {
   window[ingredient+"price"] = price;
   window[ingredient+"Marketing"] = 1 + markChange;
   document.getElementById("sellerBubble").style.visibility = 'hidden';
-
-
 }
-function runEvents() {}
 
 function hireWorker() {
   if (money >= workerPrice) {
@@ -415,17 +473,30 @@ document.addEventListener("DOMContentLoaded", function() {
           console.log(":")
         }
     }, 600000)
+    var modal = document.getElementById("modal");
+    var span = document.getElementsByClassName("close")[0];
+    document.getElementById("information").onclick = function() {
+      modal.style.display = "block";
+    }
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
 });
 
 function increaseMemory() {
     if (money >= memoryPrice) {
-        max += 1000;
+        max += 100;
         const para = document.createElement("div");
         para.className = "chip";
         const element = document.getElementById("chips");
         document.getElementById("chips").appendChild(para);
         money -= memoryPrice;
-        memoryPrice *= 1.5;
+        memoryPrice += 50;
         document.getElementById("powerButton").disabled = false;
         document.getElementById("memoryButton").innerHTML = "Increase Memory ($"+memoryPrice.toFixed(2)+")";
         document.getElementById("memory").innerHTML = bytes + "/" + max;
@@ -441,7 +512,7 @@ function increaseMemory() {
 }
 function increasePower() {
     if (money >= powerPrice) {
-        rate -= 100;
+        rate -= 150;
         money -= powerPrice;
         powerPrice *= 1.5;
         powerLevel += 1;
@@ -538,6 +609,9 @@ function buyProject(type) {
         if (milk == 0 && document.getElementById("milkAutoBuyers").childNodes[1].checked) { buyItem("milk") }
       }, 200)
     }
+    if (type == "marketing") {
+      document.getElementById("marketing-wrapper").style.display = "inline-flex";
+    }
     if (type == "donuts") {
       workerSpeed -= 200;
     }
@@ -559,6 +633,10 @@ function buyProject(type) {
           }
         }
       }, 200)
+    }
+    if (type == "information") {
+      document.getElementById("informationBar").style.display = "block";
+      document.getElementById("currentMoneyState").style.display = "block";
     }
     if (type == "darkchocolate") {
       document.getElementById("dark-chocolate").style.display = "inline-block";
@@ -585,7 +663,7 @@ function changePay(workerType, increment) {
   event.stopPropagation();  
 }
 document.addEventListener("keypress", function(event) {
-  if (event.code == "BracketRight") {
+  if (event.code == "BracketRight//") {
     document.getElementById("debug").style.width = "100%";
     document.getElementById("bars-debug").innerHTML = "bars: " + bars;
     document.getElementById("money-debug").innerHTML = "money: " + money;
@@ -635,16 +713,13 @@ function sellItems(pricePerBar, chocolateType) {
 
     
     if (chocolateType == "milk") {
-      console.log(chocolateType)
       numCustomers = calculateCustomerDemand(pricePerBar);
     } else if (chocolateType == "dark") {
       numCustomers = calculateCustomerDemand(pricePerBar/1.5);
     } else {
       console.error("yep")
     }
-    console.log("numCustomers: " + numCustomers)
     let barsSold = Math.min(bars, numCustomers); // Sell only as many bars as available
-    console.log("barsSold: " + barsSold)
     if (barsSold === 0 || numCustomers === 0) {
         return;
     }
@@ -653,7 +728,6 @@ function sellItems(pricePerBar, chocolateType) {
     
     
     window[chocolateType+"Bars"] -= barsSold
-    console.log("chocolateType+'Bars' = " + window[chocolateType+"Bars"])
 }
 
 function getRandomColor() {

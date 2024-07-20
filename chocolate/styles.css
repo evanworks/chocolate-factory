@@ -88,7 +88,7 @@ body {
   text-align: center;
   margin-right: 5px;
 }
-#bars-wrapper {
+.bars-wrapper {
   display: inline-flex;
   border: 3px solid #502b27;
   padding: 10px;
@@ -126,6 +126,9 @@ body {
 }
 #production {
   font-family: Sono;
+}
+#project {
+  overflow: scroll;
 }
 .map {
   width: 90%;
@@ -259,7 +262,6 @@ h1 {
   padding: 5px;
   background: rgba(250, 250, 250, 0.8);
   border-radius: 7px;
-  z-index: 999999999999;
 }
 .worker {
   width: 20px;
@@ -553,4 +555,63 @@ input:checked + .slider:before {
   background: #a5a2a1;  
   border: 1px solid #797574;
   color: #797574;
+}
+
+#information {
+  position: absolute;
+  top: 14px;
+  left: 25%;
+  font-family: Kameron;
+  color: white;
+  border: 2px solid #502b27;
+  padding: 4px;
+  background: #6b3e2a;
+  cursor: pointer;
+}
+#information:hover {
+  color: lightgrey;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.modal-content {
+  position: relative;
+  background: #a19b9a;
+  border: 2px solid grey;
+  margin: auto;
+  padding: 0;
+  width: 60%;
+  height: 400px;
+  padding-top: 5px;
+}
+.close {
+  color: dimgrey;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+.close:hover, .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal-body {padding: 2px 16px;}
+.information-modal {
+  border: 1px solid black;
+  background: #6b3e2a;
+  color: white;
+  width: 180px;
+  padding: 4px;
+  text-align: center;
 }
