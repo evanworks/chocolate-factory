@@ -11,6 +11,15 @@ _New update every week!_
 
 ## Versions
 
+### ALPHA v0.10.1
+
+**NOTES:**
+I am very smart.
+
+**BUG FIXES:**
+* Fixed the version name being wrong
+
+
 ### ALPHA v0.10.0 (-/-/24)
 
 **NOTES:**
