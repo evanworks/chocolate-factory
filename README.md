@@ -18,7 +18,7 @@ I am very smart.
 
 **BUG FIXES:**
 * Fixed the version name being wrong
-
+* Removed unused and untested feature
 
 ### ALPHA v0.10.0 (-/-/24)
 
