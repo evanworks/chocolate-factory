@@ -391,6 +391,21 @@ function updateItems() {
     document.getElementById("gameOver").style.visibility = "hidden";
     fadeIn();
   }
+
+  displayMarketing = marketing - 1.00;
+  if (displayMarketing > 0) {
+    document.getElementById("marketing").innerHTML = "+" + displayMarketing.toFixed(2) + "";
+    document.getElementById("marketing").style.color = "lightgreen";
+  } else if (displayMarketing < 0) {
+    document.getElementById("marketing").innerHTML = displayMarketing.toFixed(2) + "";
+    document.getElementById("marketing").style.color = "salmon";
+  } else {
+    document.getElementById("marketing").innerHTML = "+" + displayMarketing.toFixed(2) + "";
+    document.getElementById("marketing").style.color = "lightgrey";
+  }
+  
+
+
   if (cycles % 10 == 0 || cycles == 1) {
     currentSample = money
     console.log(lastSample+"lastSample")
@@ -406,7 +421,6 @@ function updateItems() {
       document.getElementById("currentMoneyState").style.color = "lightgrey";
     }
     lastSample = currentSample;
-
     console.log("______")
   }
 }
