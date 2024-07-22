@@ -11,7 +11,22 @@ _New update every week!_
 
 ## Versions
 
-### ALPHA v0.10.1
+### ALPHA v0.10.2 (7/22/24)
+
+**NOTES:**
+Man, I rushed the last update
+
+**CHANGES:**
+* Adjusted how fast byte mining happens after upgrading power
+
+**BUG FIXES:**
+* Fixed bug where the price of memory said $100 at the start
+* Fixed game over screen not showing and the background going black (that is a pretty cool effect though)
+* Fixed bug where you couldn't buy power
+* Fixed the weird byte mining power thing
+* Gaining bytes now goes at a steady rate (oh wait this is actually imposible)
+
+### ALPHA v0.10.1 (7/20/24)
 
 **NOTES:**
 I am very smart. 
@@ -20,7 +35,7 @@ I am very smart.
 * Fixed the version name being wrong
 * Removed unused and untested feature
 
-### ALPHA v0.10.0 (-/-/24)
+### ALPHA v0.10.0 (7/20/24)
 
 **NOTES:**
 Oops. Looks like I forgot about Chocolate Factory for a month or so. The next update: A second information upgrade and a fix to the weird byte mining power thing
