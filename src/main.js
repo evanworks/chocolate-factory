@@ -1,24 +1,25 @@
 // main variables
-bars = 0; 
-money = 0; 
+let bars = 0; 
+let money = 0; 
+let popularity = 1;
 bytes = 0;
 marketing = 1;
 factoryName = "";
 
 // chocolate bar amount variables
-milkBars = 0;
-darkBars = 0;
+/*milkBars = 0;
+darkBars = 0;*/
 
 // initial chocolate prices
-milkChocolatePrice = 4;
-darkChocolatePrice = 5;
+/*milkChocolatePrice = 4;
+darkChocolatePrice = 5;*/
 // XTRACHOCOLATE more space for more chocolates
 
 
 // ingredient amounts
-cacao = 15;
+/*cacao = 15;
 sugar = 15;
-milk = 15; 
+milk = 15; */
 
 // ingredient prices
 cacaoprice = 10;
@@ -39,7 +40,7 @@ isDark = false;
 max = 0;
 rate = 1000;
 powerLevel = 0;
-let bytemine = setInterval(function() {console.log('oh no')}, 100);
+//let bytemine = setInterval(function() {console.log('oh no')}, 100);
 
 // byte mining upgrade prices
 memoryPrice = 50;
@@ -64,29 +65,9 @@ boxesMarketing = 0;
 let cycles = 0;
 boughtSomething = false;
 lastSample = 0;
+ 
+//setInterval(updateItems, 100)
 
-console.clear();
-setInterval(updateItems, 100)
-
-function buyItem(item) {
-  if (money >= window[item+"price"]) {
-    window[item] += 15;
-    money -= window[item+"price"];
-    updateItems();
-    boughtSomething = true;
-    document.getElementById("buyBubble").style.display = "none";
-    document.getElementById("buyBubble").style.visibility = "hidden";
-  } else {
-    alert("not enough money!")
-  }
-  if (cacao >= 1 && sugar >= 1 && milk >= 1) {
-    document.getElementById("milk-chocolate").disabled = false;
-  }
-  if (cacao >= 2 && sugar >= 1) {
-    document.getElementById("dark-chocolate").disabled = false;
-  }
-  // XTRACHOCOLATE add another if
-}
 z = 0;
 function fadeIn() {
   z += 0.01;
@@ -99,59 +80,6 @@ function fadeIn() {
   }
 }
 
-function changePrice(chocolateType, increment) {
-  if (chocolateType == "milk" && milkChocolatePrice > 0.1) {
-    if (increment == 1) {
-      milkChocolatePrice += 0.1;
-    } else {
-      milkChocolatePrice -= 0.1;
-    }
-    document.getElementById("milkChocolatePrice").innerHTML = milkChocolatePrice.toFixed(2);
-    document.getElementById("changePriceBubble").style.display = "none";
-
-  } else if (chocolateType == "dark" && darkChocolatePrice > 0.1) {
-    if (increment == 1) {
-      darkChocolatePrice += 0.1;
-    } else {
-      darkChocolatePrice -= 0.1;
-    }
-    document.getElementById("darkChocolatePrice").innerHTML = darkChocolatePrice.toFixed(2);
-  } // XTRACHOCOLATE add more chocolates here with an else if
-  event.stopPropagation();
-}
-
-function clicked(chocolateType) {
-  if (chocolateType == "milk") {
-    if (cacao > 0 && sugar > 0 && milk > 0 && milkChocolatePrice > 0) {
-      cacao -= 1;
-      sugar -= 1;
-      milk -= 1;
-      milkBars += 1;
-      document.getElementById("clickBubble").style.display = "none";
-      sellItems(milkChocolatePrice, "milk")
-    } else {
-      document.getElementById("buyBubble").style.display = "block";
-      document.getElementById("milk-chocolate").disabled = true;
-    }
-  } else if (chocolateType == "dark") {
-    if (cacao > 1 && sugar > 1 && darkChocolatePrice > 0) {
-      cacao -= 2;
-      sugar -= 1;
-      darkBars += 1;
-      sellItems(darkChocolatePrice, "dark")
-      isDark = true;
-    } else {
-      document.getElementById("buyBubble").style.display = "block";
-      document.getElementById("dark-chocolate").disabled = true;
-    }
-  } // XTRACHOCOLATE add more chocolates here with an else if
-  updateItems();
-  
-  if (money < 0) {
-    window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-  }
-  // showSnackbar("snackbar");
-}
 function updateItems() {
   // console.log("JACKSON!!!! FUU")
   cycles += 1;
@@ -167,6 +95,7 @@ function updateItems() {
   } else {
     document.getElementById("money").innerHTML = money.toFixed(0);
   }
+
   if (money >= 120) {
     document.getElementById("project").style.display = "block";
     document.getElementById("project-locked").style.display = "none";
@@ -187,7 +116,7 @@ function updateItems() {
 
   document.querySelector(".tooltipcacaoMilk").innerHTML = "1 Cacao (" + cacao + ")";
 
-  if (cacao == 0) {
+  /*if (cacao == 0) {
     document.querySelector(".tooltipcacaoMilk").style.color = "red";
   } else {
     document.querySelector(".tooltipcacaoMilk").style.color = "lightgreen";
@@ -222,7 +151,7 @@ function updateItems() {
     document.querySelector(".tooltipsugarDark").style.color = "red";
   } else {
     document.querySelector(".tooltipsugarDark").style.color = "lightgreen";
-  }
+  }*/
   
   if (money >= powerPrice && memoryPrice > 50) {
     document.getElementById("powerButton").disabled = false;
@@ -430,21 +359,7 @@ function updateItems() {
 
 
 
-function changeSeller(ingredient, price, markChange) {
-  if (event.target.classList.contains("active")) {
-    markChange = 0;
-  }
-  event.target.classList.add('active');
-  const siblings = Array.from(event.target.parentNode.children);
-    siblings.forEach(sibling => {
-      if (sibling !== event.target) {
-        sibling.classList.remove('active');
-      }
-  });
-  window[ingredient+"price"] = price;
-  window[ingredient+"Marketing"] = 1 + markChange;
-  document.getElementById("sellerBubble").style.visibility = 'hidden';
-}
+
 
 function hireWorker() {
   if (money >= workerPrice) {
@@ -463,6 +378,9 @@ function hireWorker() {
 
 }
 document.addEventListener("DOMContentLoaded", function() {
+  createChocolate([milkChocolate]);
+
+
     setInterval(function() {
         for (let i = 0; i < workers; i++) {
           clicked("milk")
@@ -503,190 +421,12 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }
 });
-
-function increaseMemory() {
-    if (money >= memoryPrice) {
-        max += 100;
-        const para = document.createElement("div");
-        para.className = "chip";
-        const element = document.getElementById("chips");
-        document.getElementById("chips").appendChild(para);
-        money -= memoryPrice;
-        memoryPrice += 50;
-        document.getElementById("powerButton").disabled = false;
-        document.getElementById("memoryButton").innerHTML = "Increase Memory ($"+memoryPrice.toFixed(2)+")";
-        document.getElementById("memory").innerHTML = bytes + "/" + max;
-        document.getElementById("bytesBubble").style.display = "none";
-        document.getElementById("memoryBubble").style.display = "none";
-        document.getElementById("powerBubble").style.display = "none";
-        document.getElementById("bytesBubble").style.visibility = "hidden";
-        document.getElementById("memoryBubble").style.visibility = "hidden";
-        document.getElementById("powerBubble").style.visibility = "hidden";
-    } else {
-        alert("Not enough money!!!!!!!!!!!!!!!!!!!!!11")
-    }
-}
 let autoclicker = setInterval(function() {
-  console.log('wybdeawydiauydwiuyawiudywai')
+  //console.log('wybdeawydiauydwiuyawiudywai')
 }, rate);
-function increasePower() {
-    if (money >= powerPrice) {
-        rate -= 100;
-        money -= powerPrice;
-        powerPrice *= 1.5;
-        powerLevel += 1;
-        document.getElementById("powerButton").innerHTML = "Increase Power ($"+powerPrice.toFixed(2)+")";
-        setInterval(function() {
-          var chips = document.querySelectorAll(".chip");
-          if (powerLevel == 1) {
-            chips.forEach(chip => {
-              chip.style.background = "#228526";
-              chip.style.height = "19px";
-              chip.style.width = "19px";
-            });
-          } else if (powerLevel == 2) {
-            chips.forEach(chip => {
-              chip.style.background = "#2fed36";
-              chip.style.height = "18px";
-              chip.style.width = "18px";
-            });    
-          } else if (powerLevel == 3) {
-            chips.forEach(chip => {
-              chip.style.background = "#25b5e6";
-              chip.style.height = "17px";
-              chip.style.width = "17px";
-            });    
-          } else if (powerLevel == 4) {
-            chips.forEach(chip => {
-              chip.style.background = "#233ab0";
-              chip.style.height = "17px";
-              chip.style.width = "17px";
-            });  
-          } else if (powerLevel == 5) {
-            chips.forEach(chip => {
-              chip.style.background = "#41ab9d";
-              chip.style.height = "21px";
-              chip.style.width = "21px";
-            });  
-          } else if (powerLevel == 6) {
-            chips.forEach(chip => {
-              chip.style.background = "#eb8d13";
-              chip.style.height = "22px";
-              chip.style.width = "22px";
-            });  
-          } else if (powerLevel == 7) {
-            chips.forEach(chip => {
-              chip.style.background = "#f97ce4";
-              chip.style.height = "23px";
-              chip.style.width = "23px";
-            });  
-          } else if (powerLevel == 8) {
-            chips.forEach(chip => {
-              chip.style.background = "#a2375b";
-              chip.style.height = "23px";
-              chip.style.width = "23px";
-            });  
-          } else if (powerLevel == 9) {
-            chips.forEach(chip => {
-              chip.style.background = "#ccc5a1";
-              chip.style.height = "20px";
-              chip.style.width = "20px";
-            });  
-          } else if (powerLevel == 10) {
-            chips.forEach(chip => {
-              chip.style.background = "radial-gradient(#67b26f, #4ca2cd)";
-              chip.style.height = "25px";
-              chip.style.width = "25px";
-              document.getElementById("powerButton").style.display = "none";
-            });  
-          }
-        }, 200)
-        clearInterval(autoclicker)
-        clearInterval(autoclicker)
-        autoclicker = setInterval(function() {
-          if (max != 0 && bytes < max) {
-            bytes += 1;
-            document.getElementById("memory").innerHTML = bytes + "/" + max;
-          }
-        }, rate)
-    } else {
-        alert("Not enough money!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11")
-    }
-}
-function buyProject(type) {
-  if (bytes >= window[type+"price"]) {
-    event.currentTarget.style.display = "none";
-    event.currentTarget.style.color = "black";
-    bytes -= window[type+"price"];
-    if (type == "workers") {
-        document.getElementById("devices").style.display = "block";
-        document.getElementById("devices-locked").style.display = "none";
-    }
-    if (type == "autobuyers") {
-      document.getElementById("cacaoAutoBuyers").style.display = "inline-block";
-      document.getElementById("sugarAutoBuyers").style.display = "inline-block";
-      document.getElementById("milkAutoBuyers").style.display = "inline-block";
-      setInterval(function() {
-        if (cacao == 0 && document.getElementById("cacaoAutoBuyers").childNodes[1].checked) { buyItem("cacao") }
-        if (sugar == 0 && document.getElementById("sugarAutoBuyers").childNodes[1].checked) { buyItem("sugar") }
-        if (milk == 0 && document.getElementById("milkAutoBuyers").childNodes[1].checked) { buyItem("milk") }
-      }, 200)
-    }
-    if (type == "marketing") {
-      document.getElementById("marketing-wrapper").style.display = "inline-flex";
-    }
-    if (type == "donuts") {
-      workerSpeed -= 200;
-    }
-    if (type == "boxes" && document.getElementById("devices").style.display == "block") {
-      document.getElementById("boxesInfo").style.display = "block";
-      document.getElementById("boxesToggle").style.display = "block";
-      setInterval(function() {
-        if (document.getElementById("boxesToggle").childNodes[1].checked) {
-          document.getElementById("boxesInfo").innerHTML = "-$2 | <span style='color: lightgreen'>+0.8</span>";
-          boxesMarketing = 0.8;
-          marketing -= -boxesMarketing;
-          isBoxes = true;
-        } else {
-          document.getElementById("boxesInfo").innerHTML = "<span style='color: darkgrey'>-$0 | +0.0</span>";
-          if (boxesMarketing == 0.8) {
-            marketing -= boxesMarketing;
-            isBoxes = false;
-            boxesMarketing = 1;
-          }
-        }
-      }, 200)
-    }
-    if (type == "information") {
-      document.getElementById("informationBar").style.display = "block";
-      document.getElementById("currentMoneyState").style.display = "block";
-    }
-    if (type == "darkchocolate") {
-      document.getElementById("dark-chocolate").style.display = "inline-block";
-      isDark = true;
-    }
-  } else {
-    alert("u dont have enough bytes :((((");
-  }
-}
-function changePay(workerType, increment) {
-  if (workerType == "worker" && workerPay != 0) {
-    if (increment == 1) {
-      workerPay -= -0.1;
-    } else if (increment == 0 && workerPay > 0.1) {
-      workerPay -= 0.1;
-    }
-    if (workerPay > 0.1) {
-      workerPay = workerPay.toFixed(2);
-    }
-    document.getElementById("workerPay").innerHTML = "$"+workerPay+"/h";
-    workerSpeed = 750 - (workerPay * 50)
-    workerSpeed = workerSpeed.toFixed(1);
-  }
-  event.stopPropagation();  
-}
+
 document.addEventListener("keypress", function(event) {
-  if (event.code == "BracketRight//") {
+  if (event.code == "BracketRight") {
     document.getElementById("debug").style.width = "100%";
     document.getElementById("bars-debug").innerHTML = "bars: " + bars;
     document.getElementById("money-debug").innerHTML = "money: " + money;
@@ -720,38 +460,6 @@ function adjustWidth() {
   input.style.width = mirror.offsetWidth + 'px';
 }
 
-
-function calculateCustomerDemand(pricePerBar) {
-    const minCustomers = 1; // Minimum number of customers
-    const maxCustomers = Math.round(10 - pricePerBar * 2);
-    const demandFactor = 2/pricePerBar * marketing;
-
-    const adjustedMinCustomers = Math.round(minCustomers * demandFactor/2);
-    const adjustedMaxCustomers = Math.round(maxCustomers * demandFactor/2);
-
-    return Math.floor(Math.random() * (adjustedMaxCustomers - adjustedMinCustomers + 1)) + adjustedMinCustomers;
-}
-
-function sellItems(pricePerBar, chocolateType) {
-
-    
-    if (chocolateType == "milk") {
-      numCustomers = calculateCustomerDemand(pricePerBar);
-    } else if (chocolateType == "dark") {
-      numCustomers = calculateCustomerDemand(pricePerBar/1.5);
-    } else {
-      console.error("yep")
-    }
-    let barsSold = Math.min(bars, numCustomers); // Sell only as many bars as available
-    if (barsSold === 0 || numCustomers === 0) {
-        return;
-    }
-    const revenue = barsSold * pricePerBar;
-    money += parseInt(revenue.toFixed())
-    
-    
-    window[chocolateType+"Bars"] -= barsSold
-}
 
 function getRandomColor() {
   var red = Math.floor(Math.random() * 256);

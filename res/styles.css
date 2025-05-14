@@ -13,7 +13,7 @@ body {
   user-select: none;
   font-family: Kameron;
 } 
-#milk-chocolate {
+#milkChocolate {
   width: 75px;
   height: 75px;
   background: #6b3e2a;
@@ -614,4 +614,15 @@ input:checked + .slider:before {
   width: 180px;
   padding: 4px;
   text-align: center;
+}
+
+#simulationbody {
+  position: fixed;
+  top: 2px;
+  left: 2px;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid white;
+  padding: 2px;
+  color: white;
+  z-index: 10000000;
 }
