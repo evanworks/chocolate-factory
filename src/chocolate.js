@@ -1,3 +1,4 @@
+// draws a chocolate (button and tooltip)
 function createChocolate(valid) {
   const parent = document.getElementById("chocolate-types");
   parent.innerHTML = "";
@@ -31,20 +32,16 @@ function createChocolate(valid) {
       unnamedSpan.innerHTML += amount+" "+ingredient.name+" ("+ingredient.correspondingItem+")<br/>";
 
       randomSpans.appendChild(unnamedSpan);
-
-      
     }
-
     tooltip.appendChild(randomSpans)
     wrapper.appendChild(tooltip);
     parent.appendChild(wrapper);
 
     updateTooltips(wrapper)
   }
-
-  
 }
-// takes in an html element that is specifically a chocolate button
+
+// updates text on tooltips, takes in an html element that is specifically a chocolate button
 function updateTooltips(parent) {
   let childs = parent.children[0].children[5].children;
   let chocolate = eval(parent.id);
@@ -62,12 +59,12 @@ function updateTooltips(parent) {
 function changePrice(chocolate, increment) {
   // please ignore the ugly floating point errors here
   // p.s. i hate js
-  if (increment == 1) {
+  if (increment === 1) {
     chocolate.priceNum += 0.1;
-    marketing += 0.01;
+    marketing -= 0.05;
   } else {
     chocolate.priceNum -= 0.1;
-    marketing -= 0.01;
+    marketing += 0.05;
   }
   document.getElementById(chocolate.priceId).innerHTML = chocolate.priceNum.toFixed(2);
 }
@@ -93,6 +90,6 @@ function clicked(chocolate) {
     document.getElementById("clickBubble").style.display = "none";
   }
   updateTooltips(document.getElementById(chocolate.file));
-
+  updateIngredients();
   updateMains();
 }

@@ -1,29 +1,13 @@
-//..............................................................
-//.IIIII..NNNNN......NNNN......GGGGGGGGG......RRRRRRRRRRRRR.....
-//.IIIII..NNNNNN.....NNNN.....GGGGGGGGGGGG....RRRRRRRRRRRRRR....
-//.IIIII..NNNNNN.....NNNN...GGGGGGGGGGGGGG....RRRRRRRRRRRRRRR...
-//.IIIII..NNNNNNN....NNNN...GGGGGGGGGGGGGGG...RRRRRRRRRRRRRRR...
-//.IIIII..NNNNNNN....NNNN..NGGGGGG...GGGGGG...RRRRR.....RRRRR...
-//.IIIII..NNNNNNNN...NNNN..NGGGGG.....GGGGGG..RRRRR.....RRRRR...
-//.IIIII..NNNNNNNNN..NNNN..NGGGG.......GGGG...RRRRR.....RRRRR...
-//.IIIII..NNNNNNNNN..NNNN..NGGGG..............RRRRR...RRRRRRR...
-//.IIIII..NNNNNNNNNN.NNNN.NNGGG....GGGGGGGGG..RRRRRRRRRRRRRRR...
-//.IIIII..NNNNNNNNNN.NNNN.NNGGG....GGGGGGGGG..RRRRRRRRRRRRRR....
-//.IIIII..NNNNN.NNNNNNNNN.NNGGGG...GGGGGGGGG..RRRRRRRRRRRRRR....
-//.IIIII..NNNNN.NNNNNNNNN..NGGGG...GGGGGGGGG..RRRRRRRRRRRRRRR...
-//.IIIII..NNNNN..NNNNNNNN..NGGGG.......GGGGG..RRRRR.....RRRRR...
-//.IIIII..NNNNN..NNNNNNNN..NGGGGG.....GGGGGG..RRRRR.....RRRRR...
-//.IIIII..NNNNN...NNNNNNN..NGGGGGGG.GGGGGGGG..RRRRR.....RRRRR...
-//.IIIII..NNNNN....NNNNNN...GGGGGGGGGGGGGGGG..RRRRR.....RRRRR...
-//.IIIII..NNNNN....NNNNNN....GGGGGGGGGGGGGGG..RRRRR.....RRRRR...
-//.IIIII..NNNNN.....NNNNN.....GGGGGGGGGGGGGG..RRRRR.....RRRRRR..
-//..............................GGGGGG..........................
-//..............................................................
-let cacaoAmount = 150;
+let cacaoAmount = 10;
+let cacaoCompany = 0;
 const cacao = {
   get correspondingItem() {return cacaoAmount;},
   set correspondingItem(val) {cacaoAmount = val;},
-  
+
+  get company() {return this.companies[cacaoCompany];},
+  set company(val) {cacaoCompany = val;},
+
+  basePrice: 10,
   price: 10,
 
   file: 'cacao',
@@ -37,11 +21,16 @@ const cacao = {
   ]
 }
 
-let sugarAmount = 150;
+let sugarAmount = 10;
+let sugarCompany = 0;
 const sugar = {
   get correspondingItem() {return sugarAmount;},
   set correspondingItem(val) {sugarAmount = val;},
-  
+
+  get company() {return this.companies[sugarCompany];},
+  set company(val) {sugarCompany = val;},
+
+  basePrice: 5,
   price: 5,
 
   file: 'sugar',
@@ -49,17 +38,22 @@ const sugar = {
   flexPlural: 'sugar',
 
   companies: [
-    ["K&F Sugar Solutions", [0, 0]], // name, [price offset, marketing offset]
+    ["K&F Sugar Solutions", [0, 0]],
     ["Old Mill Sugar", [1, 0.2]],
-    ["SugarSmith's", [-2, -0.2]], // assuming sugar has somewhat the same quality no matter where you buy it from
+    ["SugarSmith's", [-2, -0.2]], // assuming sugar has somewhat the same quality no matter where you buy it from cuz its just sugar
   ]
 }
 
-let milkAmount = 150;
+let milkAmount = 10;
+let milkCompany = 0;
 const milk = {
   get correspondingItem() {return milkAmount;},
   set correspondingItem(val) {milkAmount = val;},
-  
+
+  get company() {return this.companies[milkCompany];},
+  set company(val) {milkCompany = val;},
+
+  basePrice: 8,
   price: 8,
 
   file: 'milk',
@@ -70,37 +64,16 @@ const milk = {
     ["Milky Meadows", [0, 0]], // moo moo meadows
     ["PurePastures Dairy Co.", [1, 0.1]],
     ["FarmFresh", [-2, -0.2]], // HOW FRESH ARE YOU NOW HUH
-    ["Milky Way Farms", [4, 0.6]] // look ik its cheesy whatever 
+    ["Milky Way Farms", [4, 0.6]] // look ik the name's cheesy whatever 
   ]
 }
 
-//............................................................................................
-//......CCCCCCCC.....HHHHH......HHHHH......OOOOOOOOO.........CCCCCCCCC.........OOOOOOOOO......
-//....CCCCCCCCCCCC...HHHHH......HHHHH....OOOOOOOOOOOO.......CCCCCCCCCCC......OOOOOOOOOOOO.....
-//...CCCCCCCCCCCCCC..HHHHH......HHHHH...OOOOOOOOOOOOOO.....CCCCCCCCCCCCC....OOOOOOOOOOOOOO....
-//...CCCCCCCCCCCCCC..HHHHH......HHHHH...OOOOOOOOOOOOOOO...CCCCCCCCCCCCCCC...OOOOOOOOOOOOOOO...
-//..CCCCCCC...CCCCCC.HHHHH......HHHHH..OOOOOO....OOOOOO..CCCCCCC...CCCCCC..OOOOOO....OOOOOO...
-//..CCCCCC.....CCCCC.HHHHH......HHHHH..OOOOO......OOOOOO.CCCCCC.....CCCCC..OOOOO......OOOOOO..
-//..CCCCC......CCCCC.HHHHH......HHHHH..OOOOO.......OOOOO.CCCCC......CCCCC..OOOOO.......OOOOO..
-//..CCCCC............HHHHHHHHHHHHHHHH.OOOOO........OOOOO.CCCCC............OOOOO........OOOOO..
-//..CCCCC............HHHHHHHHHHHHHHHH.OOOOO........OOOOO.CCCCC............OOOOO........OOOOO..
-//.CCCCC.............HHHHHHHHHHHHHHHH.OOOOO........OOOOO.CCCCC............OOOOO........OOOOO..
-//..CCCCC............HHHHHHHHHHHHHHHH.OOOOO........OOOOO.CCCCC............OOOOO........OOOOO..
-//..CCCCC......CCCCC.HHHHH......HHHHH..OOOOO.......OOOOO.CCCCC......CCCCC..OOOOO.......OOOOO..
-//..CCCCC......CCCCC.HHHHH......HHHHH..OOOOO......OOOOOO.CCCCC......CCCCC..OOOOO......OOOOOO..
-//..CCCCCC....CCCCCC.HHHHH......HHHHH..OOOOOO.....OOOOOO.CCCCCC....CCCCCC..OOOOOO.....OOOOOO..
-//..CCCCCCCCCCCCCCC..HHHHH......HHHHH..OOOOOOOOOOOOOOOO...CCCCCCCCCCCCCCC..OOOOOOOOOOOOOOOO...
-//...CCCCCCCCCCCCCC..HHHHH......HHHHH...OOOOOOOOOOOOOO....CCCCCCCCCCCCCC....OOOOOOOOOOOOOO....
-//....CCCCCCCCCCCC...HHHHH......HHHHH....OOOOOOOOOOOOO.....CCCCCCCCCCCC......OOOOOOOOOOOOO....
-//.....CCCCCCCCCC....HHHHH......HHHHH.....OOOOOOOOOOO.......CCCCCCCCCC........OOOOOOOOOOO.....
-//.......CCCCCC.............................OOOOOOO...........CCCCCCC...........OOOOOOO.......
-//............................................................................................
-
+let unlockedIngredients = [cacao, sugar, milk];
 
 
 
 let milkChocolateAmount = 0;
-let milkChocolatePrice = 4;
+let milkChocolatePrice = 3;
 const milkChocolate = {
   get correspondingItem() {return milkChocolateAmount;},
   set correspondingItem(val) {milkChocolateAmount = val;},

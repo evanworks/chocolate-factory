@@ -1,10 +1,10 @@
 // main variables
 let bars = 0; 
-let money = 0; 
+let money = 21;
 let popularity = 1;
-bytes = 0;
-marketing = 1;
-factoryName = "";
+let bytes = 0;
+let marketing = 1;
+let factoryName = "";
 
 // chocolate bar amount variables
 /*milkBars = 0;
@@ -22,7 +22,7 @@ sugar = 15;
 milk = 15; */
 
 // ingredient prices
-cacaoprice = 10;
+let cacaoprice = 10;
 sugarprice = 5;
 milkprice = 8;
 
@@ -100,7 +100,7 @@ function updateItems() {
     document.getElementById("project").style.display = "block";
     document.getElementById("project-locked").style.display = "none";
     document.getElementById("devices-locked").innerHTML = '<div class="locked" style="margin-top: 100%; font-size: 20px;">Unlocked at:</div><div class="locked" style="font-size: 40px;">75<span style="font-size: 20px;"> bytes</span></div>'
-    if (bytes == 0) {
+    if (bytes === 0) {
       document.getElementById("bytesBubble").style.display = "block";
       document.getElementById("memoryBubble").style.display = "block";
       document.getElementById("powerBubble").style.display = "block";
@@ -378,7 +378,8 @@ function hireWorker() {
 
 }
 document.addEventListener("DOMContentLoaded", function() {
-  createChocolate([milkChocolate]);
+  createChocolate(unlockedChocolates);
+  createIngredients(unlockedIngredients);
 
 
     setInterval(function() {

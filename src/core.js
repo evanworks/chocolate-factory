@@ -10,7 +10,7 @@ function updateMains() {
 
   let parsedBars = 0;
 
-  for (i in unlockedChocolates) {
+  for (let i in unlockedChocolates) {
     parsedBars += unlockedChocolates[i].correspondingItem;
   }
   
@@ -22,14 +22,15 @@ function updateMains() {
     parsedBars = bars.toExponential().replace("e+", "x10^");
   }
 
-  moneyEl.innerHTML = parsedMoney;
-  barsEl.innerHTML = parsedBars;  
+  moneyEl.innerHTML = parsedMoney.toFixed(2);
+  barsEl.innerHTML = parsedBars;
 }
 
 function handleCustomers() {
   t += 1;
   const sim = document.getElementById("simulation");
-  for (let i = 0; i < popularity * 10 - 9; i++) {
+  // dont touch this college calclus
+  for (let i = 0; i < (marketing/2) * 10 - 2.5; i++) {
     if (Math.random() * marketing > 0.8 * (marketing / 2)) {
       customersInStore++;
       let sigma = 0.6 - marketing / 10; // idk why this is called sigma dont ask
@@ -50,18 +51,24 @@ function handleCustomers() {
 
   sim.innerHTML = "t = " + t;
   sim.innerHTML += "<br/>Marketing: " + marketing;
+  sim.innerHTML += "<br/>Popularity: " + popularity;
   sim.innerHTML += "<br/>Customers in store: " + customersInStore;
   sim.innerHTML += "<br/>Customers buying: " + customersBuying;
 }
+document.addEventListener("keypress", (e) => {
+  if (e.key === "[") {
+    document.getElementById("simulationbody").style.display = document.getElementById("simulationbody").style.display === "none" ? "block" : "none";
+  }
+});
 function customerBuyBar() {
   // customer chose which type of thingie to buy
   let boughtItem = false;
-  for (i in unlockedChocolates) {
+  for (let i in unlockedChocolates) {
     if (unlockedChocolates[i].correspondingItem > 0) {
-      if (Math.random() > 0.6 - marketing / 10) {
+      if (Math.random() > 0.6 - marketing / 10) { // fun maths
         boughtItem = unlockedChocolates[i];
       }
-      if (!boughtItem && unlockedChocolates[i] == unlockedChocolates[-1]) {
+      if (!boughtItem && unlockedChocolates[i] === unlockedChocolates[-1]) {
         boughtItem = unlockedChocolates[i];
       }
     }
@@ -72,13 +79,14 @@ function customerBuyBar() {
   money += boughtItem.priceNum;
 
   updateMains();
+  updateMains();
 }
 
 
 document.addEventListener("DOMContentLoaded", function() {
   document.getElementById('slide').addEventListener('input', (e) => {
     marketing = parseFloat(e.target.value);
-    if (marketing == 0) marketing = 0.1;
+    if (marketing === 0) marketing = 0.1;
     updateMains();
   });
 });
@@ -86,10 +94,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
 setInterval(() => {
   handleCustomers();
+  checkPassedBoundaries();
 }, 500)
 
 function checkPassedBoundaries() {
   if (money > 20) {
-    
+    document.getElementById("production").style.display = "block";
+    document.getElementById("production-locked").style.display = "none";
   }
+}
+
+function capitalizeFirstLetter(val) {
+  return String(val).charAt(0).toUpperCase() + String(val).slice(1);
 }

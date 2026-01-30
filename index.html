@@ -13,12 +13,14 @@
     <script src="src/mining.js"></script>
   </head>
   <body>
+    <div class="vignette"></div>
+    <div class="overlaytwo"></div>
     <div id="simulationbody" style="display: none;">
       <input type="range" id="slide"  min="-5" max="5" value="0" step="0.1">
       <div id="simulation"></div>
     </div>
-    <div id="gameOver" style="display: none;"><spa id="gameOvertxt">Game Over...</span><br/><button id="gameOverbtn" onclick="location.reload()">CONTINUE</button></div>
-    <div id="version"><a href="https://github.com/evan-w-lee/chocolate-factory/blob/main/README.md">ALPHA v0.10.2</a></div>
+    <div id="gameOver" style="display: none;"><span id="gameOvertxt">Game Over...</span><br/><button id="gameOverbtn" onclick="location.reload()">CONTINUE</button></div>
+    <div id="version"><a href="https://github.com/evan-w-lee/chocolate-factory/blob/main/README.md">re0.11.2</a></div>
     <div id="name">
       <div class="input-wrapper">
         <span class="input-mirror" id="inputMirror"></span>
@@ -59,7 +61,7 @@
     </center>
     <div class="column" id="chocolate-types">
       
-      <button onclick="clicked('milk')" id="milk-chocolate" class="chocolate">
+      <!--<button onclick="clicked('milk')" id="milk-chocolate" class="chocolate">
         <span class="tooltip" onclick="event.stopPropagation();">Milk Chocolate<br/>
           <a href="#" onclick="changePrice('milk', 0)"><</a> $<span id="milkChocolatePrice">4.00</span> <a href="#" onclick="changePrice('milk', 1)">></a>
           <hr style="width: 90px; color: white;"/>
@@ -68,7 +70,7 @@
           <br/><span style="color: lightgrey;" class="tooltipmilkMilk">1 Milk (-)</span>
           <hr id="informationBar" style="width: 90px; color: white; display: none;"/>
           <div id="currentMoneyState" style="margin: 4px; display: none;">loading...</div>
-  
+
           <div class="bubble" style="top: 30px;left: 100px; color:black; width: 250px; font-size: 14px;" id="changePriceBubble">Change the price of the chocolate to balance money and customer demand</div>
           </span>
       </button>
@@ -79,24 +81,17 @@
           <span style="color: lightgrey;" class="tooltipcacaoDark">2 Cacao (-)</span>
           <br/><span style="color: lightgrey;" class="tooltipsugarDark">1 Sugar (-)</span>
         </span>
-      </button>
+      </button>-->
       <div style="display: none">
-      <button onclick="clicked()" id="white-chocolate" class="chocolate"><span class="tooltip">White Chocolate</span></button>
-      <button onclick="clicked()" id="salted-caramel-chocolate" class="chocolate"><span class="tooltip">Salted Caramel Chocolate</span></button>
-      <button onclick="clicked()" id="ruby-chocolate" class="chocolate">.</button>
-      <button onclick="clicked()" id="mint-chocolate" class="chocolate">.</button>
-      <button onclick="clicked()" id="milk-chocolate" class="chocolate">.</button>
-      <button onclick="clicked()" id="milk-chocolate" class="chocolate">.</button>
-      <button onclick="clicked()" id="milk-chocolate" class="chocolate">.</button>
-      <button onclick="clicked()" id="milk-chocolate" class="chocolate">.</button>
-      <button onclick="clicked()" id="milk-chocolate" class="chocolate">.</button>
-      <button onclick="clicked()" id="milk-chocolate" class="chocolate">.</button>
-      <button onclick="clicked()" id="milk-chocolate" class="chocolate">.</button>
-      <button onclick="clicked()" id="milk-chocolate" class="chocolate">.</button></div>
+          <button onclick="clicked()" id="white-chocolate" class="chocolate"><span class="tooltip">White Chocolate</span></button>
+          <button onclick="clicked()" id="salted-caramel-chocolate" class="chocolate"><span class="tooltip">Salted Caramel Chocolate</span></button>
+          <button onclick="clicked()" id="ruby-chocolate" class="chocolate">.</button>
+          <button onclick="clicked()" id="mint-chocolate" class="chocolate">.</button>
+      </div>
     </div>
     <div class="column" id="production" style="display: none;">
       <div class="bubble" style="top: 210px;left: 340px; display: none;" id="buyBubble">Buy more ingredients here</div>
-      <div id="cacao">
+      <!--<div id="cacao">
         <div class="map" id="cacaoMap" style="display: none">
           <div class="map-item active" onclick="changeSeller('cacao', 10, 0)">Cacao Culture<span class="tooltip">$10 | <span style="color: darkgrey">-0.0</span></span></div>
           <div class="map-item" onclick="changeSeller('cacao', 11, 0.2)">Milo's Cacao Co.<span class="tooltip">$11 | <span style="color: lightgreen">+0.2</span></span></div>
@@ -104,7 +99,7 @@
         </div>
         <div class="map locked-map" id="cacaoLocked">
           <div style="margin-top: 30px;">Unlocked at $80</div>
-        </div> 
+        </div>
         <button class="buy-button" style="margin-left: 5%;" onclick="buyItem('cacao')" id="buy-cacao">Buy Cacao ($10.00)</button>
         <label class="switch" id="cacaoAutoBuyers">
           <input type="checkbox">
@@ -150,7 +145,7 @@
           <span class="tooltip" style="font-size: 11px;">Toggle AutoBuyers</span>
         </label>
         <p class="amount-left" style="margin-left: 5%;" id="milk-left">Milk left: 15</p>
-      </div>
+      </div>-->
     </div>
     <div class="column" id="project" style="display: none;">
     <div id="chips" style="margin-left: 5%; margin-top: 5%;">

@@ -1,17 +1,27 @@
 # Chocolate Factory
-A relaxing clicker game about making chocolate
+A clicker game where you start a struggling chocolate business.
 
 **Latest website release:** 
-<a href="https://evan-w-lee.github.io/chocolate-factory/chocolate"evan-w-lee.github.io/chocolate-factory/chocolate</a
+[evanworks.github.io/chocolate-factory](https://evanworks.github.io/chocolate-factory)
 
 
 _New update every week!_
 
-<img width="1341" alt="Chocolate Factory" src="https://github.com/evan-w-lee/chocolate-factory/assets/170060467/55c8595d-0928-43fe-a76e-b4e72905bf91"
+# Updates
 
-## Versions
+## re0.11.2[1/29/26]
+Just realized that, according to the game, you start with 10 singular cacao beans
 
-## a0.11[5/11/24]
+### How much has me refactored?
+* [X] Chocolate
+* [X] Customers
+* [X] Ingredients
+* [ ] Byte Mining
+* [ ] Projects 
+
+(bound [ to new customer information)
+
+## re0.11.1[5/11/24]
 I'm not a full year late, but pretty close. :D
 
 I'm back, with a major code refactor and nothing new.
@@ -23,7 +33,7 @@ I'm back, with a major code refactor and nothing new.
 * [ ] Byte Mining
 * [ ] Projects 
 
-### ALPHA v0.10.2 (7/22/24)
+## ALPHA v0.10.2 (7/22/24)
 
 **NOTES:**
 Man, I rushed the last update
@@ -38,7 +48,7 @@ Man, I rushed the last update
 * Fixed the weird byte mining power thing
 * Gaining bytes now goes at a steady rate (oh wait this is actually imposible)
 
-### ALPHA v0.10.1 (7/20/24)
+## ALPHA v0.10.1 (7/20/24)
 
 **NOTES:**
 I am very smart. 
@@ -47,7 +57,7 @@ I am very smart.
 * Fixed the version name being wrong
 * Removed unused and untested feature
 
-### ALPHA v0.10.0 (7/20/24)
+## ALPHA v0.10.0 (7/20/24)
 
 **NOTES:**
 Oops. Looks like I forgot about Chocolate Factory for a month or so. The next update: A second information upgrade and a fix to the weird byte mining power thing
@@ -68,7 +78,7 @@ Oops. Looks like I forgot about Chocolate Factory for a month or so. The next up
 * Made each column able to scroll indepentently to stop things from going off-screen
 
 
-### ALPHA v0.9.1 (6/24/24)
+## ALPHA v0.9.1 (6/24/24)
 
 **NOTES:**
 Apparently the new update did mess things up. Also apparently if you click on stuff in the change product seller tooltips their background turns black??? I feel like I should've made this an update instead of a patch. It escalated quickly :)
@@ -84,7 +94,7 @@ Apparently the new update did mess things up. Also apparently if you click on st
 * Fixed issue where the bubble telling you to 'change the product seller...' doesn't go away ever
 * Fixed weird problem where the byte count can go up to one more than the maximum
 
-### ALPHA v0.9.0 (6/23/24)
+## ALPHA v0.9.0 (6/23/24)
 **NOTES:**
 Adding new chocolates required a full rework of the money and bar system. Everything's probably borken :/
 
@@ -98,7 +108,7 @@ Adding new chocolates required a full rework of the money and bar system. Everyt
 **BUG FIXES:**
 * Made the name changing feature less buggy
 
-### ALPHA v0.8.0 (6/15/24)
+## ALPHA v0.8.0 (6/15/24)
 **NOTES:**
 I think I've removed most of the bugs. From now on I'm just going to work on more project-related things. Any suggestions on projects or the rightmost column? Email me at evanwarnerlee@gmail.com. 
 
@@ -118,7 +128,7 @@ I think I've removed most of the bugs. From now on I'm just going to work on mor
 * Fixed issue where the bubble text displayed under the locked columns
 
 
-### ALPHA patch v0.7.2
+## ALPHA patch v0.7.2
 **NOTES:**
 oops. Again.
 
@@ -128,7 +138,7 @@ oops. Again.
 * Fixed some extra chocolate code
 
 
-### ALPHA patch v0.7.1
+## ALPHA patch v0.7.1
 **NOTES:**
 oops.
 
@@ -137,7 +147,7 @@ oops.
 * Fixed more font issues
 
 
-### ALPHA v0.7.0
+## ALPHA v0.7.0
 **NOTES:**
 Believe it or not, this was one of the most boring coding sessions of my life. Also, I know I said that next was making a better tutorial, but next is probably not that because I'm too lazy. I did add support for different types of chocolate. It took forever because of all the things that I didn't think of when I first made all of the game's systems. I probably should've used OOP.
 
@@ -153,7 +163,7 @@ Believe it or not, this was one of the most boring coding sessions of my life. A
 * Fixed fatal issue with the seller changing feature
 
 
-### ALPHA v0.6.0
+## ALPHA v0.6.0
 **NOTES:**
 Worker pay was really, really messed up. I'm sorry, it was a nightmare to debug. You know what I had to do to make the workers pay increase correctly? Instead of doing the
 simple thing (worker pay + 0.1), I had to this: (worker pay - -0.1). Yep, subtracting by a negative number.
@@ -172,7 +182,7 @@ Also, I was dumb and updated my computer with the update log not saved, so I was
 * Fixed floating-point rounding errors in the worker pay (0.5 == 0.498758937)
 * Fixed that annoying issue where you could scroll down just a little
 
-### ALPHA patch v0.5.6
+## ALPHA patch v0.5.6
 **FEATURES:**
 * Added a debug menu (press D)
 
@@ -180,7 +190,7 @@ Also, I was dumb and updated my computer with the update log not saved, so I was
 **BUGS:**
 * Version name says the right thing now
 
-### ALPHA edit v0.5.5
+## ALPHA edit v0.5.5
 **NOTES:**
 I recieved some excellent feedback from my team of testers (aka friends) Next is creating a more comprehensive tutorial.
 
@@ -194,7 +204,7 @@ I recieved some excellent feedback from my team of testers (aka friends) Next is
 * Switched the place of milk and cacao again because now it looks weird
 * Fixed issue where you can't buy extra power
 
-### ALPHA v0.5.0
+## ALPHA v0.5.0
 **FEATURES:**
 * Added worker pay
 * Created a more comprehensive tutorial
@@ -209,7 +219,7 @@ I recieved some excellent feedback from my team of testers (aka friends) Next is
 * Adjusted time the bytes menu appears to stop players going bankrupt
 * Worker project box now displays the correct value
 
-### ALPHA v0.4.0
+## ALPHA v0.4.0
 **FEATURES:**
 * Added functionality to the seller change feature
 * Added bubbles detailing the byte mining process
@@ -222,7 +232,7 @@ I recieved some excellent feedback from my team of testers (aka friends) Next is
 * Added a $ sign to worker price updates
 * Removed the boxes project, which does nothing
 
-### ALPHA patch v0.3.1
+## ALPHA patch v0.3.1
 **FEATURES:**
 * Made worker price increase over time
 
@@ -231,5 +241,5 @@ I recieved some excellent feedback from my team of testers (aka friends) Next is
 * Fixed fatal error where setting chocolate price to -$0.00 resulted in the game breaking
 * Changed the price of workers to $75
 
-### ALPHA v0.3.0
+## ALPHA v0.3.0
 Notes: The first published version
