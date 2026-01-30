@@ -9,6 +9,12 @@ _New update every week!_
 
 # Updates
 
+## re0.11.2.1[1/29/26]
+
+yes there is a fourth number
+
+* Made the game playable
+
 ## re0.11.2[1/29/26]
 Just realized that, according to the game, you start with 10 singular cacao beans
 
