@@ -1,45 +1,31 @@
 // main variables
 let bars = 0; 
-let money = 0;
+let money = 10000;
 let popularity = 1;
 let bytes = 0;
 let marketing = 1;
 let factoryName = "";
 
-// chocolate bar amount variables
-/*milkBars = 0;
-darkBars = 0;*/
-
-// initial chocolate prices
-/*milkChocolatePrice = 4;
-darkChocolatePrice = 5;*/
-// XTRACHOCOLATE more space for more chocolates
-
-
-// ingredient amounts
-/*cacao = 15;
-sugar = 15;
-milk = 15; */
-
-// worker variables
 workers = 0;
 workerPay = 5;
 workerPrice = 75;
 workerSpeed = 500;
 
-// is - Something
 isBoxes = false;
 isDark = false;
 
-// byte mining variables
-max = 0;
-rate = 1000;
-powerLevel = 0;
+let memory = 0;
+let memoryPrice = 50;
+
+let power = 1100;
+let powerPrice = 50;
+let powerLevel = -1;
+let mining;
 //let bytemine = setInterval(function() {console.log('oh no')}, 100);
 
 // byte mining upgrade prices
-memoryPrice = 50;
-powerPrice = 75;
+
+
 
 // project prices
 workersprice = 75;
@@ -369,14 +355,7 @@ document.addEventListener("DOMContentLoaded", function() {
           }
         }
     }, workerSpeed);
-    setInterval(function() {
-        if (max != 0) {
-          if (bytes < max) {
-            bytes += 1;
-            document.getElementById("memory").innerHTML = bytes + "/" + max;
-          } 
-        }
-    }, rate)
+
     setInterval(function() {
         if (cacao > 0 && sugar > 0 && milk > 0) {
           money -= workerPay * workers;
@@ -398,9 +377,6 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }
 });
-let autoclicker = setInterval(function() {
-  //console.log('wybdeawydiauydwiuyawiudywai')
-}, rate);
 
 document.addEventListener("keypress", function(event) {
   if (event.code == "BracketRight") {
@@ -412,7 +388,7 @@ document.addEventListener("keypress", function(event) {
     document.getElementById("cacao-debug").innerHTML = "cacao: " + cacao;
     document.getElementById("sugar-debug").innerHTML = "sugar: " + sugar;
     document.getElementById("milk-debug").innerHTML = "milk: " + milk;
-    document.getElementById("max-debug").innerHTML = "max: " + max;
+    document.getElementById("max-debug").innerHTML = "max: " + memory;
     document.getElementById("rate-debug").innerHTML = "rate: " + rate;
     document.getElementById("workers-debug").innerHTML = "workers: " + workers;
     document.getElementById("workerPay-debug").innerHTML = "workerPay: " + workerPay;

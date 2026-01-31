@@ -115,19 +115,27 @@ const milkChocolate = {
 
 let unlockedChocolates = [milkChocolate];
 
-workersBought = false;
+
+let workersBought = false;
+let workersVisible = false;
 let projectWorkers = {
-  get correspondingItem() {return workersBought;},
-  set correspondingItem(val) {workersBought = val;},
+  get bought() {return workersBought;},
+  set bought(val) {workersBought = val;},
+
+  get visible() {return workersVisible;},
+  set visible(val) {workersVisible = val;},
 
   name: "Workers",
   file: "workers",
   description: "Hire workers to expand your business",
 
   price: 75,
+  threshold: 10,
 
   purchase: () => {
     document.getElementById("devices").style.display = "block";
     document.getElementById("devices-locked").style.display = "none";
   }
 }
+
+const projects = {projectWorkers}
