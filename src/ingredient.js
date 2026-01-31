@@ -38,6 +38,7 @@ function createIngredients(valid) {
       mapItem.onclick = () => { changeBrand(ingredient, k); }
       mapItem.innerHTML += company[0];
 
+      /* not a functional tooltip, just info for the global tooltip*/
       const tooltip = document.createElement('span');
       tooltip.classList.add('tooltip');
       tooltip.innerHTML += "$"+parseInt(ingredient.price + company[1][0])+" | ";

@@ -1,4 +1,4 @@
-let cacaoAmount = 10;
+let cacaoAmount = 15;
 let cacaoCompany = 0;
 const cacao = {
   get correspondingItem() {return cacaoAmount;},
@@ -21,7 +21,7 @@ const cacao = {
   ]
 }
 
-let sugarAmount = 10;
+let sugarAmount = 15;
 let sugarCompany = 0;
 const sugar = {
   get correspondingItem() {return sugarAmount;},
@@ -35,7 +35,7 @@ const sugar = {
 
   file: 'sugar',
   name: 'Sugar',
-  flexPlural: 'sugar',
+  flexPlural: 'bags',
 
   companies: [
     ["K&F Sugar Solutions", [0, 0]],
@@ -44,7 +44,7 @@ const sugar = {
   ]
 }
 
-let milkAmount = 10;
+let milkAmount = 15;
 let milkCompany = 0;
 const milk = {
   get correspondingItem() {return milkAmount;},
@@ -58,7 +58,7 @@ const milk = {
 
   file: 'milk',
   name: 'Milk',
-  flexPlural: 'milk',
+  flexPlural: 'jugs',
 
   companies: [
     ["Milky Meadows", [0, 0]], // moo moo meadows
@@ -68,7 +68,31 @@ const milk = {
   ]
 }
 
-let unlockedIngredients = [cacao, sugar, milk];
+let peanutButterAmount = 15;
+let peanutButterCompany = 0;
+const peanutButter = {
+  get correspondingItem() {return peanutButterAmount;},
+  set correspondingItem(val) {peanutButterAmount = val;},
+
+  get company() {return this.companies[peanutButterCompany];},
+  set company(val) {peanutButterCompany = val;},
+
+  basePrice: 10,
+  price: 10,
+
+  file: 'peanutButter',
+  name: 'Peanut Butter',
+  flexPlural: 'jars',
+
+  companies: [
+    ["Peter Pan's Nuts", [0, 0]],
+    ["JIF (gif?)", [1, 0.3]], // obviously the best brand
+    ["Skippy", [-2, -0.1]],
+    ["Justin's Butter Co.", [2, 0.5]]
+  ]
+}
+
+let unlockedIngredients = [cacao, sugar, milk, peanutButter];
 
 
 
@@ -89,26 +113,21 @@ const milkChocolate = {
   recipe: [[cacao, 1], [sugar, 1], [milk, 1]]
 }
 
-
 let unlockedChocolates = [milkChocolate];
-//..................................................................
-//.PPPPPPPPPPPP....RRRRRRRRRRRRR........OOOOOOOOO............JJJJJ..
-//.PPPPPPPPPPPPP...RRRRRRRRRRRRRR.....OOOOOOOOOOOOO..........JJJJJ..
-//.PPPPPPPPPPPPPP..RRRRRRRRRRRRRRR....OOOOOOOOOOOOOO.........JJJJJ..
-//.PPPPPPPPPPPPPP..RRRRRRRRRRRRRRR...OOOOOOOOOOOOOOO.........JJJJJ..
-//.PPPPP...PPPPPPP.RRRRR.....RRRRRR..OOOOOO....OOOOOO........JJJJJ..
-//.PPPPP.....PPPPP.RRRRR......RRRRR.ROOOOO......OOOOO........JJJJJ..
-//.PPPPP.....PPPPP.RRRRR......RRRRR.ROOOO.......OOOOO........JJJJJ..
-//.PPPPP....PPPPPP.RRRRR....RRRRRR..ROOOO.......OOOOO........JJJJJ..
-//.PPPPPPPPPPPPPP..RRRRRRRRRRRRRRR..ROOOO........OOOOO.......JJJJJ..
-//.PPPPPPPPPPPPPP..RRRRRRRRRRRRRR...ROOOO........OOOOO.......JJJJJ..
-//.PPPPPPPPPPPPPP..RRRRRRRRRRRRRRR..ROOOO........OOOOO.......JJJJJ..
-//.PPPPPPPPPPPP....RRRRRRRRRRRRRRR..ROOOO.......OOOOO.OJJJJ..JJJJJ..
-//.PPPPP...........RRRRR.....RRRRR..ROOOOO......OOOOO.OJJJJ..JJJJJ..
-//.PPPPP...........RRRRR.....RRRRR..ROOOOO.....OOOOOO.OJJJJ..JJJJJ..
-//.PPPPP...........RRRRR.....RRRRR...OOOOOOO.OOOOOOOO.OJJJJJ.JJJJJ..
-//.PPPPP...........RRRRR.....RRRRR....OOOOOOOOOOOOOO..OJJJJJJJJJJJ..
-//.PPPPP...........RRRRR.....RRRRRR...OOOOOOOOOOOOO....JJJJJJJJJJJ..
-//.PPPPP...........RRRRR......RRRRR....OOOOOOOOOOO......JJJJJJJJJ...
-//.......................................OOOOOOO.........JJJJJJ.....
-//..................................................................
+
+workersBought = false;
+let projectWorkers = {
+  get correspondingItem() {return workersBought;},
+  set correspondingItem(val) {workersBought = val;},
+
+  name: "Workers",
+  file: "workers",
+  description: "Hire workers to expand your business",
+
+  price: 75,
+
+  purchase: () => {
+    document.getElementById("devices").style.display = "block";
+    document.getElementById("devices-locked").style.display = "none";
+  }
+}

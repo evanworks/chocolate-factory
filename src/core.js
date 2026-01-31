@@ -55,14 +55,34 @@ function handleCustomers() {
   sim.innerHTML += "<br/>Customers in store: " + customersInStore;
   sim.innerHTML += "<br/>Customers buying: " + customersBuying;
 }
-document.addEventListener("keypress", (e) => {
+document.addEventListener("keydown", (e) => {
   if (e.key === "[") {
     document.getElementById("simulationbody").style.display = document.getElementById("simulationbody").style.display === "none" ? "block" : "none";
+  } else if (e.key === "e") {
+    console.log("hi")
+    document.body.style.setProperty(
+      "background",
+      `linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 1) 0%,
+        rgba(255, 154, 0, 1) 10%,
+        rgba(208, 222, 33, 1) 20%,
+        rgba(79, 220, 74, 1) 30%,
+        rgba(63, 218, 216, 1) 40%,
+        rgba(47, 201, 226, 1) 50%,
+        rgba(28, 127, 238, 1) 60%,
+        rgba(95, 21, 242, 1) 70%,
+        rgba(186, 12, 248, 1) 80%,
+        rgba(251, 7, 217, 1) 90%,
+        rgba(255, 0, 0, 1) 100%
+    )`,
+      "important"
+    );
   }
 });
 function customerBuyBar() {
   // customer chose which type of thingie to buy
-  let boughtItem = false;
+  let boughtItem = null;
   for (let i in unlockedChocolates) {
     if (unlockedChocolates[i].correspondingItem > 0) {
       if (Math.random() > 0.6 - marketing / 10) { // fun maths
@@ -74,9 +94,10 @@ function customerBuyBar() {
     }
   }
 
-  if (!boughtItem) return;
-  boughtItem.correspondingItem -= 1;
-  money += boughtItem.priceNum;
+  if (boughtItem) {
+    boughtItem.correspondingItem -= 1;
+    money += boughtItem.priceNum;
+  }
 
   updateMains();
   updateMains();
@@ -98,9 +119,13 @@ setInterval(() => {
 }, 500)
 
 function checkPassedBoundaries() {
-  if (money > 20) {
+  if (money >= 20) {
     document.getElementById("production").style.display = "block";
     document.getElementById("production-locked").style.display = "none";
+  }
+  if (money >= 120) {
+    document.getElementById("project").style.display = "block";
+    document.getElementById("project-locked").style.display = "none";
   }
 }
 

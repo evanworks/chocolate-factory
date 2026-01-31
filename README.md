@@ -9,6 +9,19 @@ _New update every week!_
 
 # Updates
 
+## re0.11.3[1/30/26]
+
+we got rid of the fourth number yay
+
+* gave selected companies a different hover color
+* started making project
+* added scrolling capability on all the production column (hid scrollbars interfering with tooltips)
+* ...which caused me to rework the tooltip system :/
+* ran into a bunch more problems
+* yeah
+
+press e
+
 ## re0.11.2.1[1/29/26]
 
 yes there is a fourth number

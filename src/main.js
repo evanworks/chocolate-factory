@@ -1,6 +1,6 @@
 // main variables
 let bars = 0; 
-let money = 0;
+let money = 10000000;
 let popularity = 1;
 let bytes = 0;
 let marketing = 1;
@@ -20,11 +20,6 @@ darkChocolatePrice = 5;*/
 /*cacao = 15;
 sugar = 15;
 milk = 15; */
-
-// ingredient prices
-let cacaoprice = 10;
-sugarprice = 5;
-milkprice = 8;
 
 // worker variables
 workers = 0;
@@ -110,49 +105,9 @@ function updateItems() {
     document.getElementById("production").style.display = "block";
     document.getElementById("production-locked").style.display = "none";
   }
-  document.getElementById("cacao-left").innerHTML = "Beans left: " + cacao;
-  document.getElementById("sugar-left").innerHTML = "Sugar left: " + sugar;
-  document.getElementById("milk-left").innerHTML = "Milk left: " + milk;
 
   document.querySelector(".tooltipcacaoMilk").innerHTML = "1 Cacao (" + cacao + ")";
 
-  /*if (cacao == 0) {
-    document.querySelector(".tooltipcacaoMilk").style.color = "red";
-  } else {
-    document.querySelector(".tooltipcacaoMilk").style.color = "lightgreen";
-  }
-
-  document.querySelector(".tooltipsugarMilk").innerHTML = "1 Sugar (" + sugar + ")";
-  if (sugar == 0) {
-    document.querySelector(".tooltipsugarMilk").style.color = "red";
-  } else {
-    document.querySelector(".tooltipsugarMilk").style.color = "lightgreen";
-  }
-
-  document.querySelector(".tooltipmilkMilk").innerHTML = "1 Milk (" + milk + ")";
-  if (milk == 0) {
-    document.querySelector(".tooltipmilkMilk").style.color = "red";
-  } else {
-    document.querySelector(".tooltipmilkMilk").style.color = "lightgreen";
-  }
-  
-
-  
-  document.querySelector(".tooltipcacaoDark").innerHTML = "2 Cacao (" + cacao + ")";
-
-  if (cacao == 1 || cacao == 0) {
-    document.querySelector(".tooltipcacaoDark").style.color = "red";
-  } else {
-    document.querySelector(".tooltipcacaoDark").style.color = "lightgreen";
-  }
-
-  document.querySelector(".tooltipsugarDark").innerHTML = "1 Sugar (" + sugar + ")";
-  if (sugar == 0) {
-    document.querySelector(".tooltipsugarDark").style.color = "red";
-  } else {
-    document.querySelector(".tooltipsugarDark").style.color = "lightgreen";
-  }*/
-  
   if (money >= powerPrice && memoryPrice > 50) {
     document.getElementById("powerButton").disabled = false;
   } else {
@@ -171,9 +126,6 @@ function updateItems() {
 
     document.getElementById("sellerBubble").style.display = "block";
   }
-  document.getElementById("buy-cacao").innerHTML = "Buy Cacao ($"+cacaoprice.toFixed(2)+")";
-  document.getElementById("buy-sugar").innerHTML = "Buy Sugar ($"+sugarprice.toFixed(2)+")";
-  document.getElementById("buy-milk").innerHTML = "Buy Milk ($"+milkprice.toFixed(2)+")";
   
   workersStyle = document.getElementById("project-workers");
   autobuyersStyle = document.getElementById("project-autobuyers");
@@ -375,11 +327,35 @@ function hireWorker() {
   } else {
     alert("u dont have enough money boohoo")
   }
-
 }
 document.addEventListener("DOMContentLoaded", function() {
   createChocolate(unlockedChocolates);
   createIngredients(unlockedIngredients);
+
+  // new tooltip stuff chatgpt created
+  const tooltip = document.getElementById("global-tooltip");
+  document.addEventListener("mouseover", e => {
+    const item = e.target.closest(".map-item, .switch")
+    if (!item) return
+
+    const r = item.getBoundingClientRect()
+    tooltip.textContent = item.querySelector(".tooltip")?.textContent || "";
+    tooltip.innerHTML = tooltip.textContent.replace(/\|\s*([+-]?\d+(\.\d+)?)/g, (match, p1) => {
+      const num = parseFloat(p1);
+      if (num > 0) return `| <span style="color:lightgreen">${p1}</span>`;
+      if (num < 0) return `| <span style="color:red">${p1}</span>`;
+      return `| <span style="color:grey">${p1}</span>`;
+    });
+
+    tooltip.style.left = r.right + 55 + "px";
+    tooltip.style.top = r.top + "px"
+    tooltip.style.visibility = "visible"
+  })
+
+  document.addEventListener("mouseout", e => {
+    if (e.target.closest(".map-item, .switch"))
+      tooltip.style.visibility = "hidden"
+  })
 
 
     setInterval(function() {

@@ -41,7 +41,7 @@ function createChocolate(valid) {
   }
 }
 
-// updates text on tooltips, takes in an html element that is specifically a chocolate button
+// updates text on chocolate tooltips, takes in an html element that is specifically a chocolate button
 function updateTooltips(parent) {
   let childs = parent.children[0].children[5].children;
   let chocolate = eval(parent.id);

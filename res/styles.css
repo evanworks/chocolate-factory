@@ -8,10 +8,11 @@ body {
   height: 100%;
   min-height: 100%;
   background-image: radial-gradient(circle, #edd4b2, #f5e0c4);
+
   background-repeat: no-repeat;
   background-size: cover;
   user-select: none;
-  font-family: Kameron;
+  font-family: Kameron, serif;
 } 
 #milkChocolate {
   width: 75px;
@@ -105,6 +106,9 @@ body {
   background: #a19b9a;
   border: 4px solid grey;
   z-index: 99999;
+    overflow-y: visible;
+    overflow-x: hidden;
+    scrollbar-width: none;
 }
 .tooltip {
   visibility: hidden;
@@ -194,6 +198,9 @@ a:active {
 }
 .active {
   background: black;
+}
+.map-item.active:hover {
+    background: #a19b9a;
 }
 .chip {
   width: 20px;
@@ -286,7 +293,7 @@ h1 {
 .changePay:active {
   background: darkgrey;
 }
-.map-item:hover .tooltip {
+/*.map-item:hover .tooltip {
   top: -2px;
   left: 125%;
   border-radius: 0px;
@@ -297,6 +304,21 @@ h1 {
   text-align: left;
   padding: 5px;
   font-size: 17px;
+}*/
+#global-tooltip {
+    top: -2px;
+    left: 125%;
+    border-radius: 0;
+    border: 1px solid black;
+    background: #6b3e2a;
+    height: 25px;
+    visibility: visible;
+    text-align: left;
+    padding: 5px;
+    font-size: 17px;
+    font-family: Sono, monospace;
+    position: fixed;
+    z-index: 999999;
 }
 .inactive {
   background: #e1d5c6;
