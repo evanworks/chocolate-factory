@@ -1,6 +1,6 @@
 // main variables
 let bars = 0; 
-let money = 10000;
+let money = 0;
 let popularity = 1;
 let bytes = 0;
 let marketing = 1;
