@@ -34,8 +34,6 @@ function handleCustomers() {
     if (Math.random() * marketing > 0.8 * (marketing / 2)) {
       customersInStore++;
       let sigma = 0.6 - marketing / 10; // idk why this is called sigma dont ask
-
-      console.log(sigma);
   
       if (Math.random() > sigma) {
         customersBuying++;
@@ -59,7 +57,6 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "[") {
     document.getElementById("simulationbody").style.display = document.getElementById("simulationbody").style.display === "none" ? "block" : "none";
   } else if (e.key === "e") {
-    console.log("hi")
     document.body.style.setProperty(
       "background",
       `linear-gradient(

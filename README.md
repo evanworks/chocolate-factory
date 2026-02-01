@@ -9,9 +9,16 @@ _New update every week!_
 
 # Updates
 
+## re0.11.5[2/1/26]
+
+* added autobuyers
+* made autobuyers actually respond to scroll
+
+workers still dont work
+
 ## re0.11.4[1/31/26]
 
-i forgot what i did
+* refactored byte mining (if you played it you will know projects are still broken)
 
 ## re0.11.3[1/30/26]
 

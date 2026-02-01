@@ -98,7 +98,6 @@ function increasePower() {
     mining = setInterval(function () {
       if (memory !== 0 && bytes < memory) {
         bytes++;
-        console.log(mining);
         document.getElementById("memory").innerHTML = bytes + "/" + memory;
 
         checkForProjects();
@@ -110,13 +109,13 @@ function increasePower() {
 }
 
 function checkForProjects() {
+  // displays projects above threshhold
   for (let i in projects) {
     let project = projects[i];
-    console.log(project.visible)
     if (bytes >= project.threshold && project.visible === false) {
       const wrapper = document.createElement("div");
       wrapper.classList.add("project");
-      wrapper.onclick = () => { buyProject(project); }
+      wrapper.onclick = () => { buyProject(project, wrapper); }
 
       const title = document.createElement("h1");
       title.innerText = project.name;
@@ -133,12 +132,37 @@ function checkForProjects() {
       wrapper.appendChild(description);
       wrapper.appendChild(cost);
 
+      project.visible = true;
+      project.element = wrapper;
+
       document.getElementById("project").appendChild(wrapper);
+    }
+  }
+
+  // dims exorbitant projects
+  for (let i in projects) {
+    let project = projects[i];
+    console.log(project.element);
+    if (bytes < project.price && project.visible === true && project.element !== null) {
+      project.element.classList.add("greyed-out");
+    } else {
+      if (project.element) project.element.classList.remove("greyed-out");
     }
   }
 }
 
-function buyProject(type) {
+function buyProject(project, element) {
+  if (bytes >= project.price) {
+    bytes -= project.price;
+    element.remove(); // remove visual
+
+    project.purchase();
+  } else {
+    alert("ur broke as shi");
+  }
+}
+
+/*function buyProject(type) {
   if (bytes >= window[type + "price"]) {
     event.currentTarget.style.display = "none";
     event.currentTarget.style.color = "black";
@@ -199,4 +223,4 @@ function buyProject(type) {
   } else {
     alert("u dont have enough bytes :((((");
   }
-}
+}*/

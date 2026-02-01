@@ -1,6 +1,6 @@
 // main variables
 let bars = 0; 
-let money = 0;
+let money = 10000;
 let popularity = 1;
 let bytes = 0;
 let marketing = 1;
@@ -321,7 +321,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // new tooltip stuff chatgpt created
   const tooltip = document.getElementById("global-tooltip");
   document.addEventListener("mouseover", e => {
-    const item = e.target.closest(".map-item, .switch")
+    const item = e.target.closest(".map-item")
     if (!item) return
 
     const r = item.getBoundingClientRect()

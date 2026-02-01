@@ -76,6 +76,8 @@ function createIngredients(valid) {
     tooltip.innerHTML = 'Toggle Autobuyers';
     autobuyersSwitch.appendChild(tooltip);
 
+    ingredient.switch = autobuyersSwitch;
+
     // amount left
     let amountLeft = document.createElement('p');
     amountLeft.classList.add("amount-left");

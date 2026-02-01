@@ -340,9 +340,9 @@ h1 {
   background: #6b3e2a;
 }
 .switch {
-  position: absolute;
-  margin-top: 5px;
-  margin-left: 10px;
+  position: relative;
+  top: -5px;
+  left: 15px;
   display: none;
   width: 60px;
   height: 34px;
@@ -398,6 +398,13 @@ input:checked + .slider:before {
 .switch:hover .tooltip {
   visibility: visible;
 }
+.greyed-out {
+    filter: brightness(0.7);
+    opacity: 0.6;
+    background: white;
+    transform: unset;
+    cursor: auto;
+}
 .overlay {
   height: 100%;
   width: 0;
@@ -410,7 +417,6 @@ input:checked + .slider:before {
   overflow-x: hidden;
   transition: 0.5s;
 }
-
 .overlay-content {
   position: relative;
   top: 15%;

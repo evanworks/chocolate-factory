@@ -126,7 +126,7 @@ let projectWorkers = {
   set visible(val) {workersVisible = val;},
 
   name: "Workers",
-  file: "workers",
+  file: "projectWorkers",
   description: "Hire workers to expand your business",
 
   price: 75,
@@ -138,4 +138,35 @@ let projectWorkers = {
   }
 }
 
-const projects = {projectWorkers}
+let autobuyersBought = false;
+let autobuyersVisible = false;
+let projectAutobuyers = {
+  get bought() {return autobuyersBought;},
+  set bought(val) {autobuyersBought = val;},
+
+  get visible() {return autobuyersVisible;},
+  set visible(val) {autobuyersVisible = val;},
+
+  name: "AutoBuyers",
+  file: "projectAutobuyers",
+  description: "Create machines that buy ingredients for you",
+
+  price: 100,
+  threshold: 30,
+
+  purchase: () => {
+    for (let i in unlockedIngredients) {
+      unlockedIngredients[i].switch.style.display = "inline-block";
+    }
+    setInterval(function () {
+      for (let i in unlockedIngredients) {
+        if (unlockedIngredients[i].correspondingItem === 0 && unlockedIngredients[i].switch.children[0].checked) {
+
+          buy(unlockedIngredients[i]);
+        }
+      }
+    }, 200)
+  }
+}
+
+const projects = {projectWorkers, projectAutobuyers}
