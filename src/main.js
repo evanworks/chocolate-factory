@@ -20,7 +20,6 @@ let power = 1100;
 let powerPrice = 50;
 let powerLevel = -1;
 let mining;
-//let bytemine = setInterval(function() {console.log('oh no')}, 100);
 
 // project prices
 workersprice = 75;
@@ -53,7 +52,6 @@ function fadeIn() {
 function updateItems() {
   // console.log("JACKSON!!!! FUU")
   cycles += 1;
-  bars = milkBars + darkBars;
 
   if (String(bars).includes('e') || String(bars).includes('E')) {
     document.getElementById("bars").innerHTML = bars.toExponential().replace("e+", "x10^");
@@ -109,31 +107,31 @@ function updateItems() {
   informationStyle = document.getElementById("project-information");
   boxesStyle = document.getElementById("project-boxes");
   darkchocolateStyle = document.getElementById("project-darkchocolate");
-  if (bytes >= 10 && workersStyle.style.color == "red") {
+  if (bytes >= 10 && workersStyle.style.color === "red") {
     workersStyle.style.display = "block";
     workersStyle.style.color = "black";
   }
-  if (bytes >= 30 && autobuyersStyle.style.color == "red") {
+  if (bytes >= 30 && autobuyersStyle.style.color === "red") {
     autobuyersStyle.style.display = "block";
     autobuyersStyle.style.color = "black";
   }
-  if (bytes >= 100 && marketingStyle.style.color == "red") {
+  if (bytes >= 100 && marketingStyle.style.color === "red") {
     marketingStyle.style.display = "block";
     marketingStyle.style.color = "black";    
   }
-  if (bytes >= 130 && donutsStyle.style.color == "red") {
+  if (bytes >= 130 && donutsStyle.style.color === "red") {
     donutsStyle.style.display = "block";
     donutsStyle.style.color = "black";    
   }
-  if (bytes >= 150 && document.getElementById("marketing-wrapper").style.display == "inline-flex" && informationStyle.style.color == "red") {
+  if (bytes >= 150 && document.getElementById("marketing-wrapper").style.display === "inline-flex" && informationStyle.style.color === "red") {
     informationStyle.style.display = "block";
     informationStyle.style.color = "black";
   }
-  if (bytes >= 200 && boxesStyle.style.color == "red") {
+  if (bytes >= 200 && boxesStyle.style.color === "red") {
     boxesStyle.style.display = "block";
     boxesStyle.style.color = "black";
   }
-  if (bytes >= 350 && darkchocolateStyle.style.color == "red") {
+  if (bytes >= 350 && darkchocolateStyle.style.color === "red") {
     darkchocolateStyle.style.display = "block";
     darkchocolateStyle.style.color = "black";
   }
@@ -233,17 +231,17 @@ function updateItems() {
     //money += parseInt(moneyAdd.toFixed(2))
     //bars -= Math.round(milkChocolatePrice)
   //}
-  marketing /= 3;
+  /*marketing /= 3;
   marketing = marketing.toFixed(2)
   nonexistent = 20/marketing
-  if (bars > 0 && cycles % Math.round(nonexistent) == 0) {
+  if (bars > 0 && cycles % Math.round(nonexistent) === 0) {
     sellItems(milkChocolatePrice, "milk");
-  }
+  }*/
   ingredientprice = 0;
   if (cacao == 0) { ingredientprice += cacaoprice; }
   if (sugar == 0) { ingredientprice += sugarprice; }
   if (milk == 0) { ingredientprice += milkprice; }
-  if (money < ingredientprice && boughtSomething == true) {
+  if (money < ingredientprice && boughtSomething === true) {
     document.getElementById("gameOver").style.display = "block";
     document.getElementById("gameOver").style.visibility = "visible";
     fadeIn();
