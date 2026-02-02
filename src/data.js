@@ -138,6 +138,41 @@ let projectWorkers = {
   }
 }
 
+class Worker {
+  constructor() {
+    this.happiness = 1;
+    this.speed = 1000;
+    this.element = document.createElement("div");
+    this.element.className = "worker";
+    this.element.style.backgroundColor = getRandomColor();
+
+    this.working = setInterval(this.work, this.speed);
+    setInterval(this.pay, 1000);
+  }
+
+  work() {
+    let correctChocolate = unlockedChocolates[0];
+    for (let i in unlockedChocolates) {
+      if (unlockedChocolates[i].correspondingItem < correctChocolate.correspondingItem) {
+        correctChocolate = unlockedChocolates[i];
+      }
+    }
+    clicked(correctChocolate);
+  }
+  pay() {
+    money -= workerPay;
+  }
+
+  changeHappiness(change) {
+    this.happiness += change;
+    console.log(this.happiness);
+    this.speed = this.speed / this.happiness;
+    clearInterval(this.working);
+    this.working = setInterval(this.work, this.speed);
+  }
+}
+workers = [];
+
 let autobuyersBought = false;
 let autobuyersVisible = false;
 let projectAutobuyers = {

@@ -6,9 +6,8 @@ let bytes = 0;
 let marketing = 1;
 let factoryName = "";
 
-workers = 0;
-workerPay = 5;
-workerPrice = 75;
+let workerPay = 0.5;
+let workerPrice = 75;
 workerSpeed = 500;
 
 isBoxes = false;
@@ -23,10 +22,6 @@ let powerLevel = -1;
 let mining;
 //let bytemine = setInterval(function() {console.log('oh no')}, 100);
 
-// byte mining upgrade prices
-
-
-
 // project prices
 workersprice = 75;
 autobuyersprice = 100;
@@ -35,12 +30,6 @@ donutsprice = 200;
 informationprice = 300;
 boxesprice = 400;
 darkchocolateprice = 600;
-
-// marketing variables
-cacaoMarketing = 1;
-sugarMarketing = 1;
-milkMarketing = 1;
-boxesMarketing = 0;
 
 // update function things
 let cycles = 0;
@@ -244,7 +233,6 @@ function updateItems() {
     //money += parseInt(moneyAdd.toFixed(2))
     //bars -= Math.round(milkChocolatePrice)
   //}
-  marketing = cacaoMarketing + sugarMarketing + milkMarketing;
   marketing /= 3;
   marketing = marketing.toFixed(2)
   nonexistent = 20/marketing
@@ -294,26 +282,6 @@ function updateItems() {
   }
 }
 
-
-
-
-
-
-function hireWorker() {
-  if (money >= workerPrice) {
-    money -= workerPrice;
-    workerPrice *= 1.5;
-    document.getElementById("hireWorkerButton").innerHTML = "Hire Worker ($"+workerPrice.toFixed(2)+")";
-    workers += 1;
-    const para = document.createElement("div");
-    para.className = "worker";
-    para.style.backgroundColor = getRandomColor();
-    const element = document.getElementById("workers");
-    document.getElementById("workers").appendChild(para);
-  } else {
-    alert("u dont have enough money boohoo")
-  }
-}
 document.addEventListener("DOMContentLoaded", function() {
   createChocolate(unlockedChocolates);
   createIngredients(unlockedIngredients);
@@ -378,30 +346,12 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-document.addEventListener("keypress", function(event) {
-  if (event.code == "BracketRight") {
-    document.getElementById("debug").style.width = "100%";
-    document.getElementById("bars-debug").innerHTML = "bars: " + bars;
-    document.getElementById("money-debug").innerHTML = "money: " + money;
-    document.getElementById("bytes-debug").innerHTML = "bytes: " + bytes;
-    document.getElementById("marketing-debug").innerHTML = "marketing: " + marketing;
-    document.getElementById("cacao-debug").innerHTML = "cacao: " + cacao;
-    document.getElementById("sugar-debug").innerHTML = "sugar: " + sugar;
-    document.getElementById("milk-debug").innerHTML = "milk: " + milk;
-    document.getElementById("max-debug").innerHTML = "max: " + memory;
-    document.getElementById("rate-debug").innerHTML = "rate: " + rate;
-    document.getElementById("workers-debug").innerHTML = "workers: " + workers;
-    document.getElementById("workerPay-debug").innerHTML = "workerPay: " + workerPay;
-    document.getElementById("workerPrice-debug").innerHTML = "workerPrice: " + workerPrice;
-    document.getElementById("workerSpeed-debug").innerHTML = "workerSpeed: " + workerSpeed;
-  }
-});
 function DEBUGchangeVar(variable) {
   window[variable] = parseInt(prompt("are?"));
   document.getElementById(variable+"-debug").innerHTML = variable + ": " + window[variable];
 }
 function showSnackbar(snackbar) {
-  var x = document.getElementById(snackbar);
+  let x = document.getElementById(snackbar);
   x.className = "show";
   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }

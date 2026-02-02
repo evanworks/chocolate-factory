@@ -177,13 +177,12 @@ button {
 }
 .amount-left {
   font-size: 15px;
-  border: 1px solid grey;
-  width: 200px;
+  width: 88.5%;
   color: white;
   background: grey;
   border: 1px solid dimgrey;
   padding: 2px;
-  font-family: Sono;
+  font-family: Sono, monospace;
   margin-left: 5%;
 }
 a {

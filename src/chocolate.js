@@ -70,8 +70,8 @@ function changePrice(chocolate, increment) {
 }
 
 function canMakeChocolate(chocolate) {
-  canMake = true;
-  for (i in chocolate.recipe) {
+  let canMake = true;
+  for (let i in chocolate.recipe) {
     if (chocolate.recipe[i][1] > chocolate.recipe[i][0].correspondingItem) {
       canMake = false;
     } 
@@ -82,7 +82,7 @@ function canMakeChocolate(chocolate) {
 function clicked(chocolate) {
   if ( canMakeChocolate(chocolate) ) {
     // depletes resources
-    for (i in chocolate.recipe) {
+    for (let i in chocolate.recipe) {
       chocolate.recipe[i][0].correspondingItem -= chocolate.recipe[i][1];
     }
     // more choklit yay

@@ -9,6 +9,16 @@ _New update every week!_
 
 # Updates
 
+## re0.11.5.1[2/1/26]
+
+the fourth number is back
+
+* made workers work
+* made worker pay per second (default $0.5)
+* worker pay affects speed (maybe too much so?)
+* workers now choose the lowest stocked bar to produce instead of all bars at once (do they have three hands?)
+* new and improved fancy methods and classes :D
+
 ## re0.11.5[2/1/26]
 
 * added autobuyers

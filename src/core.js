@@ -126,6 +126,25 @@ function checkPassedBoundaries() {
   }
 }
 
+function hireWorker() {
+  if (money >= workerPrice) {
+    money -= workerPrice;
+    workerPrice *= 1.2;
+    document.getElementById("hireWorkerButton").innerHTML = "Hire Worker ($"+workerPrice.toFixed(2)+")";
+    let testSubject = new Worker();
+    document.getElementById("workers").appendChild(testSubject.element);
+    workers.push(testSubject);
+  }
+}
+function changeWorkerPay(pay) {
+  workerPay += pay;
+  document.getElementById("workerPay").innerHTML = "$" + workerPay.toFixed(2) + "/sec";
+
+  for (let i in workers) {
+    workers[i].changeHappiness(pay);
+  }
+}
+
 function capitalizeFirstLetter(val) {
   return String(val).charAt(0).toUpperCase() + String(val).slice(1);
 }

@@ -22,7 +22,7 @@
       <div id="simulation"></div>
     </div>
     <div id="gameOver" style="display: none;"><span id="gameOvertxt">Game Over...</span><br/><button id="gameOverbtn" onclick="location.reload()">CONTINUE</button></div>
-    <div id="version"><a href="https://github.com/evan-w-lee/chocolate-factory/blob/main/README.md">re0.11.5</a></div>
+    <div id="version"><a href="https://github.com/evan-w-lee/chocolate-factory/blob/main/README.md">re0.11.5.1</a></div>
     <div id="name">
       <div class="input-wrapper">
         <span class="input-mirror" id="inputMirror"></span>
@@ -74,18 +74,17 @@
             <button class="project-button" onclick="increaseMemory()" id="memoryButton">Increase Memory ($50.00)</button>
             <button class="project-button" onclick="increasePower()" id="powerButton" disabled>Increase Power ($75.00)</button>
         </div>
-        <div class="project" id="project-workers" style="display: none; color: red;" onclick="buyProject('workers')"><h1>Workers</h1><div class="project-text">Gather workers to expand your business</div><div style="margin-top: 5px;">(75 bytes)</div></div>
-        <div class="project" id="project-autobuyers" style="display: none; color: red;" onclick="buyProject('autobuyers')"><h1>AutoBuyers</h1><div class="project-text">Create machines to buy ingredients for you</div><div style="margin-top: 5px;">(100 bytes)</div></div>
         <div class="project" id="project-marketing" style="display: none; color: red;" onclick="buyProject('marketing')"><h1>Marketing</h1><div class="project-text">View the popularity of your business as a single number!</div><div style="margin-top: 5px;">(150 bytes)</div></div>
         <div class="project" id="project-donuts" style="display: none; color: red;" onclick="buyProject('donuts')"><h1>Donuts</h1><div class="project-text">Feed your workers to make them work harder</div><div style="margin-top: 5px;">(200 bytes)</div></div>
         <div class="project" id="project-information" style="display: none; color: red;" onclick="buyProject('information')"><center><h1>Information</h1><div class="project-text">Adds a visual that tells you if you're making money</div><div style="margin-top: 5px;">(300 bytes)</div></center></div>
         <div class="project" id="project-boxes" style="display: none; color: red;" onclick="buyProject('boxes')"><center><h1>Boxes</h1><div class="project-text">Wrap your chocolates for a better reputation</div><div style="margin-top: 5px;">(400 bytes)</div></center></div>
         <div class="project" id="project-darkchocolate" style="display: none; color: red;" onclick="buyProject('darkchocolate')"><center><h1>Dark Chocolate</h1><div class="project-text">Produce a new type of chocolate to grow the business</div><div style="margin-top: 5px;">(600 bytes)</div></center></div>
     </div>
-    <div class="column" style="display: none;" id="devices">
+
+    <div class="column" style="display: block;" id="devices">
       <div id="workers" style="margin-left: 5%; margin-top: 5%; margin-bottom: 3px;"></div>
       <button class="buy-button" style="margin-left: 5%;" onclick="hireWorker()" id="hireWorkerButton">Hire Worker ($75.00)</button><br/>
-      <button style="display: inline-block; margin-left: 5%;" class="changePay" onclick="changePay('worker', 0)"><</button><div class="amount-left" id="workerPay" style="margin-top: 5px; width: 100px; display: inline-block">$5.00/h</div><button style="display: inline-block;" class="changePay" onclick="changePay('worker', 1)">></button>
+      <button style="display: inline-block; margin-left: 5%;" class="changePay" onclick="changeWorkerPay(-0.1)"><</button><div class="amount-left" id="workerPay" style="margin-top: 5px; width: 100px; display: inline-block; margin-left: 0; ">$0.50/sec</div><button style="display: inline-block;" class="changePay" onclick="changeWorkerPay(0.1)">></button>
 
       <label class="switch" style="display: none;" id="boxesToggle">
         <input type="checkbox">
