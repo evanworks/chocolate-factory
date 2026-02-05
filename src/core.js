@@ -5,9 +5,9 @@ let customersBuying = 0;
 function updateMains() {
   const moneyEl = document.getElementById("money");
   const barsEl = document.getElementById("bars");
+  const marketingEl = document.getElementById("marketing");
 
   let parsedMoney = money;
-
   let parsedBars = 0;
 
   for (let i in unlockedChocolates) {
@@ -22,8 +22,19 @@ function updateMains() {
     parsedBars = bars.toExponential().replace("e+", "x10^");
   }
 
+  let parsedMarketing = marketing - 1;
+
   moneyEl.innerHTML = parsedMoney.toFixed(2);
-  barsEl.innerHTML = parsedBars;
+  barsEl.innerHTML = parsedBars.toFixed(2);
+  marketingEl.innerHTML = parsedMarketing.toFixed(2);
+
+  if (parsedMarketing > 0.01) {
+    marketingEl.style.color = "lightgreen";
+  } else if (parsedMarketing < 0.01 && parsedMarketing > -0.01) {
+    marketingEl.style.color = "grey";
+  } else {
+    marketingEl.style.color = "red";
+  }
 }
 
 function handleCustomers() {
@@ -47,9 +58,12 @@ function handleCustomers() {
     }
   }
 
-  sim.innerHTML = "t = " + t;
+  let gain = milkChocolatePrice - ( (cacao.price + sugar.price + milk.price) / 15);
+
+  sim.innerHTML = "<b>t = " + t + "</b>";
   sim.innerHTML += "<br/>Marketing: " + marketing;
   sim.innerHTML += "<br/>Popularity: " + popularity;
+  sim.innerHTML += "<br/>Gain: " + gain;
   sim.innerHTML += "<br/>Customers in store: " + customersInStore;
   sim.innerHTML += "<br/>Customers buying: " + customersBuying;
 }
@@ -100,16 +114,6 @@ function customerBuyBar() {
   updateMains();
 }
 
-
-document.addEventListener("DOMContentLoaded", function() {
-  document.getElementById('slide').addEventListener('input', (e) => {
-    marketing = parseFloat(e.target.value);
-    if (marketing === 0) marketing = 0.1;
-    updateMains();
-  });
-});
-
-
 setInterval(() => {
   handleCustomers();
   checkPassedBoundaries();
@@ -137,12 +141,14 @@ function hireWorker() {
   }
 }
 function changeWorkerPay(pay) {
-  workerPay += pay;
-  document.getElementById("workerPay").innerHTML = "$" + workerPay.toFixed(2) + "/sec";
-
-  for (let i in workers) {
-    workers[i].changeHappiness(pay);
+  if (workerPay + pay > 0.01) {
+    workerPay += pay;
+    for (let i in workers) {
+      workers[i].changeHappiness(pay);
+    }
   }
+
+  document.getElementById("workerPay").innerHTML = "$" + workerPay.toFixed(2) + "/sec";
 }
 
 function capitalizeFirstLetter(val) {

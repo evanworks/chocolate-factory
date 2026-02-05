@@ -651,7 +651,7 @@ input:checked + .slider:before {
   left: 2px;
   background: rgba(0,0,0,0.5);
   border: 1px solid white;
-  padding: 2px;
+  padding: 4px;
   color: white;
   z-index: 10000000;
 }

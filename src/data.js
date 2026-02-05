@@ -17,7 +17,7 @@ const cacao = {
   companies: [
     ["Cacao Culture", [0, 0]], // name, [price offset, marketing offset]
     ["Milo's Cacao Co.", [1, 0.2]], // people pay a lot for gourmet cacao from africa or whatever
-    ["ChocoTech", [-2, -0.4]],
+    ["ChocoTech", [-2, -0.2]],
   ]
 }
 
@@ -39,8 +39,8 @@ const sugar = {
 
   companies: [
     ["K&F Sugar Solutions", [0, 0]],
-    ["Old Mill Sugar", [1, 0.2]],
-    ["SugarSmith's", [-2, -0.2]], // assuming sugar has somewhat the same quality no matter where you buy it from cuz its just sugar
+    ["Old Mill Sugar", [2, 0.05]],
+    ["SugarSmith's", [-3, -0.2]], // assuming sugar has somewhat the same quality no matter where you buy it from cuz its just sugar
   ]
 }
 
@@ -64,7 +64,7 @@ const milk = {
     ["Milky Meadows", [0, 0]], // moo moo meadows
     ["PurePastures Dairy Co.", [1, 0.1]],
     ["FarmFresh", [-2, -0.2]], // HOW FRESH ARE YOU NOW HUH
-    ["Milky Way Farms", [4, 0.6]] // look ik the name's cheesy whatever 
+    ["Milky Way Farms", [4, 0.3]] // look ik the name's cheesy whatever
   ]
 }
 
@@ -165,8 +165,9 @@ class Worker {
 
   changeHappiness(change) {
     this.happiness += change;
-    console.log(this.happiness);
-    this.speed = this.speed / this.happiness;
+
+    this.speed = 1000 / this.happiness;
+    console.log(this.speed);
     clearInterval(this.working);
     this.working = setInterval(this.work, this.speed);
   }
@@ -204,4 +205,47 @@ let projectAutobuyers = {
   }
 }
 
-const projects = {projectWorkers, projectAutobuyers}
+let computingIBought = false;
+let computingIVisible = false;
+let projectComputingI = {
+  get bought() {return computingIBought;},
+  set bought(val) {computingIBought = val;},
+
+  get visible() {return computingIVisible;},
+  set visible(val) {computingIVisible = val;},
+
+  name: "Computing I",
+  file: "projectComputingI",
+  description: "View the popularity of your business as a single number!",
+
+  price: 150,
+  threshold: 101,
+
+  purchase: () => {
+    document.getElementById("marketing-wrapper").style.display = "inline-flex";
+  }
+}
+let lunchBreaksBought = false;
+let lunchBreaksVisible = false;
+let projectLunchBreaks = {
+  get bought() {return lunchBreaksBought;},
+  set bought(val) {lunchBreaksBought = val;},
+
+  get visible() {return lunchBreaksVisible;},
+  set visible(val) {lunchBreaksVisible = val;},
+
+  name: "Lunch Breaks",
+  file: "projectLunchBreaks",
+  description: "Make your employees slightly happier with lunch breaks",
+
+  price: 150,
+  threshold: 105,
+
+  purchase: () => {
+    for (let i in workers) {
+      workers[i].happiness += 0.2;
+    }
+  }
+}
+
+const projects = {projectWorkers, projectAutobuyers, projectComputingI, projectLunchBreaks}

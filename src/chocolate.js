@@ -57,6 +57,7 @@ function updateTooltips(parent) {
 }
 
 function changePrice(chocolate, increment) {
+  if (chocolate.priceNum <= 0.1) return;
   // please ignore the ugly floating point errors here
   // p.s. i hate js
   if (increment === 1) {

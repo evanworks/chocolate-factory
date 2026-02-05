@@ -9,6 +9,15 @@ _New update every week!_
 
 # Updates
 
+## re0.11.6[2/4/26]
+
+* fixed worker pay being able to go into the negatives (thanks abe)
+* fixed chocolate bar price being able to go into the negatives (i dont know why you would want this but)
+* made the update log open in a new tab
+* re"balanced" companies
+* added Computing I 
+* added Lunch Breaks without testing it :D
+
 ## re0.11.5.1[2/1/26]
 
 the fourth number is back
