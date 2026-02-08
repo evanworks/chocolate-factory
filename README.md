@@ -9,6 +9,17 @@ _New update every week!_
 
 # Updates
 
+## re0.11.7[2/7/26]
+
+* worker happiness now depends on pay, working conditions, job stability, and life in general
+* i'm not explaining this further
+* pretended to move workers to their own file
+* made the workers say stuff
+* removed deprecated tags
+* reformatted the css
+* said a bunch of fancy words to confuse people
+* removed peanut butter :(
+
 ## re0.11.6[2/4/26]
 
 * fixed worker pay being able to go into the negatives (thanks abe)
@@ -23,7 +34,7 @@ _New update every week!_
 the fourth number is back
 
 * made workers work
-* made worker pay per second (default $0.5)
+* made workers pay per second (default $0.5)
 * worker pay affects speed (maybe too much so?)
 * workers now choose the lowest stocked bar to produce instead of all bars at once (do they have three hands?)
 * new and improved fancy methods and classes :D

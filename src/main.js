@@ -32,7 +32,7 @@ darkchocolateprice = 600;
 
 // update function things
 let cycles = 0;
-boughtSomething = false;
+let boughtSomething = false;
 lastSample = 0;
  
 //setInterval(updateItems, 100)
@@ -300,35 +300,15 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     tooltip.style.left = r.right + 55 + "px";
-    tooltip.style.top = r.top + "px"
-    tooltip.style.visibility = "visible"
-  })
+    tooltip.style.top = r.top + "px";
+    tooltip.style.visibility = "visible";
+  });
 
   document.addEventListener("mouseout", e => {
     if (e.target.closest(".map-item, .switch"))
-      tooltip.style.visibility = "hidden"
-  })
+      tooltip.style.visibility = "hidden";
+  });
 
-
-    setInterval(function() {
-        for (let i = 0; i < workers; i++) {
-          clicked("milk")
-          if (isDark == true) {
-            clicked("dark")
-          }
-          if (isBoxes == true) {
-            money -= 2;
-          }
-        }
-    }, workerSpeed);
-
-    setInterval(function() {
-        if (cacao > 0 && sugar > 0 && milk > 0) {
-          money -= workerPay * workers;
-        } else {
-          console.log(":")
-        }
-    }, 600000)
     var modal = document.getElementById("modal");
     var span = document.getElementsByClassName("close")[0];
     document.getElementById("information").onclick = function() {

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head> 
+  <head>
     <meta charset="utf-8">
     <title>Chocolate Factory</title>
     <link rel="stylesheet" href="res/styles.css">
@@ -26,9 +26,10 @@
     <div id="name">
       <div class="input-wrapper">
         <span class="input-mirror" id="inputMirror"></span>
-        <input id="name-input" type="text" oninput="adjustWidth()" placeholder="Evan">
+          <label for="name-input"></label>
+          <input id="name-input" type="text" oninput="adjustWidth()" placeholder="Evan">
       </div>
-      
+
       's Chocolates
     </div>
     <div class="bubble" style="top: 95px;left: 70px;" id="clickBubble">Click on the button to make a chocolate.</div>
@@ -41,13 +42,13 @@
           <span class="close">&times;</span>
         </div>
         <div class="modal-body">
-          
+
         </div>
       </div>
-    
+
     </div>
 
-    <center>
+    <div style="text-align: center;">
     <div id="information" style="display: none;">
       + Information
     </div>
@@ -55,12 +56,13 @@
       <span id="marketing">+0.00</span> m
     </div>
     <div class="bars-wrapper" style="margin-right: 30px;">
-      <span id="money">0</span> $
+      <span id="money">0.00</span> $
     </div>
     <div class="bars-wrapper">
       <span id="bars">0</span> bars
     </div>
-    </center>
+    </div>
+
     <div class="column" id="chocolate-types"></div>
 
     <div class="column" id="production" style="display: none;">
@@ -74,25 +76,30 @@
             <button class="project-button" onclick="increaseMemory()" id="memoryButton">Increase Memory ($50.00)</button>
             <button class="project-button" onclick="increasePower()" id="powerButton" disabled>Increase Power ($75.00)</button>
         </div>
-        <div class="project" id="project-marketing" style="display: none; color: red;" onclick="buyProject('marketing')"><h1>Marketing</h1><div class="project-text">View the popularity of your business as a single number!</div><div style="margin-top: 5px;">(150 bytes)</div></div>
-        <div class="project" id="project-donuts" style="display: none; color: red;" onclick="buyProject('donuts')"><h1>Donuts</h1><div class="project-text">Feed your workers to make them work harder</div><div style="margin-top: 5px;">(200 bytes)</div></div>
-        <div class="project" id="project-information" style="display: none; color: red;" onclick="buyProject('information')"><center><h1>Information</h1><div class="project-text">Adds a visual that tells you if you're making money</div><div style="margin-top: 5px;">(300 bytes)</div></center></div>
+        <!--<div class="project" id="project-information" style="display: none; color: red;" onclick="buyProject('information')"><center><h1>Information</h1><div class="project-text">Adds a visual that tells you if you're making money</div><div style="margin-top: 5px;">(300 bytes)</div></center></div>
         <div class="project" id="project-boxes" style="display: none; color: red;" onclick="buyProject('boxes')"><center><h1>Boxes</h1><div class="project-text">Wrap your chocolates for a better reputation</div><div style="margin-top: 5px;">(400 bytes)</div></center></div>
-        <div class="project" id="project-darkchocolate" style="display: none; color: red;" onclick="buyProject('darkchocolate')"><center><h1>Dark Chocolate</h1><div class="project-text">Produce a new type of chocolate to grow the business</div><div style="margin-top: 5px;">(600 bytes)</div></center></div>
+        <div class="project" id="project-darkchocolate" style="display: none; color: red;" onclick="buyProject('darkchocolate')"><center><h1>Dark Chocolate</h1><div class="project-text">Produce a new type of chocolate to grow the business</div><div style="margin-top: 5px;">(600 bytes)</div></center></div>-->
     </div>
 
     <div class="column" style="display: none;" id="devices">
+        <div id="complaint" style="opacity: 0;">I broke up with my girlfriend :(</div>
       <div id="workers" style="margin-left: 5%; margin-top: 5%; margin-bottom: 3px;"></div>
       <button class="buy-button" style="margin-left: 5%;" onclick="hireWorker()" id="hireWorkerButton">Hire Worker ($75.00)</button><br/>
       <button style="display: inline-block; margin-left: 5%;" class="changePay" onclick="changeWorkerPay(-0.1)"><</button><div class="amount-left" id="workerPay" style="margin-top: 5px; width: 100px; display: inline-block; margin-left: 0; ">$0.50/sec</div><button style="display: inline-block;" class="changePay" onclick="changeWorkerPay(0.1)">></button>
 
+        <div id="secret" style="margin-left: 5%; background: white; width: 150px; border: 1px solid black; margin-top: 10px; padding: 4px; display: none;">
+            <b>happiness:</b> <span style="float: right;" id="tommy">1</span>
+            <br/><b>speed:</b> <span style="float: right;" id="tommy2">1</span>
+            <br/><b>gain:</b> <span style="float: right;" id="tommy3">1</span>
+        </div>
+
       <label class="switch" style="display: none;" id="boxesToggle">
         <input type="checkbox">
         <span class="slider"></span>
-        <span class="tooltip" style="font-size: 11px;">Toggle Boxes</span> 
+        <span class="tooltip" style="font-size: 11px;">Toggle Boxes</span>
       </label>
       <div id="boxesInfo" style="display:none;">loading...</div>
-      
+
     </div>
     <div class="column" style="display: none;">
     place column
@@ -137,5 +144,5 @@
         <button class="debug-button" onclick="DEBUGchangeVar('workerSpeed')">set amount</button><div style="display: inline-block" id="workerSpeed-debug">workerSpeed: 0</div><br/>
       </div>
     </div>
-  </body>  
+  </body>
 </html>

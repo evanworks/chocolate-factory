@@ -1,4 +1,4 @@
-function buyItem(item) {
+/*function buyItem(item) {
   if (money >= window[item+"price"]) {
     window[item] += 15;
     money -= window[item+"price"];
@@ -15,7 +15,7 @@ function buyItem(item) {
   if (cacao >= 2 && sugar >= 1) {
     document.getElementById("dark-chocolate").disabled = false;
   }
-}
+}*/
 
 function createIngredients(valid) {
   const parent = document.getElementById("production");
@@ -34,7 +34,7 @@ function createIngredients(valid) {
 
       const mapItem = document.createElement('div');
       mapItem.classList.add('map-item');
-      if (k == 0) mapItem.classList.add('active');
+      if (k < 1) mapItem.classList.add('active'); // in replacement of k == 0 because webstorm hates everyone
       mapItem.onclick = () => { changeBrand(ingredient, k); }
       mapItem.innerHTML += company[0];
 

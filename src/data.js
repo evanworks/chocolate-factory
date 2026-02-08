@@ -92,7 +92,7 @@ const peanutButter = {
   ]
 }
 
-let unlockedIngredients = [cacao, sugar, milk, peanutButter];
+let unlockedIngredients = [cacao, sugar, milk];
 
 
 
@@ -138,19 +138,42 @@ let projectWorkers = {
   }
 }
 
+const complaints = {
+  happinessWithPay: ["The pay just dropped again!", "I feel underpaid.", "I'm happy with a middle-paying job.", "Wow, I love this lucrative salary!"],
+  happinessWithWorkingConditions: ["I don't like it here.", "It's a pretty dirty job.", "The job's nice.", "The bathrooms are beautiful here!"],
+  happinessWithJobStability: ["This business is probably going bankrupt.", "I don't know how much longer I'll have this job.", "This job feels safe.", "I feel like this business will last."],
+  happinessAboutLifeInGeneral: ["I just broke up with my girlfriend.", "I've been feeling down lately.", "Life's pretty alright.", "I feel on top of it today!"],
+}
+
 class Worker {
   constructor() {
+    this.happinessWithPay = 1;
+    this.happinessWithWorkingConditions = 1.01;
+    this.happinessWithJobStability = 1;
+    this.happinessAboutLifeInGeneral = 0.9 + Math.random() * 0.2; // 0.9 - 1.1
     this.happiness = 1;
-    this.speed = 1000;
+    this.speed = 0.1;
     this.element = document.createElement("div");
     this.element.className = "worker";
     this.element.style.backgroundColor = getRandomColor();
 
-    this.working = setInterval(this.work, this.speed);
-    setInterval(this.pay, 1000);
+    let last = performance.now();
+    let progress = 0;
+    this.working = setInterval(() => {
+      const now = performance.now();
+      const delta = (now - last) / 1000;
+      last = now;
+      progress += delta * this.speed;
+      if (progress >= 1) {
+        progress -= 1;
+        this.work();
+      }
+    }, 16);
+    setInterval(() => { this.pay(); this.setHappiness(); }, 1000);
   }
 
   work() {
+    console.log("work");
     let correctChocolate = unlockedChocolates[0];
     for (let i in unlockedChocolates) {
       if (unlockedChocolates[i].correspondingItem < correctChocolate.correspondingItem) {
@@ -163,13 +186,28 @@ class Worker {
     money -= workerPay;
   }
 
-  changeHappiness(change) {
-    this.happiness += change;
+  setHappiness() {
+    /*const ratio = workerPay / 0.5;
+    const exponent = 0.4 + 2.0 / (1 + Math.exp(10 * (ratio - 1)));
+    this.happinessWithPay = Math.pow(ratio, exponent);*/
 
-    this.speed = 1000 / this.happiness;
-    console.log(this.speed);
-    clearInterval(this.working);
-    this.working = setInterval(this.work, this.speed);
+    if (workerPay < 0.5) {
+      this.happinessWithPay = Math.pow(workerPay / 0.5, 2.5);
+    } else {
+      this.happinessWithPay = Math.pow(workerPay / 0.5, 0.4);
+    }
+
+    this.happinessWithJobStability = 1 + (marketing - 0.999);
+
+    this.speed = ( this.happinessWithPay + this.happinessWithJobStability +
+      this.happinessWithWorkingConditions + this.happinessAboutLifeInGeneral) / 4;
+
+    let gain = milkChocolatePrice - ( (cacao.price + sugar.price + milk.price) / 15);
+    gain *= this.speed;
+    gain -= workerPay;
+    document.getElementById("tommy").innerHTML = this.happinessWithPay.toFixed(2);
+    document.getElementById("tommy2").innerHTML = this.speed.toFixed(2);
+    document.getElementById("tommy3").innerHTML = gain.toFixed(2);
   }
 }
 workers = [];
